@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #211a14;
+  --color-indigo: #1c2b4a;
+  --color-indigo-deep: #131d33;
+  --color-teal: #1f5c57;
+  --color-maroon: #7c2a34;
+  --color-gold: #c08a28;
+  --color-gold-bright: #d9a441;
+  --color-parchment: #f3ead9;
+  --color-parchment-warm: #ece0c8;
+
+  --font-display: "Amiri", "Noto Naskh Arabic", serif;
+  --font-body: "Spectral", "Georgia", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-body), serif;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-indigo-deep);
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-maroon);
+  outline-offset: 3px;
+}
+
+/* Subtle aged-paper grain, layered under content */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: radial-gradient(
+      rgba(124, 42, 52, 0.05) 1px,
+      transparent 1px
+    ),
+    radial-gradient(rgba(28, 43, 74, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+}
+
+/* Ajrak-inspired repeating border band */
+.ajrak-band {
+  background-color: var(--color-indigo-deep);
+  background-image: repeating-linear-gradient(
+      135deg,
+      rgba(192, 138, 40, 0.35) 0px,
+      rgba(192, 138, 40, 0.35) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(124, 42, 52, 0.3) 0px,
+      rgba(124, 42, 52, 0.3) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+}
+
+/* Illuminated hairline used inside prose to mark a soft break, not a divider component */
+.hairline-gold {
+  border-color: rgba(192, 138, 40, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
