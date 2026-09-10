@@ -201,7 +201,9 @@ export default function Gallery() {
             type="button"
             onClick={() => openAt(i)}
             className={`group relative text-left rounded-xl sm:rounded-2xl overflow-hidden bg-parchment-warm/60 ring-1 ring-indigo/10 shadow-[0_1px_3px_rgba(28,43,74,0.08)] transition-all duration-300 ease-out hover:shadow-[0_14px_28px_-8px_rgba(28,43,74,0.28)] hover:-translate-y-0.5 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon ${
-              item.wide ? "col-span-2 aspect-[16/9] sm:aspect-[16/7]" : "aspect-square"
+              item.wide
+                ? "col-span-1 aspect-square sm:col-span-2 sm:aspect-[16/7]"
+                : "col-span-1 aspect-square"
             }`}
           >
             <div className="absolute inset-0 overflow-hidden">
