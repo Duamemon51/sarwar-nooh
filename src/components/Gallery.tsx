@@ -194,35 +194,35 @@ export default function Gallery() {
       </p>
 
       {/* grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
         {items.map((item, i) => (
           <button
             key={item.title}
             type="button"
             onClick={() => openAt(i)}
-            className={`group relative text-left rounded-2xl overflow-hidden bg-parchment-warm/60 ring-1 ring-indigo/10 shadow-[0_1px_3px_rgba(28,43,74,0.08)] transition-all duration-300 ease-out hover:shadow-[0_14px_28px_-8px_rgba(28,43,74,0.28)] hover:-translate-y-0.5 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon ${
-              item.wide ? "col-span-2 aspect-[16/7]" : "aspect-square"
+            className={`group relative text-left rounded-xl sm:rounded-2xl overflow-hidden bg-parchment-warm/60 ring-1 ring-indigo/10 shadow-[0_1px_3px_rgba(28,43,74,0.08)] transition-all duration-300 ease-out hover:shadow-[0_14px_28px_-8px_rgba(28,43,74,0.28)] hover:-translate-y-0.5 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon ${
+              item.wide ? "col-span-2 aspect-[16/9] sm:aspect-[16/7]" : "aspect-square"
             }`}
           >
-            <div className="absolute inset-0 flex items-center justify-center p-4 overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-[1.06]">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-[1.06]">
                 {item.render()}
               </div>
             </div>
 
             {/* hairline frame, revealed on hover — echoes the illuminated-manuscript border motif */}
-            <div className="pointer-events-none absolute inset-1.5 rounded-xl border border-gold/0 group-hover:border-gold/40 transition-colors duration-300" />
+            <div className="pointer-events-none absolute inset-1 sm:inset-1.5 rounded-lg sm:rounded-xl border border-gold/0 group-hover:border-gold/40 transition-colors duration-300" />
 
             {/* gradient scrim + caption */}
-            <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#131d33]/88 via-[#131d33]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute inset-x-0 bottom-0 p-3 translate-y-1.5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <span className="text-[12.5px] sm:text-[13px] text-parchment font-medium block truncate">
+            <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#131d33]/88 via-[#131d33]/30 to-transparent sm:opacity-0 opacity-70 sm:group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 sm:translate-y-1.5 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300">
+              <span className="text-[11.5px] sm:text-[13px] text-parchment font-medium block truncate">
                 {item.title}
               </span>
             </div>
 
             {/* view affordance */}
-            <span className="absolute top-2 left-2 w-7 h-7 rounded-full bg-parchment/0 group-hover:bg-parchment/95 text-indigo flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300">
+            <span className="hidden sm:flex absolute top-2 left-2 w-7 h-7 rounded-full bg-parchment/0 group-hover:bg-parchment/95 text-indigo items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300">
               <EyeIcon />
             </span>
           </button>
@@ -268,16 +268,16 @@ export default function Gallery() {
           </button>
 
           <div
-            className={`relative max-w-2xl w-full bg-parchment rounded-2xl border border-gold/40 shadow-[0_30px_70px_rgba(0,0,0,0.4)] transition-all duration-300 overflow-hidden ${
+            className={`relative max-w-2xl w-full max-h-[92vh] overflow-y-auto overflow-x-hidden bg-parchment rounded-2xl border border-gold/40 shadow-[0_30px_70px_rgba(0,0,0,0.4)] transition-all duration-300 ${
               entered ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* ajrak-inspired top strip, ties the modal back to the page's banding */}
-            <div className="ajrak-band h-2.5 w-full" />
+            <div className="ajrak-band h-2.5 w-full sticky top-0 z-10" />
 
-            <div className="p-5 sm:p-6 md:p-8">
-              <div className="w-full aspect-[4/3] md:aspect-[16/10] flex items-center justify-center bg-[#131d33]/5 rounded-lg mb-4 overflow-hidden ring-1 ring-indigo/10">
+            <div className="p-4 sm:p-6 md:p-8">
+              <div className="w-full aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center bg-[#131d33]/5 rounded-lg mb-4 overflow-hidden ring-1 ring-indigo/10">
                 {active.render(true)}
               </div>
               <div>
@@ -319,7 +319,7 @@ export default function Gallery() {
             <button
               type="button"
               onClick={() => setOpenIndex(null)}
-              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-maroon text-parchment flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:brightness-110 transition"
+              className="absolute top-3 right-3 z-20 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-maroon text-parchment flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:brightness-110 transition"
               aria-label="Close"
             >
               <CloseIcon />
