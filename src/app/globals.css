@@ -85,6 +85,15 @@ button:focus-visible {
   border-color: rgba(192, 138, 40, 0.45);
 }
 
+.gallery-filter-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gallery-filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 type GalleryItem = {
   title: string;
@@ -94,6 +95,8 @@ const items: GalleryItem[] = [
   },
 ];
 
+const featuredIndexes = [1, 0, 3, 4];
+
 function EyeIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" aria-hidden="true">
@@ -177,34 +180,38 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="scroll-mt-24 mx-auto max-w-3xl px-4 sm:px-6 pt-12 sm:pt-14 pb-4">
-      {/* header */}
-      <span className="block text-[12px] tracking-[0.18em] uppercase text-gold mb-1.5">
-        The visual record
-      </span>
-      <h2 className="font-[family-name:var(--font-display)] text-[26px] sm:text-[30px] text-indigo leading-none mb-4">
-        Gallery
-      </h2>
+    <section id="gallery" className="scroll-mt-24 mx-auto max-w-7xl bg-white px-4 sm:px-6 lg:px-10 py-10 sm:py-14">
+      <div className="grid gap-6 md:grid-cols-[0.78fr_2.2fr] md:items-center md:gap-8">
+        {/* compact intro */}
+        <div className="max-w-[235px]">
+          <span className="block text-[9px] tracking-[0.18em] uppercase text-gold mb-1.5">
+            Gallery
+          </span>
+          <h2 className="font-[family-name:var(--font-display)] text-[25px] sm:text-[28px] leading-[1.05] text-indigo mb-2">
+            Moments of Faith &amp; Heritage
+          </h2>
+          <p className="text-[11px] leading-[1.45] text-ink/70 mb-3">
+            Explore the shrine, its people, and the living traditions of Hala.
+          </p>
+          <Link
+            href="/gallery"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#0f3d33] px-3 py-1.5 text-[9px] font-medium text-parchment transition-opacity hover:opacity-85"
+          >
+            View Gallery
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
-      <div className="h-px w-14 bg-gradient-to-r from-gold to-transparent mb-4" />
-
-      <p className="text-[15px] sm:text-[17px] leading-[1.7] sm:leading-[1.75] text-ink/85 max-w-full sm:max-w-[62ch] mb-6">
-        Photographs of the shrine at Hala, from its tiled prayer hall
-        and courtyard to the gatherings that still fill it today.
-      </p>
-
-      {/* grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
-        {items.map((item, i) => (
+        {/* featured image strip */}
+        <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 sm:gap-2">
+        {featuredIndexes.map((itemIndex) => {
+          const item = items[itemIndex];
+          return (
           <button
             key={item.title}
             type="button"
-            onClick={() => openAt(i)}
-            className={`group relative text-left rounded-xl sm:rounded-2xl overflow-hidden bg-parchment-warm/60 ring-1 ring-indigo/10 shadow-[0_1px_3px_rgba(28,43,74,0.08)] transition-all duration-300 ease-out hover:shadow-[0_14px_28px_-8px_rgba(28,43,74,0.28)] hover:-translate-y-0.5 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon ${
-              item.wide
-                ? "col-span-1 aspect-square sm:col-span-2 sm:aspect-[16/7]"
-                : "col-span-1 aspect-square"
-            }`}
+            onClick={() => openAt(itemIndex)}
+            className="group relative aspect-[0.82/1] overflow-hidden rounded-[2px] bg-parchment-warm/60 ring-1 ring-indigo/10 transition-all duration-300 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon"
           >
             <div className="absolute inset-0 overflow-hidden">
               <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-[1.06]">
@@ -228,7 +235,9 @@ export default function Gallery() {
               <EyeIcon />
             </span>
           </button>
-        ))}
+          );
+        })}
+        </div>
       </div>
 
       {/* lightbox */}
@@ -245,14 +254,14 @@ export default function Gallery() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          {/* prev / next — desktop */}
+          {/* prev / next */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               prev();
             }}
-            className="hidden md:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-parchment/10 hover:bg-gold/25 border border-parchment/15 hover:border-gold/50 text-parchment items-center justify-center transition-colors"
+            className="flex absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-parchment/10 hover:bg-gold/25 border border-parchment/15 hover:border-gold/50 text-parchment items-center justify-center transition-colors"
             aria-label="Previous"
           >
             <ChevronIcon dir="left" />
@@ -263,7 +272,7 @@ export default function Gallery() {
               e.stopPropagation();
               next();
             }}
-            className="hidden md:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-parchment/10 hover:bg-gold/25 border border-parchment/15 hover:border-gold/50 text-parchment items-center justify-center transition-colors"
+            className="flex absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-parchment/10 hover:bg-gold/25 border border-parchment/15 hover:border-gold/50 text-parchment items-center justify-center transition-colors"
             aria-label="Next"
           >
             <ChevronIcon dir="right" />
@@ -294,28 +303,6 @@ export default function Gallery() {
                 </p>
               </div>
 
-              {/* prev / next — mobile, inline under the image */}
-              <div className="flex md:hidden items-center justify-between mt-5 pt-4 border-t border-indigo/10">
-                <button
-                  type="button"
-                  onClick={prev}
-                  className="flex items-center gap-1.5 text-[13px] text-indigo/70 hover:text-indigo transition-colors"
-                  aria-label="Previous"
-                >
-                  <ChevronIcon dir="left" />
-                  Prev
-                </button>
-                <span className="text-[12px] text-ink/40">Swipe to browse</span>
-                <button
-                  type="button"
-                  onClick={next}
-                  className="flex items-center gap-1.5 text-[13px] text-indigo/70 hover:text-indigo transition-colors"
-                  aria-label="Next"
-                >
-                  Next
-                  <ChevronIcon dir="right" />
-                </button>
-              </div>
             </div>
 
             <button

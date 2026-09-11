@@ -13,7 +13,7 @@ export default function StarDivider({
   tone = "gold",
   className = "",
 }: StarDividerProps) {
-  const color = tone === "gold" ? "#c08a28" : "#1f5c57";
+  const color = tone === "gold" ? "#153832" : "#1f5c57";
   const unit = 40;
   const repeats = 12;
   const width = unit * repeats;
