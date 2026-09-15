@@ -1,121 +1,76 @@
-function LineageFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" aria-hidden="true">
-      <circle cx="12" cy="6" r="2.2" stroke="currentColor" strokeWidth="1.3" />
-      <circle cx="6" cy="18" r="2.2" stroke="currentColor" strokeWidth="1.3" />
-      <circle cx="18" cy="18" r="2.2" stroke="currentColor" strokeWidth="1.3" />
-      <path
-        d="M12 8.2v3M12 11.2 6 15.8M12 11.2l6 4.6"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function ScholarshipFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" aria-hidden="true">
-      <path
-        d="M4 5.5c2.5-1 5-1 8 .5 3-1.5 5.5-1.5 8-.5v13c-2.5-1-5-1-8 .5-3-1.5-5.5-1.5-8-.5v-13Z"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinejoin="round"
-      />
-      <path d="M12 6v13" stroke="currentColor" strokeWidth="1.3" />
-    </svg>
-  );
-}
-
-function SajjadaFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" aria-hidden="true">
-      <circle cx="9" cy="8" r="2.4" stroke="currentColor" strokeWidth="1.3" />
-      <circle cx="17" cy="9" r="1.9" stroke="currentColor" strokeWidth="1.3" />
-      <path
-        d="M3.5 19c.5-3.2 2.6-5 5.5-5s5 1.8 5.5 5M15 19c.3-2.4 1.7-3.8 4-3.8s3.7 1.4 4 3.8"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function UrsFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.3" />
-      <path
-        d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6.2 6.2l1.4 1.4M16.4 16.4l1.4 1.4M6.2 17.8l1.4-1.4M16.4 7.6l1.4-1.4"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function HeritageFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" aria-hidden="true">
-      <rect x="3.5" y="5.5" width="17" height="13" rx="1" stroke="currentColor" strokeWidth="1.3" />
-      <path d="m3.5 15 4.5-4.5 3 3 4-4.5 5.5 6" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
-      <circle cx="8" cy="9" r="1.1" stroke="currentColor" strokeWidth="1.1" />
-    </svg>
-  );
-}
-
 const features = [
   {
-    icon: <LineageFeatureIcon />,
-    title: "Ancestral Lineage",
-    desc: "A Siddiqui family tracing descent to Hazrat Umar al-Siddiq",
+    image: "/1.png",
+    title: "عزس جي لايپيڻ",
+    lines: ["روحاني پ دبني", "ٻيرڪسن جو تسلسل"],
   },
   {
-    icon: <ScholarshipFeatureIcon />,
-    title: "Scholarship",
-    desc: "First Persian translation of the Qur'an by a Sindhi scholar",
+    image: "/2.png",
+    title: "تعليمي چاڻ",
+    lines: ["تضوفي، علم پ", "اولياء جي تعليمات"],
   },
   {
-    icon: <SajjadaFeatureIcon />,
-    title: "The Sarwari Order",
-    desc: "A Suhrawardi lineage of faith carried forward since 1590",
+    image: "/1.png",
+    title: "سزاي جو فرحڪم",
+    lines: ["محبيت، امن پ", "روحاني واڌو"],
   },
   {
-    icon: <UrsFeatureIcon />,
-    title: "The Dargah at Hala",
-    desc: "A shrine of pilgrimage for over four centuries",
+    image: "/2.png",
+    title: "عرس مبارڪڻ",
+    lines: ["اصن د ٻا پ برڪين", "جو پيغام"],
   },
   {
-    icon: <HeritageFeatureIcon />,
-    title: "Living Legacy",
-    desc: "Sajjada Nasheen guardianship, poetry, and civil honour",
+    image: "/1.png",
+    title: "هيٿه جي سرپرستي",
+    lines: ["اڳئي نسل للرء", "هدايت پ خدمت"],
   },
 ];
 
 export default function FeatureStrip() {
   return (
-    <section className="border-y border-indigo/10" style={{ backgroundColor: "#FAF9F7" }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-4">
-          {features.map((f, i) => (
-            <div
-              key={f.title}
-              className={`flex flex-col items-center text-center px-3 ${
-                i !== 0 ? "md:border-l md:border-indigo/10" : ""
-              }`}
-            >
-              <div className="text-indigo mb-3">{f.icon}</div>
-              <h3 className="text-[11px] sm:text-[12px] font-semibold tracking-[0.12em] uppercase text-indigo mb-1.5">
-                {f.title}
-              </h3>
-              <p className="text-[12px] sm:text-[13px] leading-snug text-ink/60 max-w-[16ch]">
-                {f.desc}
-              </p>
-            </div>
-          ))}
+    <section className="relative bg-[#f9f4e8] border-y-4 border-[#193D44]">
+      <div className="mx-auto max-w-[1400px] px-4 py-8 md:py-10">
+        <div
+          className="
+            grid grid-cols-2 gap-x-3 gap-y-6
+            sm:grid-cols-3 sm:gap-x-4
+            md:grid-cols-5 md:gap-x-0 md:gap-y-0
+          "
+        >
+          {features.map((feature, i) => {
+            const isLastMd = i === features.length - 1;
+
+            return (
+              <div
+                key={i}
+                className={`
+                  flex flex-col items-center text-center
+                  rounded-xl border border-[#193D44]/25 bg-white/40 px-3 py-4
+                  sm:rounded-2xl
+                  md:rounded-none md:border-0 md:bg-transparent md:py-0
+                  ${!isLastMd ? "md:border-r-2 md:border-[#193D44]" : ""}
+                `}
+              >
+                {/* arch-shaped badge */}
+                <div className="relative flex items-center justify-center w-[64px] h-[74px] sm:w-[70px] sm:h-[80px] md:w-[74px] md:h-[86px]">
+                  <img
+                    src={feature.image}
+                    alt=""
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-15 md:h-15 object-contain"
+                  />
+                </div>
+
+                <div className="mt-0 text-[14px] sm:text-[15px] md:text-[16px] font-bold text-[#0d3d3a] leading-normal">
+                  {feature.title}
+                </div>
+                <div className="mt-1 leading-[1.6] md:leading-[1.8] text-[12px] sm:text-[12.5px] md:text-[13px] font-medium text-[#5f4026]">
+                  {feature.lines.map((line, idx) => (
+                    <div key={idx}>{line}</div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

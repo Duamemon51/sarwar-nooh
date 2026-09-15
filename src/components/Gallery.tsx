@@ -95,7 +95,9 @@ const items: GalleryItem[] = [
   },
 ];
 
-const featuredIndexes = [1, 0, 3, 4];
+// Now shows 4 cards, all the same portrait size — matches the reference layout.
+const featuredIndexes = [0, 1, 3, 4];
+const referenceGallery = [items[0], items[1], items[3], items[4]];
 
 function EyeIcon() {
   return (
@@ -132,6 +134,20 @@ function CloseIcon() {
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" aria-hidden="true">
+      <path
+        d="M4 12h16M13 5l7 7-7 7"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -180,63 +196,113 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="scroll-mt-24 mx-auto max-w-7xl bg-white px-4 sm:px-6 lg:px-10 py-10 sm:py-14">
-      <div className="grid gap-6 md:grid-cols-[0.78fr_2.2fr] md:items-center md:gap-8">
-        {/* compact intro */}
-        <div className="max-w-[235px]">
-          <span className="block text-[9px] tracking-[0.18em] uppercase text-gold mb-1.5">
-            Gallery
-          </span>
-          <h2 className="font-[family-name:var(--font-display)] text-[25px] sm:text-[28px] leading-[1.05] text-indigo mb-2">
-            Moments of Faith &amp; Heritage
-          </h2>
-          <p className="text-[11px] leading-[1.45] text-ink/70 mb-3">
-            Explore the shrine, its people, and the living traditions of Hala.
-          </p>
-          <Link
-            href="/gallery"
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#0f3d33] px-3 py-1.5 text-[9px] font-medium text-parchment transition-opacity hover:opacity-85"
-          >
-            View Gallery
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
+    <section
+      id="gallery"
+      className="scroll-mt-24 w-full bg-[#f7f4ee] px-0 py-8 sm:py-10"
+    >
+      <div className="mx-auto max-w-[1500px] px-3 sm:px-5 lg:px-8">
+        <div className="grid items-center gap-6 lg:grid-cols-[0.62fr_2.38fr]">
+          <div className="flex flex-col items-start px-2 py-3 text-right sm:px-4 lg:pl-5">
+            <h2
+              className="max-w-[290px] font-[family-name:var(--font-display)] text-[clamp(1.8rem,2.3vw,2.8rem)] font-bold leading-[1.1] text-[#1f2e2f]"
+            >
+              عرس تي ملڻ جا لمحا
+            </h2>
 
-        {/* featured image strip */}
-        <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 sm:gap-2">
-        {featuredIndexes.map((itemIndex) => {
-          const item = items[itemIndex];
-          return (
-          <button
-            key={item.title}
-            type="button"
-            onClick={() => openAt(itemIndex)}
-            className="group relative aspect-[0.82/1] overflow-hidden rounded-[2px] bg-parchment-warm/60 ring-1 ring-indigo/10 transition-all duration-300 hover:ring-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-maroon"
-          >
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-[1.06]">
-                {item.render()}
-              </div>
+            <p
+              className="mt-8 max-w-[390px] font-[family-name:var(--font-display)] text-[12px] leading-[1.9] text-[#2b2f34] sm:text-[13px]"
+            >
+              هيءَ گيلري درگاهه جي خوبصورت منظرن ۽ عقيدتمند زائرين سان عرس جي
+              مبارڪ موقعن جي حسين يادن تي مشتمل آهي.
+            </p>
+
+            <Link
+              href="/gallery"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#0d3b36] px-7 py-2.5 text-[11px] font-medium text-white transition-opacity hover:opacity-90 sm:text-[15px] md:mt-10"
+            >
+              <span>گيلري ڏسو</span>
+              <ArrowRightIcon />
+            </Link>
+          </div>
+
+          <div className="relative -mx-3 sm:mx-0">
+            {/* Mobile: horizontal snap-scroll carousel, one full-width image at a time */}
+            <div
+              className="
+                flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-3
+                px-3 pb-1
+                sm:hidden
+                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+              "
+            >
+              {referenceGallery.map((item, index) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => openAt(featuredIndexes[index])}
+                  className="group relative aspect-[3/4] w-full shrink-0 snap-center overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
+                >
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="h-full w-full">{item.render()}</div>
+                  </div>
+
+                  {/* image frame overlay */}
+                  <img
+                    src="/image-frame.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1c2a]/45 via-transparent to-transparent opacity-70" />
+                  <span className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#f9f2e7]/20 text-[#f9f2e7] z-20">
+                    <EyeIcon />
+                  </span>
+                </button>
+              ))}
             </div>
 
-            {/* hairline frame, revealed on hover — echoes the illuminated-manuscript border motif */}
-            <div className="pointer-events-none absolute inset-1 sm:inset-1.5 rounded-lg sm:rounded-xl border border-gold/0 group-hover:border-gold/40 transition-colors duration-300" />
-
-            {/* gradient scrim + caption */}
-            <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#131d33]/88 via-[#131d33]/30 to-transparent sm:opacity-0 opacity-70 sm:group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 sm:translate-y-1.5 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300">
-              <span className="text-[11.5px] sm:text-[13px] text-parchment font-medium block truncate">
-                {item.title}
-              </span>
+            {/* dots indicator, mobile only */}
+            <div className="mt-2 flex justify-center gap-1.5 sm:hidden">
+              {referenceGallery.map((item) => (
+                <span
+                  key={item.title}
+                  className="h-1.5 w-1.5 rounded-full bg-[#16333d]/25"
+                />
+              ))}
             </div>
 
-            {/* view affordance */}
-            <span className="hidden sm:flex absolute top-2 left-2 w-7 h-7 rounded-full bg-parchment/0 group-hover:bg-parchment/95 text-indigo items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300">
-              <EyeIcon />
-            </span>
-          </button>
-          );
-        })}
+            {/* sm and up: original grid */}
+            <div className="hidden sm:grid sm:grid-cols-4 sm:gap-3">
+              {referenceGallery.map((item, index) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => openAt(featuredIndexes[index])}
+                  className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
+                >
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+                      {item.render()}
+                    </div>
+                  </div>
+
+                  {/* image frame overlay */}
+                  <img
+                    src="/image-frame.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1c2a]/45 via-transparent to-transparent opacity-70" />
+                  <span className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#f9f2e7]/20 text-[#f9f2e7] opacity-0 transition-all duration-300 group-hover:opacity-100 z-20">
+                    <EyeIcon />
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -288,8 +354,16 @@ export default function Gallery() {
             <div className="ajrak-band h-2.5 w-full sticky top-0 z-10" />
 
             <div className="p-4 sm:p-6 md:p-8">
-              <div className="w-full aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center bg-[#131d33]/5 rounded-lg mb-4 overflow-hidden ring-1 ring-indigo/10">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center bg-[#131d33]/5 rounded-lg mb-4 overflow-hidden ring-1 ring-indigo/10">
                 {active.render(true)}
+
+                {/* image frame overlay */}
+                <img
+                  src="/image-frame.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
+                />
               </div>
               <div>
                 <span className="text-[11px] tracking-[0.14em] uppercase text-gold/90">
@@ -302,7 +376,6 @@ export default function Gallery() {
                   {active.caption}
                 </p>
               </div>
-
             </div>
 
             <button
