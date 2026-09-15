@@ -11,72 +11,92 @@ type GalleryItem = {
   render: (large?: boolean) => ReactNode;
 };
 
+function Photo({ src, alt }: { src: string; alt: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} className="w-full h-full object-cover" />
+  );
+}
+
 const items: GalleryItem[] = [
   {
-    title: "The dargah at Hala",
+    title: "Calligraphic panel",
     caption:
-      "The courtyard facade of the Dargah Sarwar-e-Nooh — twin minarets and glazed Kashi tilework, photographed at the shrine in Hala, Sindh.",
+      "A carved wooden panel with Islamic calligraphy at the entrance of the shrine.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-01-calligraphic-panel.jpg"
+        alt="A carved wooden calligraphy panel at the shrine entrance"
+      />
+    ),
+  },
+  {
+    title: "Arched mihrab niche",
+    caption:
+      "A gilded arch niche inside the dargah, framed in cream and gold tilework.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-02-mihrab-niche.jpg"
+        alt="A gilded arched mihrab niche inside the dargah"
+      />
+    ),
+  },
+  {
+    title: "The dargah complex",
+    caption:
+      "A wide view of the Dargah Sarwar-e-Nooh complex and its domes, seen above the trees of Hala.",
     wide: true,
     render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/dargah-hala.png"
-        alt="The tiled facade and twin minarets of the Dargah Sarwar-e-Nooh, Hala"
-        className="w-full h-full object-cover"
+      <Photo
+        src="/gallery/dargah-03-dargah-complex-wide.jpg"
+        alt="Wide aerial view of the Dargah Sarwar-e-Nooh complex in Hala"
+      />
+    ),
+  },
+  {
+    title: "Calligraphic inscription",
+    caption:
+      "A dark stone panel inscribed with calligraphy, set within the shrine's outer wall.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-04-calligraphic-inscription.jpg"
+        alt="A dark stone calligraphic inscription panel on the shrine wall"
+      />
+    ),
+  },
+  {
+    title: "Prayer hall interior",
+    caption:
+      "An empty hall inside the dargah, its tiled floor and arched windows catching the afternoon light.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-05-prayer-hall-interior.jpg"
+        alt="An empty tiled prayer hall inside the dargah"
+      />
+    ),
+  },
+  {
+    title: "The courtyard fountain",
+    caption:
+      "A tiled fountain at the centre of the dargah's courtyard, framed by trees.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-06-courtyard-fountain.jpg"
+        alt="A tiled fountain in the dargah's courtyard"
       />
     ),
   },
   {
     title: "At the mazar",
     caption:
-      "Chadars laid over the graves within the dargah, photographed as visitors gather at the carved wooden railing to offer prayers.",
-    render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/dargah-tomb-chadars.jpg"
-        alt="Green and red chadars covering graves inside the dargah, with visitors praying at the railing"
-        className="w-full h-full object-cover"
-      />
-    ),
-  },
-  {
-    title: "Rows for prayer",
-    caption:
-      "Rows of worshippers stand for congregational prayer beneath the shrine's arched windows.",
+      "Chadars laid over the graves within the dargah, seen through the carved wooden railing.",
     wide: true,
     render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/congregation-prayer-line.jpg"
-        alt="A long row of worshippers standing in congregational prayer inside the shrine hall"
-        className="w-full h-full object-cover"
-      />
-    ),
-  },
-  {
-    title: "The entrance at Hala Sharif",
-    caption:
-      "The gateway to the dargah complex, its signboard naming Ghous-ul-Haq Makhdoom Nooh Sarwar, Hala Sharif.",
-    render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/dargah-entrance-gate.jpg"
-        alt="The signed entrance gate of the Dargah Makhdoom Nooh complex at Hala Sharif"
-        className="w-full h-full object-cover"
-      />
-    ),
-  },
-  {
-    title: "A gathered congregation",
-    caption:
-      "Pilgrims seated in prayer inside the shrine hall, led from the front as the gathering fills the tiled interior.",
-    wide: true,
-    render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/congregation-prayer-hall.jpg"
-        alt="A large seated congregation in prayer inside the shrine hall, led by a figure at the front"
-        className="w-full h-full object-cover"
+      <Photo
+        src="/gallery/dargah-07-mazar-chadars-railing.jpg"
+        alt="Chadars over graves seen through a carved wooden railing"
       />
     ),
   },
@@ -84,20 +104,338 @@ const items: GalleryItem[] = [
     title: "The tiled prayer hall",
     caption:
       "The mihrab wall of the shrine's prayer hall, its glazed Kashi tilework framing three arched niches.",
+    wide: true,
     render: () => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/dargah-facade-tilework.jpg"
-        alt="The tiled mihrab wall of the prayer hall with three arched niches, worshippers seated in rows facing it"
-        className="w-full h-full object-cover"
+      <Photo
+        src="/gallery/dargah-08-tiled-prayer-hall.jpg"
+        alt="The tiled mihrab wall of the prayer hall with three arched niches"
+      />
+    ),
+  },
+  {
+    title: "Inside the shrine hall",
+    caption:
+      "Another view of the prayer hall, its patterned floor tiles leading toward the mihrab.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-09-shrine-hall-floor.jpg"
+        alt="Patterned floor tiles of the shrine hall leading toward the mihrab"
+      />
+    ),
+  },
+  {
+    title: "Arched cloister",
+    caption:
+      "A row of arched doorways along the courtyard, part of the dargah's outer cloister.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-10-arched-cloister.jpg"
+        alt="A row of arched doorways along the dargah's courtyard cloister"
+      />
+    ),
+  },
+  {
+    title: "Graves in the courtyard",
+    caption: "Marble graves resting in the open courtyard of the dargah.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-11-graves-courtyard.jpg"
+        alt="Marble graves in the open courtyard of the dargah"
+      />
+    ),
+  },
+  {
+    title: "Courtyard steps",
+    caption: "Stone steps leading up through the dargah's courtyard.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-12-courtyard-steps.jpg"
+        alt="Stone steps leading through the dargah's courtyard"
+      />
+    ),
+  },
+  {
+    title: "The tiled hall",
+    caption: "A softly lit corner of the shrine's tiled hall.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-13-tiled-hall-corner.jpg"
+        alt="A softly lit corner of the shrine's tiled hall"
+      />
+    ),
+  },
+  {
+    title: "The tomb canopy",
+    caption: "A dark wooden canopy shading a grave inside the shrine.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-14-tomb-canopy.jpg"
+        alt="A dark carved wooden canopy over a grave inside the shrine"
+      />
+    ),
+  },
+  {
+    title: "Inside the shrine hall",
+    caption:
+      "Visitors pass through the dargah's long tiled hall beneath its arched windows.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-15-shrine-hall-visitors.jpg"
+        alt="Visitors walking through the dargah's long tiled hall"
+      />
+    ),
+  },
+  {
+    title: "The entrance at Hala Sharif",
+    caption:
+      "The gateway to the dargah complex, its twin towers framing the path inside.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-16-entrance-gate.jpg"
+        alt="The twin-towered entrance gate of the dargah complex at Hala Sharif"
+      />
+    ),
+  },
+  {
+    title: "Courtyard view",
+    caption: "The open courtyard of the dargah beneath a clear sky.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-17-courtyard-view-1.jpg"
+        alt="The open courtyard of the dargah under a clear sky"
+      />
+    ),
+  },
+  {
+    title: "Courtyard walkway",
+    caption: "A quiet walkway through the dargah's courtyard.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-18-courtyard-walkway-1.jpg"
+        alt="A quiet walkway through the dargah's courtyard"
+      />
+    ),
+  },
+  {
+    title: "Domes of the shrine",
+    caption: "The white domes of the dargah rising above its tiled walls.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-19-shrine-domes.jpg"
+        alt="The white domes of the dargah rising above its tiled walls"
+      />
+    ),
+  },
+  {
+    title: "The dargah at Hala",
+    caption:
+      "The courtyard facade of the Dargah Sarwar-e-Nooh — twin minarets and glazed Kashi tilework, photographed at the shrine in Hala, Sindh.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-20-dargah-hala-facade.jpg"
+        alt="The tiled facade and twin minarets of the Dargah Sarwar-e-Nooh, Hala"
+      />
+    ),
+  },
+  {
+    title: "Sunlit hall",
+    caption: "Light falling across the tiled floor of the shrine's prayer hall.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-21-sunlit-hall.jpg"
+        alt="Sunlight falling across the tiled floor of the prayer hall"
+      />
+    ),
+  },
+  {
+    title: "The courtyard",
+    caption: "A wide courtyard view within the dargah complex.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-22-courtyard-wide-1.jpg"
+        alt="A wide view of the courtyard within the dargah complex"
+      />
+    ),
+  },
+  {
+    title: "Facade detail",
+    caption: "A close view of the shrine's tiled facade and dome.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-23-facade-detail-1.jpg"
+        alt="A close view of the shrine's tiled facade and dome"
+      />
+    ),
+  },
+  {
+    title: "Tilework detail",
+    caption: "Detailed Kashi tilework along the shrine's outer wall.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-24-tilework-detail.jpg"
+        alt="Detailed glazed Kashi tilework along the shrine's outer wall"
+      />
+    ),
+  },
+  {
+    title: "Dome and steps",
+    caption: "One of the dargah's domed structures, reached by a flight of steps.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-25-dome-and-steps.jpg"
+        alt="A domed structure of the dargah reached by a flight of steps"
+      />
+    ),
+  },
+  {
+    title: "Corner of the tomb",
+    caption: "A corner view of the tomb building's tiled exterior.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-26-tomb-corner.jpg"
+        alt="A corner view of the tomb building's tiled exterior"
+      />
+    ),
+  },
+  {
+    title: "The domed shrine",
+    caption: "A white domed structure within the dargah complex.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-27-domed-shrine.jpg"
+        alt="A white domed structure within the dargah complex"
+      />
+    ),
+  },
+  {
+    title: "Calligraphic wall panel",
+    caption: "A blue calligraphic panel set into the shrine's interior wall.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-28-calligraphic-wall-panel.jpg"
+        alt="A blue calligraphic panel set into the shrine's interior wall"
+      />
+    ),
+  },
+  {
+    title: "Path to the graves",
+    caption: "A tiled pathway leading toward the graves within the complex.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-29-path-to-graves.jpg"
+        alt="A tiled pathway leading toward the graves within the complex"
+      />
+    ),
+  },
+  {
+    title: "Doorway to the graves",
+    caption: "An arched doorway opening onto a row of graves.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-30-doorway-to-graves.jpg"
+        alt="An arched doorway opening onto a row of graves"
+      />
+    ),
+  },
+  {
+    title: "Chadars at the grave",
+    caption:
+      "Green and red chadars laid over a carved grave, part of the Urs offerings.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-31-chadars-at-grave.jpg"
+        alt="Green and red chadars laid over a carved grave during the Urs"
+      />
+    ),
+  },
+  {
+    title: "Graves along the path",
+    caption: "A row of graves along a tiled pathway within the dargah.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-32-graves-along-path.jpg"
+        alt="A row of graves along a tiled pathway within the dargah"
+      />
+    ),
+  },
+  {
+    title: "Chadar-covered graves",
+    caption: "Graves beneath a portico, covered with green chadars.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-33-chadar-covered-graves.jpg"
+        alt="Graves beneath a portico, covered with green chadars"
+      />
+    ),
+  },
+  {
+    title: "Tiled archway",
+    caption: "An ornately tiled archway leading into a small chamber of graves.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-34-tiled-archway.jpg"
+        alt="An ornately tiled archway leading into a small chamber of graves"
+      />
+    ),
+  },
+  {
+    title: "Courtyard walkway",
+    caption: "Visitors walk through a tree-lined stretch of the dargah's courtyard.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-35-courtyard-walkway-2.jpg"
+        alt="Visitors walking through a tree-lined stretch of the courtyard"
+      />
+    ),
+  },
+  {
+    title: "The courtyard",
+    caption: "A wide-open stretch of the dargah's courtyard.",
+    wide: true,
+    render: () => (
+      <Photo
+        src="/gallery/dargah-36-courtyard-wide-2.jpg"
+        alt="A wide-open stretch of the dargah's courtyard"
+      />
+    ),
+  },
+  {
+    title: "Walkway by the tomb",
+    caption: "A quiet walkway beside the tiled tomb building.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-37-walkway-by-tomb.jpg"
+        alt="A quiet walkway beside the tiled tomb building"
+      />
+    ),
+  },
+  {
+    title: "The courtyard",
+    caption: "Another view of the dargah's tiled courtyard.",
+    render: () => (
+      <Photo
+        src="/gallery/dargah-38-courtyard-wide-3.jpg"
+        alt="Another view of the dargah's tiled courtyard"
       />
     ),
   },
 ];
 
-// Now shows 4 cards, all the same portrait size — matches the reference layout.
-const featuredIndexes = [0, 1, 3, 4];
-const referenceGallery = [items[0], items[1], items[3], items[4]];
+// 4 featured tiles shown in the compact preview grid; the lightbox lets
+// visitors page through the full set above via next/prev.
+const featuredIndexes = [19, 6, 15, 7];
+const referenceGallery = featuredIndexes.map((i) => items[i]);
 
 function EyeIcon() {
   return (
@@ -157,6 +495,47 @@ export default function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [entered, setEntered] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const dragState = useRef<{ down: boolean; startX: number; startScroll: number; moved: boolean }>(
+    { down: false, startX: 0, startScroll: 0, moved: false }
+  );
+
+  // Convert vertical wheel/trackpad input into horizontal movement so the
+  // carousel scrolls even on devices/testing setups without touch drag.
+  const onScrollerWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      el.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  };
+
+  // Mouse-drag fallback (click-and-drag to scroll), useful when testing in a
+  // desktop browser without a touchscreen or trackpad swipe.
+  const onScrollerMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    dragState.current = { down: true, startX: e.pageX, startScroll: el.scrollLeft, moved: false };
+  };
+  const onScrollerMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = scrollerRef.current;
+    if (!el || !dragState.current.down) return;
+    const dx = e.pageX - dragState.current.startX;
+    if (Math.abs(dx) > 4) dragState.current.moved = true;
+    el.scrollLeft = dragState.current.startScroll - dx;
+  };
+  const endScrollerDrag = () => {
+    dragState.current.down = false;
+  };
+  // Suppress the click-to-open when the pointer actually dragged the strip.
+  const onScrollerClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (dragState.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragState.current.moved = false;
+    }
+  };
 
   const openAt = (idx: number) => setOpenIndex(idx);
   const next = () =>
@@ -226,14 +605,24 @@ export default function Gallery() {
           </div>
 
           <div className="relative -mx-3 sm:mx-0">
-            {/* Mobile: 4-column grid, same as desktop but smaller */}
-            <div className="grid grid-cols-4 gap-1.5 px-3 sm:hidden">
-              {referenceGallery.map((item, index) => (
+            {/* Mobile: horizontal scroll-snap carousel through every photo */}
+            <div
+              ref={scrollerRef}
+              onWheel={onScrollerWheel}
+              onMouseDown={onScrollerMouseDown}
+              onMouseMove={onScrollerMouseMove}
+              onMouseUp={endScrollerDrag}
+              onMouseLeave={endScrollerDrag}
+              onClickCapture={onScrollerClickCapture}
+              style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x", overscrollBehaviorX: "contain" }}
+              className="flex gap-2.5 overflow-x-auto px-3 pb-2 sm:hidden snap-x snap-mandatory scroll-px-3 cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {items.map((item, index) => (
                 <button
-                  key={item.title}
+                  key={item.title + index}
                   type="button"
-                  onClick={() => openAt(featuredIndexes[index])}
-                  className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
+                  onClick={() => openAt(index)}
+                  className="group relative aspect-[3/4] w-[27%] flex-none snap-start overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
                     <div className="h-full w-full">{item.render()}</div>
@@ -256,7 +645,7 @@ export default function Gallery() {
             <div className="hidden sm:grid sm:grid-cols-4 sm:gap-3">
               {referenceGallery.map((item, index) => (
                 <button
-                  key={item.title}
+                  key={item.title + featuredIndexes[index]}
                   type="button"
                   onClick={() => openAt(featuredIndexes[index])}
                   className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
