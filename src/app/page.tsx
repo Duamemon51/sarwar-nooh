@@ -25,7 +25,7 @@ import GaadiNasheenMessage from "@/components/GaadiNasheenMessage";
 import UrsBanner from "@/components/UrsBanner";
 
 const elders = [
-  { name: "MAKHDOOM SARKAR ALI", image: "/elders/sarkar-ali.png" },
+  { name: "MAKHDOOM SARKAR ALI", image: "/sarkar-ali.png" },
   { name: "MAKHDOOM MEHBOOB ZAMAN", image: "/mahboob.png" },
   { name: "MAKHDOOM JAMEEL ZAMAN", image: "/jameel.png" },
   { name: "MAKHDOOM AMIN FAHEEM", image: "/amin.png" },
@@ -219,103 +219,73 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-[#f7f5f0] px-3 py-8 sm:px-4 sm:py-12">
-        {/* top gradient bar */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1e3a5f] via-[#8a6a5a] to-[#c97a3a]" />
+    <section className="relative bg-[#f7f5f0] px-3 py-8 sm:px-4 sm:py-12">
+  {/* top gradient bar */}
+  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1e3a5f] via-[#8a6a5a] to-[#c97a3a]" />
 
-        <div className="mx-auto max-w-[1400px]">
-          {/* Mobile: carousel with arrows + dots */}
-          <div className="sm:hidden">
-            <div className="relative">
-              {/* prev */}
-           {/* prev */}
-<button
-  type="button"
-  aria-label="Previous"
-  onClick={() => scrollToIndex(active - 1)}
-  disabled={active === 0}
-  className="absolute left-0 top-[calc(50%-26px)] z-10 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0a1a1f] shadow-md backdrop-blur transition disabled:opacity-30"
+  <div className="mx-auto max-w-[1400px]">
+    {/* Mobile: carousel with dots only */}
+    <div className="sm:hidden">
+      <div
+  ref={trackRef}
+  className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-3 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
 >
-  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-  </svg>
-</button>
+  {elders.map(({ name, image }) => (
+    <div
+      key={name}
+      className="flex w-[32%] flex-shrink-0 snap-center flex-col items-center justify-start"
+    >
+      <div className="relative aspect-square w-full max-w-[105px] overflow-hidden rounded-full bg-[#03181a]">
+        <Image src={image} alt={name} fill sizes="32vw" className="object-cover" />
+      </div>
+      <div className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f]">
+        {name.split(" ").slice(0, 1).join(" ")}
+        <br />
+        {name.split(" ").slice(1).join(" ")}
+      </div>
+    </div>
+  ))}
+</div>
 
-{/* next */}
-<button
-  type="button"
-  aria-label="Next"
-  onClick={() => scrollToIndex(active + 1)}
-  disabled={active === elders.length - 1}
-  className="absolute right-0 top-[calc(50%-26px)] z-10 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0a1a1f] shadow-md backdrop-blur transition disabled:opacity-30"
->
-  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-  </svg>
-</button>
+      {/* dots */}
+      <div className="mt-4 flex items-center justify-center gap-2">
+        {elders.map(({ name }, i) => (
+          <button
+            key={name}
+            type="button"
+            aria-label={`Go to slide ${i + 1}`}
+            onClick={() => scrollToIndex(i)}
+            className={`h-1.5 rounded-full transition-all ${
+              i === active ? "w-5 bg-[#123A3A]" : "w-1.5 bg-[#F3EAD9]"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
 
-              {/* track */}
-              <div
-                ref={trackRef}
-                className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-10 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-              >
-                {elders.map(({ name, image }) => (
-                  <div
-                    key={name}
-                    className="flex w-[60%] flex-shrink-0 snap-center flex-col items-center justify-start"
-                  >
-                    <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-full bg-[#03181a]">
-                      <Image src={image} alt={name} fill sizes="60vw" className="object-cover" />
-                    </div>
-                    <div className="mt-3 text-center text-[10px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f]">
-                      {name.split(" ").slice(0, 1).join(" ")}
-                      <br />
-                      {name.split(" ").slice(1).join(" ")}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* dots */}
-            <div className="mt-4 flex items-center justify-center gap-2">
-              {elders.map(({ name }, i) => (
-                <button
-                  key={name}
-                  type="button"
-                  aria-label={`Go to slide ${i + 1}`}
-                  onClick={() => scrollToIndex(i)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === active ? "w-5 bg-[#123A3A]" : "w-1.5 bg-[#F3EAD9]"
-                  }`}
-                />
-              ))}
-            </div>
+    {/* sm and up: original grid */}
+    <div className="hidden sm:grid sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 md:grid-cols-6 md:gap-x-8 md:gap-y-10">
+      {elders.map(({ name, image }) => (
+        <div key={name} className="flex flex-col items-center justify-start">
+          <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-full bg-[#03181a]">
+            <Image
+              src={image}
+              alt={name}
+              fill
+              sizes="(max-width: 1024px) 25vw, 220px"
+              className="object-cover"
+            />
           </div>
-
-          {/* sm and up: original grid */}
-          <div className="hidden sm:grid sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 md:grid-cols-6 md:gap-x-8 md:gap-y-10">
-            {elders.map(({ name, image }) => (
-              <div key={name} className="flex flex-col items-center justify-start">
-                <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-full bg-[#03181a]">
-                  <Image
-                    src={image}
-                    alt={name}
-                    fill
-                    sizes="(max-width: 1024px) 25vw, 220px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-3 text-center text-[10px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f] sm:mt-4 sm:text-[11px] md:text-[clamp(0.75rem,1vw,0.95rem)]">
-                  {name.split(" ").slice(0, 1).join(" ")}
-                  <br />
-                  {name.split(" ").slice(1).join(" ")}
-                </div>
-              </div>
-            ))}
+          <div className="mt-3 text-center text-[10px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f] sm:mt-4 sm:text-[11px] md:text-[clamp(0.75rem,1vw,0.95rem)]">
+            {name.split(" ").slice(0, 1).join(" ")}
+            <br />
+            {name.split(" ").slice(1).join(" ")}
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       <FeatureStrip />
       <LibrarySection />
