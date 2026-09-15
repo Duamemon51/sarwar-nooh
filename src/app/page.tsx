@@ -34,7 +34,7 @@ const elders = [
 ];
 
 export default function Home() {
-  const trackRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Home() {
       let closest = 0;
       let min = Infinity;
       Array.from(el.children).forEach((child, i) => {
-        const c = child.offsetLeft + child.offsetWidth / 2;
+        const c = (child as HTMLElement).offsetLeft + (child as HTMLElement).offsetWidth / 2;
         const d = Math.abs(c - center);
         if (d < min) {
           min = d;
@@ -61,11 +61,11 @@ export default function Home() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToIndex = (i) => {
+  const scrollToIndex = (i: number) => {
     const el = trackRef.current;
     if (!el) return;
     const idx = Math.max(0, Math.min(elders.length - 1, i));
-    const child = el.children[idx];
+    const child = el.children[idx] as HTMLElement | undefined;
     if (!child) return;
     el.scrollTo({
       left: child.offsetLeft - (el.clientWidth - child.offsetWidth) / 2,
