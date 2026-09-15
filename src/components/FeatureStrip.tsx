@@ -30,40 +30,58 @@ export default function FeatureStrip() {
   return (
     <section className="relative bg-[#f9f4e8] border-y-4 border-[#193D44]">
       <div className="mx-auto max-w-[1400px] px-4 py-8 md:py-10">
-        <div
-          className="
-            grid grid-cols-2 gap-x-3 gap-y-6
-            sm:grid-cols-3 sm:gap-x-4
-            md:grid-cols-5 md:gap-x-0 md:gap-y-0
-          "
-        >
+        {/* Mobile & sm: wrapped flex, 3 per row, centered last row */}
+        <div className="flex flex-wrap justify-center gap-y-6 md:hidden">
+          {features.map((feature, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center text-center px-2"
+              style={{ flex: "0 0 33.333%" }}
+            >
+              <div className="relative flex items-center justify-center w-[60px] h-[70px] sm:w-[70px] sm:h-[80px]">
+                <img
+                  src={feature.image}
+                  alt=""
+                  className="w-11 h-11 sm:w-14 sm:h-14 object-contain"
+                />
+              </div>
+
+              <div className="mt-1 text-[12px] sm:text-[15px] font-bold text-[#0d3d3a] leading-normal">
+                {feature.title}
+              </div>
+              <div className="mt-1 leading-[1.5] text-[10px] sm:text-[12.5px] font-medium text-[#5f4026]">
+                {feature.lines.map((line, idx) => (
+                  <div key={idx}>{line}</div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* md and up: original 5-column strip with dividers */}
+        <div className="hidden md:grid md:grid-cols-5 md:gap-x-0 md:gap-y-0">
           {features.map((feature, i) => {
             const isLastMd = i === features.length - 1;
-
             return (
               <div
                 key={i}
                 className={`
-                  flex flex-col items-center text-center
-                  rounded-xl border border-[#193D44]/25 bg-white/40 px-3 py-4
-                  sm:rounded-2xl
-                  md:rounded-none md:border-0 md:bg-transparent md:py-0
+                  flex flex-col items-center text-center py-0
                   ${!isLastMd ? "md:border-r-2 md:border-[#193D44]" : ""}
                 `}
               >
-                {/* arch-shaped badge */}
-                <div className="relative flex items-center justify-center w-[64px] h-[74px] sm:w-[70px] sm:h-[80px] md:w-[74px] md:h-[86px]">
+                <div className="relative flex items-center justify-center w-[74px] h-[86px]">
                   <img
                     src={feature.image}
                     alt=""
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-15 md:h-15 object-contain"
+                    className="w-15 h-15 object-contain"
                   />
                 </div>
 
-                <div className="mt-0 text-[14px] sm:text-[15px] md:text-[16px] font-bold text-[#0d3d3a] leading-normal">
+                <div className="mt-0 text-[16px] font-bold text-[#0d3d3a] leading-normal">
                   {feature.title}
                 </div>
-                <div className="mt-1 leading-[1.6] md:leading-[1.8] text-[12px] sm:text-[12.5px] md:text-[13px] font-medium text-[#5f4026]">
+                <div className="mt-1 leading-[1.8] text-[13px] font-medium text-[#5f4026]">
                   {feature.lines.map((line, idx) => (
                     <div key={idx}>{line}</div>
                   ))}

@@ -201,16 +201,16 @@ export default function Gallery() {
       className="scroll-mt-24 w-full bg-[#f7f4ee] px-0 py-8 sm:py-10"
     >
       <div className="mx-auto max-w-[1500px] px-3 sm:px-5 lg:px-8">
-        <div className="grid items-center gap-6 lg:grid-cols-[0.62fr_2.38fr]">
-          <div className="flex flex-col items-start px-2 py-3 text-right sm:px-4 lg:pl-5">
+        <div className="flex flex-col gap-4 lg:grid lg:items-center lg:gap-6 lg:grid-cols-[0.62fr_2.38fr]">
+          <div className="flex flex-col items-center text-center px-2 py-2 sm:items-start sm:px-4 sm:py-3 sm:text-right lg:pl-5">
             <h2
-              className="max-w-[290px] font-[family-name:var(--font-display)] text-[clamp(1.8rem,2.3vw,2.8rem)] font-bold leading-[1.1] text-[#1f2e2f]"
+              className="max-w-[290px] font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1]"
             >
               عرس تي ملڻ جا لمحا
             </h2>
 
             <p
-              className="mt-8 max-w-[390px] font-[family-name:var(--font-display)] text-[12px] leading-[1.9] text-[#2b2f34] sm:text-[13px]"
+              className="mt-2 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px]"
             >
               هيءَ گيلري درگاهه جي خوبصورت منظرن ۽ عقيدتمند زائرين سان عرس جي
               مبارڪ موقعن جي حسين يادن تي مشتمل آهي.
@@ -218,7 +218,7 @@ export default function Gallery() {
 
             <Link
               href="/gallery"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#0d3b36] px-7 py-2.5 text-[11px] font-medium text-white transition-opacity hover:opacity-90 sm:text-[15px] md:mt-10"
+              className="mt-3 hidden items-center gap-2 rounded-full bg-[#0d3b36] px-7 py-2.5 text-[11px] font-medium text-white transition-opacity hover:opacity-90 sm:mt-5 sm:inline-flex sm:text-[15px] md:mt-10"
             >
               <span>گيلري ڏسو</span>
               <ArrowRightIcon />
@@ -226,21 +226,14 @@ export default function Gallery() {
           </div>
 
           <div className="relative -mx-3 sm:mx-0">
-            {/* Mobile: horizontal snap-scroll carousel, one full-width image at a time */}
-            <div
-              className="
-                flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-3
-                px-3 pb-1
-                sm:hidden
-                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
-              "
-            >
+            {/* Mobile: 4-column grid, same as desktop but smaller */}
+            <div className="grid grid-cols-4 gap-1.5 px-3 sm:hidden">
               {referenceGallery.map((item, index) => (
                 <button
                   key={item.title}
                   type="button"
                   onClick={() => openAt(featuredIndexes[index])}
-                  className="group relative aspect-[3/4] w-full shrink-0 snap-center overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
+                  className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
                     <div className="h-full w-full">{item.render()}</div>
@@ -255,20 +248,7 @@ export default function Gallery() {
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f1c2a]/45 via-transparent to-transparent opacity-70" />
-                  <span className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#f9f2e7]/20 text-[#f9f2e7] z-20">
-                    <EyeIcon />
-                  </span>
                 </button>
-              ))}
-            </div>
-
-            {/* dots indicator, mobile only */}
-            <div className="mt-2 flex justify-center gap-1.5 sm:hidden">
-              {referenceGallery.map((item) => (
-                <span
-                  key={item.title}
-                  className="h-1.5 w-1.5 rounded-full bg-[#16333d]/25"
-                />
               ))}
             </div>
 

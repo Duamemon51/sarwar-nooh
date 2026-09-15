@@ -9,24 +9,6 @@ import {
   ArrowLeft,
 } from "lucide-react";
 
-/**
- * Dargah Makhdoom Sarwar Noor — Sindhi (RTL) Events Banner + Footer
- *
- * Colors: deep teal-green background (#0d2a28), warm gold accent (#c9a961 / #e8c874)
- * Fonts (load in app/layout.jsx via next/font/google):
- *   - Headings (Sindhi/Arabic script): "Noto Nastaliq Urdu"
- *   - Body (Sindhi/Arabic script):     "Noto Sans Arabic"
- *   - Latin bits ("Sindhi Digital Archive"): "Inter" / "Playfair Display"
- *
- * The whole footer runs dir="rtl" — flex children are placed in the JSX in the
- * order they should appear from the right edge of the screen inward.
- *
- * Usage in app/layout.jsx:
- *   import Footer from "@/components/Footer";
- *   ...
- *   <Footer />
- */
-
 const navLinks = [
   { label: "هوم", href: "/" },
   { label: "پنھنجي باري ۾", href: "/about" },
@@ -42,14 +24,9 @@ const socialLinks = [
   { icon: Send, href: "https://twitter.com", label: "Twitter / X" },
 ];
 
-/** Quarter-circle arabesque corner ornament, gold on transparent. Rotate per corner. */
 function CornerOrnament({ className = "" }) {
   return (
-    <svg
-      viewBox="0 0 120 120"
-      className={className}
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
       <g fill="none" stroke="#c9a961" strokeWidth="1.4" opacity="0.75">
         <path d="M2 118 C2 60 60 2 118 2" />
         <path d="M2 100 C2 55 55 2 100 2" strokeOpacity="0.6" />
@@ -63,7 +40,6 @@ function CornerOrnament({ className = "" }) {
   );
 }
 
-/** Simple gold mosque-dome silhouette used as the brand mark. */
 function MosqueMark({ className = "" }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
@@ -82,7 +58,6 @@ function MosqueMark({ className = "" }) {
   );
 }
 
-/** Hanging lantern illustration for the events heading. */
 function LanternMark({ className = "" }) {
   return (
     <svg viewBox="0 0 80 140" className={className} aria-hidden="true">
@@ -104,23 +79,23 @@ export default function Footer() {
     <footer dir="rtl" className="relative overflow-hidden bg-[#0d2a28] text-[#e9e4d8] font-[Noto_Sans_Arabic]">
       {/* ---------- Upcoming Events Banner ---------- */}
       <div className="relative border-b border-[#c9a961]/20 bg-[#0f2e2b]">
-        <CornerOrnament className="pointer-events-none absolute right-0 top-0 h-24 w-24 -scale-x-100" />
-        <CornerOrnament className="pointer-events-none absolute left-0 top-0 h-24 w-24 rotate-180 -scale-x-100" />
+        <CornerOrnament className="pointer-events-none absolute right-0 top-0 h-16 w-16 -scale-x-100 md:h-24 md:w-24" />
+        <CornerOrnament className="pointer-events-none absolute left-0 top-0 h-16 w-16 rotate-180 -scale-x-100 md:h-24 md:w-24" />
 
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-10 md:grid-cols-[1fr_auto_1fr] md:py-12">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:grid-cols-[1fr_auto_1fr] md:py-12">
           {/* Rightmost: event card */}
-          <div className="flex items-center gap-5 justify-self-start md:justify-self-end">
+          <div className="flex items-center gap-5 justify-self-center text-center md:justify-self-end md:text-right">
             <div>
-              <p className="font-[Noto_Nastaliq_Urdu] text-xl leading-relaxed text-white">
+              <p className="font-[Noto_Nastaliq_Urdu] text-lg leading-relaxed text-white md:text-xl">
                 عرس مبارڪ
               </p>
-              <div className="mt-3 flex items-center gap-4 rounded-xl border border-[#c9a961]/40 bg-[#0d2a28]/70 px-5 py-4 backdrop-blur-sm">
-                <div className="flex flex-col items-center border-s border-[#c9a961]/25 ps-4 text-center">
-                  <Calendar className="mb-1 h-5 w-5 text-[#c9a961]" />
-                  <span className="text-2xl font-semibold leading-none text-white">۱۵</span>
-                  <span className="mt-1 text-xs text-[#e9e4d8]/70">اَرجب</span>
+              <div className="mt-3 flex items-center gap-4 rounded-xl border border-[#c9a961]/40 bg-[#0d2a28]/70 px-4 py-3 backdrop-blur-sm md:px-5 md:py-4">
+                <div className="flex flex-col items-center border-s border-[#c9a961]/25 ps-3 text-center md:ps-4">
+                  <Calendar className="mb-1 h-4 w-4 text-[#c9a961] md:h-5 md:w-5" />
+                  <span className="text-xl font-semibold leading-none text-white md:text-2xl">۱۵</span>
+                  <span className="mt-1 text-[10px] text-[#e9e4d8]/70 md:text-xs">اَرجب</span>
                 </div>
-                <p className="max-w-[180px] text-sm leading-relaxed text-[#e9e4d8]/75">
+                <p className="max-w-[160px] text-xs leading-relaxed text-[#e9e4d8]/75 md:max-w-[180px] md:text-sm">
                   عرس جي موقعي تي خصوصي روحاني تقريب جو انعقاد ٿيندو.
                 </p>
               </div>
@@ -129,27 +104,27 @@ export default function Footer() {
 
           {/* Center: quote */}
           <div className="flex flex-col items-center text-center">
-            <p className="font-[Noto_Nastaliq_Urdu] text-2xl leading-loose text-white sm:text-3xl">
+            <p className="font-[Noto_Nastaliq_Urdu] text-xl leading-loose text-white sm:text-2xl md:text-3xl">
               &rdquo;درگاهہ حضرت مخدوم سرور نوحؒ&ldquo;
             </p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#e9e4d8]/75">
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
               جتي عقيدت مند دلين، زندہ دلي، نيڪ نيت ۽ برڪت جي اميد سان اچن ٿا.
             </p>
           </div>
 
           {/* Leftmost: lantern + heading + CTA */}
-          <div className="flex items-center gap-4 justify-self-start">
-            <LanternMark className="h-28 w-16 shrink-0" />
+          <div className="flex flex-col items-center gap-3 text-center justify-self-center md:flex-row md:items-center md:gap-4 md:text-right md:justify-self-start">
+            <LanternMark className="h-20 w-12 shrink-0 md:h-28 md:w-16" />
             <div className="max-w-xs">
-              <h2 className="font-[Noto_Nastaliq_Urdu] text-2xl leading-snug text-white sm:text-3xl">
+              <h2 className="font-[Noto_Nastaliq_Urdu] text-xl leading-snug text-white sm:text-2xl md:text-3xl">
                 عرس جا سالانہ گڏجاڻيون
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#e9e4d8]/75">
+              <p className="mt-2 text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
                 درگاهہ جي روحاني ماحول ۾ ٿيندڙ گڏجاڻيون، دعائن ۽ برڪتن جو سلسلو آهي.
               </p>
               <Link
                 href="/events"
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 px-5 py-2.5 text-sm text-[#e9e4d8] transition-colors hover:border-[#c9a961] hover:text-[#c9a961]"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 px-4 py-2 text-xs text-[#e9e4d8] transition-colors hover:border-[#c9a961] hover:text-[#c9a961] sm:px-5 sm:py-2.5 sm:text-sm"
               >
                 <ArrowLeft className="h-4 w-4" />
                 سڀ واقعات ڏسو
@@ -161,13 +136,13 @@ export default function Footer() {
 
       {/* ---------- Main Footer ---------- */}
       <div className="relative border-b border-[#c9a961]/10">
-        <CornerOrnament className="pointer-events-none absolute right-0 bottom-0 h-20 w-20 rotate-90 -scale-x-100" />
-        <CornerOrnament className="pointer-events-none absolute left-0 bottom-0 h-20 w-20 -rotate-90 -scale-x-100" />
+        <CornerOrnament className="pointer-events-none absolute right-0 bottom-0 h-16 w-16 rotate-90 -scale-x-100 md:h-20 md:w-20" />
+        <CornerOrnament className="pointer-events-none absolute left-0 bottom-0 h-16 w-16 -rotate-90 -scale-x-100 md:h-20 md:w-20" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between">
           {/* Rightmost: nav + social */}
           <div className="flex flex-col items-center gap-4 md:items-start">
-            <nav className="flex flex-wrap justify-center gap-5 text-sm text-[#e9e4d8]/80 md:justify-start">
+            <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#e9e4d8]/80 md:justify-start md:gap-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
@@ -180,8 +155,8 @@ export default function Footer() {
             </nav>
             <div className="flex items-center gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
+                
+                 <a key={label}
                   href={href}
                   aria-label={label}
                   target="_blank"
@@ -201,7 +176,7 @@ export default function Footer() {
               alt="Sindhi Digital Archive emblem"
               width={44}
               height={44}
-              className="h-15 w-15 object-contain"
+              className="h-12 w-12 object-contain md:h-15 md:w-15"
             />
             <div>
               <p className="font-serif text-base leading-tight text-white">Sindhi</p>
@@ -210,10 +185,10 @@ export default function Footer() {
           </div>
 
           {/* Leftmost: brand */}
-          <div className="flex items-center gap-4">
-            <MosqueMark className="h-12 w-12 shrink-0" />
+          <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-right">
+            <MosqueMark className="h-10 w-10 shrink-0 md:h-12 md:w-12" />
             <div className="text-center md:text-right">
-              <p className="font-[Noto_Nastaliq_Urdu] text-lg leading-tight text-white">
+              <p className="font-[Noto_Nastaliq_Urdu] text-base leading-tight text-white md:text-lg">
                 درگاهہ مخدوم سرور نوحؒ
               </p>
               <p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70">
@@ -228,8 +203,8 @@ export default function Footer() {
 
       {/* ---------- Bottom bar ---------- */}
       <div className="relative">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4 text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>ڊيزائن ۽ ڊويلپمينٽ: دعا مبين</p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
+         <p>ڊيزائن ۽ ڊويلپمينٽ: دعا ميمڻ</p>
           <p>©{new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
         </div>
       </div>

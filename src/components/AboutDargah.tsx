@@ -70,10 +70,10 @@ export default function AboutDargah() {
           <img
             src="/botom-border.png"
             alt=""
-            className="w-full h-auto -my-6 max-w-md"
+            className="w-full h-auto -my-6 max-w-md mx-auto sm:mx-0"
           />
 
-          <p className="text-sm sm:text-[22px] font-semibold text-[#123A3A] mt-4 mr-0 sm:mr-32 text-right">
+          <p className="text-sm sm:text-[22px] font-semibold text-[#123A3A] mt-4 mr-0 sm:mr-32 text-center sm:text-right">
             حضرت مخدوم سرور نوح
           </p>
         </div>
