@@ -100,18 +100,8 @@ const items: GalleryItem[] = [
       />
     ),
   },
-  {
-    title: "The tiled prayer hall",
-    caption:
-      "The mihrab wall of the shrine's prayer hall, its glazed Kashi tilework framing three arched niches.",
-    wide: true,
-    render: () => (
-      <Photo
-        src="/gallery/dargah-08-tiled-prayer-hall.jpg"
-        alt="The tiled mihrab wall of the prayer hall with three arched niches"
-      />
-    ),
-  },
+  
+
   {
     title: "Inside the shrine hall",
     caption:
@@ -583,17 +573,16 @@ export default function Gallery() {
         <div className="flex flex-col gap-4 lg:grid lg:items-center lg:gap-6 lg:grid-cols-[0.62fr_2.38fr]">
           <div className="flex flex-col items-center text-center px-2 py-2 sm:items-start sm:px-4 sm:py-3 sm:text-right lg:pl-5">
             <h2
-              className="max-w-[290px] font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1]"
+              className="w-full max-w-[290px] text-center font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:-translate-x-20 sm:text-right sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1]"
             >
-              عرس تي ملڻ جا لمحا
+              گيلري
             </h2>
 
-            <p
-              className="mt-2 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px]"
-            >
-              هيءَ گيلري درگاهه جي خوبصورت منظرن ۽ عقيدتمند زائرين سان عرس جي
-              مبارڪ موقعن جي حسين يادن تي مشتمل آهي.
-            </p>
+           <p 
+  className="mt-4 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px]"
+>
+  هيءَ گيلري درگاهه جي پاڪيزه فضا، مزارن، روحاني ماحول ۽ عقيدتمند زائرين جي حسين منظرن کي پنهنجي اندر سمائي ٿي، جيڪي عقيدت، محبت ۽ احترام جو خوبصورت اظهار آهن.
+</p>
 
             <Link
               href="/gallery"

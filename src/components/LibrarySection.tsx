@@ -10,8 +10,8 @@ export default function LibrarySection() {
       />
 
       {/* MOBILE: right-aligned layout */}
-      <div className="relative z-10 flex flex-col items-end px-5 py-8 md:hidden w-full">
-        <div className="mb-3 flex items-center gap-2 self-end" dir="ltr">
+      <div className="relative z-10 flex flex-col items-end px-5 pt-4 pb-8 md:hidden w-full">
+        <div className="mb-3 flex items-center gap-2 self-end -translate-x-3" dir="ltr">
           <img
             src="/library-logo.png"
             alt="لائبريري سيڪشن لوگو"
@@ -27,16 +27,16 @@ export default function LibrarySection() {
           </div>
         </div>
 
-        <p className="mb-5 text-[11px] leading-relaxed text-gray-200 max-w-[260px] text-right self-end">
+        <p className="hidden mb-5 text-[11px] leading-relaxed text-gray-200 max-w-[260px] text-right self-end">
           درگاه حضرت مخدوم نوح جي لائبريري سيڪشن م
           مذهبي، تاريخي، تصوفي ۽ تعليمي ڪتابن جو خزانو دستياب
           هتي ڏانرين ۽ محققين لاءِ قيمتي مخطوطه جات، نادر ڪتاب
           ۽ ڊجيٽل مواد نبسر فراهم ڪئي ٿي
         </p>
 
-        <button className="flex items-center gap-1.5 rounded-full border border-[#FDDF96] pl-1.5 pr-4 py-1 text-[#FDDF96] transition-colors hover:bg-amber-400/10 self-end">
+        <button className="flex items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 self-end">
           <svg
-            className="h-3.5 w-3.5"
+            className="h-2.5 w-2.5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -47,11 +47,11 @@ export default function LibrarySection() {
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
-          <span className="text-xs font-medium text-[#FDDF96]">لائبريري ڏانھن وڃو</span>
+          <span className="text-[10px] font-medium text-[#FDDF96]">لائبريري ڏانھن وڃو</span>
           <img
             src="/library-button.png"
             alt=""
-            className="h-6 w-6 object-contain"
+            className="h-[18px] w-[18px] object-contain"
           />
         </button>
       </div>

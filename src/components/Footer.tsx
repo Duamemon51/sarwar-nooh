@@ -203,10 +203,21 @@ export default function Footer() {
 
       {/* ---------- Bottom bar ---------- */}
       <div className="relative">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
-         <p>ڊيزائن ۽ ڊويلپمينٽ: دعا ميمڻ</p>
-          <p>©{new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
-        </div>
+       <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
+  <p>
+    ڊيزائن ۽ ڊويلپمينٽ:{" "}
+    <a
+      href="https://udaar.pk/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition-colors hover:text-[#e9e4d8]"
+    >
+      اُڏار اڪيڊمي
+    </a>
+  </p>
+
+  <p>©{new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
+</div>
       </div>
     </footer>
   );
