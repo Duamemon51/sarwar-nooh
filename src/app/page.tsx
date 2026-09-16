@@ -205,13 +205,13 @@ export default function Home() {
       <div
         className="text-[#e8c98a] font-bold text-center
         text-[clamp(1rem,4.5vw,1.5rem)]
-        leading-[1.9]
+        leading-[1.2]
+        tracking-tight
         font-[family-name:var(--font-display)]
         [text-shadow:2px_2px_3px_rgba(0,0,0,1),-2px_-1px_2px_rgba(0,0,0,0.9),1px_0_5px_rgba(0,0,0,1),-1px_0_5px_rgba(0,0,0,1),0_3px_8px_rgba(0,0,0,1)]"
       >
-        درگاہِ حضرت
-        <br />
-        مخدوم سرور نوح
+        <div className="mb-1">درگاہِ حضرت</div>
+        <div>مخدوم سرور نوح</div>
       </div>
     </div>
   </div>

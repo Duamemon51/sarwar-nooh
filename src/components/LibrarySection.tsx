@@ -70,7 +70,7 @@ export default function LibrarySection() {
               <h2 className="text-6xl font-bold text-[#E8C98A] whitespace-nowrap">
                 لائبريري سيڪشن
               </h2>
-              <h3 className="text-4xl mt-4 font-semibold text-white whitespace-nowrap">
+              <h3 className="text-4xl mt-6 sm:mt-4 font-semibold text-white whitespace-nowrap">
                 علم، روشني ۽ روحاني ورثو
               </h3>
             </div>

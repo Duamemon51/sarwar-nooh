@@ -217,7 +217,7 @@ export default function Footer() {
     </a>
   </p>
 
-  <p>©{new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
+  <p>© {new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
 </div>
       </div>
     </footer>

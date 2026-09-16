@@ -75,7 +75,7 @@ export default function Nav() {
               <h1 className="text-white font-bold text-sm sm:text-lg leading-tight">
                 درگاہ مخدوم سرور ٿوح
               </h1>
-              <p className="hidden mt-2 sm:block text-white/70 text-xs">
+              <p className="mt-1 text-white/70 text-[10px] sm:mt-2 sm:text-xs">
                 ھالا نو، ضلعي مٽياري، سنڌ
               </p>
             </div>
