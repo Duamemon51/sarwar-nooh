@@ -119,8 +119,8 @@ export default function Footer() {
                 href="/gallery"
                 className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 px-4 py-2 text-xs text-[#e9e4d8] transition-colors hover:border-[#c9a961] hover:text-[#c9a961] sm:px-5 sm:py-2.5 sm:text-sm"
               >
-                <ArrowLeft className={`h-4 w-4 ${language === "en" ? "rotate-180" : ""}`} />
-                {content.eventsButton}
+                <span className={language === "en" ? "order-1" : ""}>{content.eventsButton}</span>
+                <ArrowLeft className={`h-4 w-4 ${language === "en" ? "order-2 rotate-180" : ""}`} />
               </Link>
             </div>
           </div>
