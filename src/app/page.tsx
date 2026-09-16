@@ -291,7 +291,7 @@ export default function Home() {
       <LibrarySection />
       <GaadiNasheenMessage />
       <AboutDargah />
-      <FamilyLegacy />
+      {/* <FamilyLegacy /> */}
 
       <Gallery />
 
