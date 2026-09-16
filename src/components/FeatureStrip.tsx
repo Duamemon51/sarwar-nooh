@@ -1,26 +1,26 @@
 const features = [
  {
-  image: "/1.png",
+  image: "/1.webp",
   title: "عقيدت جو اظهار",
   lines: ["روحاني ۽ ديني", "برڪتن جو تسلسل"],
 },
 {
-  image: "/2.png",
+  image: "/2.webp",
   title: "تعليمي ڄاڻ",
   lines: ["تصوف، علم ۽", "اوليا جي تعليمات"],
 },
 {
-  image: "/1.png",
+  image: "/1.webp",
   title: "سچائي جو پيغام",
   lines: ["محبت، امن ۽", "روحاني واڌارو"],
 },
 {
-  image: "/2.png",
+  image: "/2.webp",
   title: "عرس مبارڪ",
   lines: ["ايمان، دعا ۽ برڪتن", "جو پيغام"],
 },
 {
-  image: "/1.png",
+  image: "/1.webp",
   title: "اڳتي جي سرپرستي",
   lines: ["ايندڙ نسلن لاءِ", "هدايت ۽ خدمت"],
 },

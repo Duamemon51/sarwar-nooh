@@ -172,7 +172,7 @@ export default function Footer() {
           {/* Center: Sindhi Digital Archive mark (Latin, kept LTR) */}
           <div dir="ltr" className="flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Sindhi Digital Archive emblem"
               width={44}
               height={44}
@@ -188,11 +188,11 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-right">
             <MosqueMark className="h-10 w-10 shrink-0 md:h-12 md:w-12" />
             <div className="text-center md:text-right">
-             <p className="font-[Noto_Nastaliq_Urdu] text-base leading-tight text-white md:text-lg">
+             <p className="font-[family-name:var(--font-display)] text-base leading-tight text-white md:text-lg">
   درگاهه مخدوم سرور نوحؒ
 </p>
 
-<p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70">
+<p className="mt-1 font-[family-name:var(--font-sindhi)] text-xs leading-relaxed text-[#e9e4d8]/70">
   درگاهه روڊ، هالا نوان
   <br />
   ضلعو مٽياري، سنڌ، پاڪستان

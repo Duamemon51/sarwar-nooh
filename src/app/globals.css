@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "As Lateefi M";
+  src: url("/fonts/as-lateefi-m-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MB Sindhi Sahat";
+  src: url("/fonts/mb-sindhi-sahat-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 @theme inline {
   --color-ink: #211a14;
   --color-indigo: #1c2b4a;
@@ -11,7 +27,8 @@
   --color-parchment: #f3ead9;
   --color-parchment-warm: #ece0c8;
 
-  --font-display: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Amiri", serif;
+  --font-display: "As Lateefi M", "Noto Nastaliq Urdu", "Noto Sans Arabic", "Amiri", serif;
+  --font-sindhi: "MB Sindhi Sahat", "Noto Nastaliq Urdu", "Noto Sans Arabic", serif;
   --font-body: "Spectral", "Georgia", serif;
 }
 
@@ -26,6 +43,18 @@ html {
 body {
   background-color: var(--color-parchment);
   color: var(--color-ink);
+  font-family: var(--font-body), serif;
+}
+
+#top :is(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+}
+
+#top p {
+  font-family: var(--font-sindhi);
+}
+
+#top [dir="ltr"] p {
   font-family: var(--font-body), serif;
 }
 

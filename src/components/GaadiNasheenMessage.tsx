@@ -41,7 +41,7 @@ export default function GaadiNasheenMessage() {
           {/* Image */}
           <div className="w-2/5">
             <img
-              src="/gaadi-nasheen.png"
+              src="/gaadi-nasheen.webp"
               alt="Gaadi Nasheen"
               className="h-full w-full object-cover object-top"
             />

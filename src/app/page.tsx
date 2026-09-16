@@ -25,12 +25,12 @@ import GaadiNasheenMessage from "@/components/GaadiNasheenMessage";
 import UrsBanner from "@/components/UrsBanner";
 
 const elders = [
-  { name: "MAKHDOOM SARKAR ALI", image: "/sarkar-ali.png" },
-  { name: "MAKHDOOM MEHBOOB ZAMAN", image: "/mahboob.png" },
-  { name: "MAKHDOOM JAMEEL ZAMAN", image: "/jameel.png" },
-  { name: "MAKHDOOM AMIN FAHEEM", image: "/amin.png" },
-  { name: "MAKHDOOM TALIB UL MOLA", image: "/talib.png" },
-  { name: "MAKHDOOM GHULAM HYDER", image: "/hyder.png" },
+  { name: "MAKHDOOM SARKAR ALI", image: "/sarkar-ali.webp" },
+  { name: "MAKHDOOM MEHBOOB ZAMAN", image: "/mahboob.webp" },
+  { name: "MAKHDOOM JAMEEL ZAMAN", image: "/jameel.webp" },
+  { name: "MAKHDOOM AMIN FAHEEM", image: "/amin.webp" },
+  { name: "MAKHDOOM TALIB UL MOLA", image: "/talib.webp" },
+  { name: "MAKHDOOM GHULAM HYDER", image: "/hyder.webp" },
 ];
 
 export default function Home() {
@@ -78,7 +78,7 @@ export default function Home() {
       <Nav />
 <section className="relative overflow-hidden mt-[60px] sm:mt-[75px]" dir="rtl">
   <img
-    src="/hero-bg.png"
+    src="/hero-bg.webp"
     alt="Dargah Hazrat Makhdoom Sarwar Nooh, Hala New"
     className="relative w-full h-auto block hidden md:block"
   />
@@ -133,7 +133,7 @@ export default function Home() {
       text-[#e8c98a]
       text-[clamp(1.8rem,3vw,3rem)]
       font-bold
-      [font-family:'Noto_Nastaliq_Urdu',serif]
+      font-[family-name:var(--font-display)]
       [text-shadow:3px_3px_4px_rgba(0,0,0,1),-3px_-2px_3px_rgba(0,0,0,0.9),2px_0_6px_rgba(0,0,0,1),-2px_0_6px_rgba(0,0,0,1),0_4px_10px_rgba(0,0,0,1)]"
     >
       درگاہِ حضرت مخدوم سرور نوح
@@ -143,7 +143,7 @@ export default function Home() {
   {/* MOBILE HERO - text right, image column left */}
   <div className="relative flex md:hidden min-h-[420px] overflow-hidden" dir="rtl">
     <img
-      src="/hero-bg.png"
+      src="/hero-bg.webp"
       alt="Dargah Hazrat Makhdoom Sarwar Nooh, Hala New"
       className="absolute inset-0 w-full h-full object-cover"
     />
@@ -206,7 +206,7 @@ export default function Home() {
         className="text-[#e8c98a] font-bold text-center
         text-[clamp(1rem,4.5vw,1.5rem)]
         leading-[1.9]
-        [font-family:'Noto_Nastaliq_Urdu',serif]
+        font-[family-name:var(--font-display)]
         [text-shadow:2px_2px_3px_rgba(0,0,0,1),-2px_-1px_2px_rgba(0,0,0,0.9),1px_0_5px_rgba(0,0,0,1),-1px_0_5px_rgba(0,0,0,1),0_3px_8px_rgba(0,0,0,1)]"
       >
         درگاہِ حضرت

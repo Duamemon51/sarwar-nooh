@@ -6,14 +6,14 @@ export default function LibrarySection() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/library--section.png')" }}
+        style={{ backgroundImage: "url('/library--section.webp')" }}
       />
 
       {/* MOBILE: right-aligned layout */}
       <div className="relative z-10 flex flex-col items-end px-5 pt-4 pb-8 md:hidden w-full">
         <div className="mb-3 flex items-center gap-2 self-end -translate-x-3" dir="ltr">
           <img
-            src="/library-logo.png"
+            src="/library-logo.webp"
             alt="لائبريري سيڪشن لوگو"
             className="h-9 w-9 flex-shrink-0 object-contain"
           />
@@ -49,7 +49,7 @@ export default function LibrarySection() {
           </svg>
           <span className="text-[10px] font-medium text-[#FDDF96]">لائبريري ڏانھن وڃو</span>
           <img
-            src="/library-button.png"
+            src="/library-button.webp"
             alt=""
             className="h-[18px] w-[18px] object-contain"
           />
@@ -61,7 +61,7 @@ export default function LibrarySection() {
         <div className="absolute top-1/2 left-24 -translate-y-1/2 z-10 max-w-md text-right">
           <div className="mb-6 flex items-center gap-4" dir="ltr">
             <img
-              src="/library-logo.png"
+              src="/library-logo.webp"
               alt="لائبريري سيڪشن لوگو"
               className="h-20 w-20 lg:w-32 lg:h-32 flex-shrink-0 object-contain"
             />
@@ -70,7 +70,7 @@ export default function LibrarySection() {
               <h2 className="text-6xl font-bold text-[#E8C98A] whitespace-nowrap">
                 لائبريري سيڪشن
               </h2>
-              <h3 className="text-4xl font-semibold text-white whitespace-nowrap">
+              <h3 className="text-4xl mt-4 font-semibold text-white whitespace-nowrap">
                 علم، روشني ۽ روحاني ورثو
               </h3>
             </div>
@@ -98,7 +98,7 @@ export default function LibrarySection() {
             </svg>
             <span className="font-medium text-[#FDDF96]">لائبريري ڏانھن وڃو</span>
             <img
-              src="/library-button.png"
+              src="/library-button.webp"
               alt=""
               className="h-10 w-10 object-contain"
             />

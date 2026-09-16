@@ -8,7 +8,7 @@ export default function AboutDargah() {
         {/* Video thumbnail - RIGHT side */}
         <div className="relative overflow-hidden rounded-sm shadow-md md:order-2 aspect-[4/3] sm:aspect-video md:aspect-auto md:h-full">
           <img
-            src="/dargah-video-thumb.png"
+            src="/dargah-video-thumb.webp"
             alt="درگاه مخدوم سرور نوح"
             className="w-full h-full object-cover"
           />
@@ -68,7 +68,7 @@ export default function AboutDargah() {
           </p>
 
           <img
-            src="/botom-border.png"
+            src="/botom-border.webp"
             alt=""
             className="w-full h-auto -my-6 max-w-md mx-auto sm:mx-0"
           />

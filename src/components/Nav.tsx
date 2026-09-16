@@ -19,12 +19,12 @@ export default function Nav() {
       <div className="relative h-[60px] sm:h-[75px] bg-[#002830]/90 backdrop-blur-sm border-t-[3px] border-b-[3px] border-[#ded3b3]">
         {/* Corner artwork - hidden on mobile so the bar stays clean/plain like the screenshot */}
         <img
-          src="/nav-corner-left.png"
+          src="/nav-corner-left.webp"
           alt=""
           className="hidden sm:block absolute left-0 top-0 h-full w-auto pointer-events-none select-none"
         />
         <img
-          src="/nav-corner-right.png"
+          src="/nav-corner-right.webp"
           alt=""
           className="hidden sm:block absolute right-0 top-0 h-full w-auto pointer-events-none select-none"
         />
@@ -67,7 +67,7 @@ export default function Nav() {
           {/* Logo + Title - left side, forced LTR order */}
           <div className="flex items-center gap-1 sm:gap-3" dir="ltr">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Dargah Logo"
               className="w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover"
             />
@@ -75,7 +75,7 @@ export default function Nav() {
               <h1 className="text-white font-bold text-sm sm:text-lg leading-tight">
                 درگاہ مخدوم سرور ٿوح
               </h1>
-              <p className="hidden sm:block text-white/70 text-xs">
+              <p className="hidden mt-2 sm:block text-white/70 text-xs">
                 ھالا نو، ضلعي مٽياري، سنڌ
               </p>
             </div>

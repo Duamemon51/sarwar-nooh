@@ -14,7 +14,12 @@ type GalleryItem = {
 function Photo({ src, alt }: { src: string; alt: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={alt} className="w-full h-full object-cover" />
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className="w-full h-full object-cover"
+    />
   );
 }
 
@@ -25,7 +30,7 @@ const items: GalleryItem[] = [
       "A carved wooden panel with Islamic calligraphy at the entrance of the shrine.",
     render: () => (
       <Photo
-        src="/gallery/dargah-01-calligraphic-panel.jpg"
+        src="/gallery/dargah-01-calligraphic-panel.webp"
         alt="A carved wooden calligraphy panel at the shrine entrance"
       />
     ),
@@ -36,7 +41,7 @@ const items: GalleryItem[] = [
       "A gilded arch niche inside the dargah, framed in cream and gold tilework.",
     render: () => (
       <Photo
-        src="/gallery/dargah-02-mihrab-niche.jpg"
+        src="/gallery/dargah-02-mihrab-niche.webp"
         alt="A gilded arched mihrab niche inside the dargah"
       />
     ),
@@ -48,7 +53,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-03-dargah-complex-wide.jpg"
+        src="/gallery/dargah-03-dargah-complex-wide.webp"
         alt="Wide aerial view of the Dargah Sarwar-e-Nooh complex in Hala"
       />
     ),
@@ -60,7 +65,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-04-calligraphic-inscription.jpg"
+        src="/gallery/dargah-04-calligraphic-inscription.webp"
         alt="A dark stone calligraphic inscription panel on the shrine wall"
       />
     ),
@@ -72,7 +77,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-05-prayer-hall-interior.jpg"
+        src="/gallery/dargah-05-prayer-hall-interior.webp"
         alt="An empty tiled prayer hall inside the dargah"
       />
     ),
@@ -83,7 +88,7 @@ const items: GalleryItem[] = [
       "A tiled fountain at the centre of the dargah's courtyard, framed by trees.",
     render: () => (
       <Photo
-        src="/gallery/dargah-06-courtyard-fountain.jpg"
+        src="/gallery/dargah-06-courtyard-fountain.webp"
         alt="A tiled fountain in the dargah's courtyard"
       />
     ),
@@ -95,7 +100,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-07-mazar-chadars-railing.jpg"
+        src="/gallery/dargah-07-mazar-chadars-railing.webp"
         alt="Chadars over graves seen through a carved wooden railing"
       />
     ),
@@ -109,7 +114,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-09-shrine-hall-floor.jpg"
+        src="/gallery/dargah-09-shrine-hall-floor.webp"
         alt="Patterned floor tiles of the shrine hall leading toward the mihrab"
       />
     ),
@@ -121,7 +126,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-10-arched-cloister.jpg"
+        src="/gallery/dargah-10-arched-cloister.webp"
         alt="A row of arched doorways along the dargah's courtyard cloister"
       />
     ),
@@ -131,7 +136,7 @@ const items: GalleryItem[] = [
     caption: "Marble graves resting in the open courtyard of the dargah.",
     render: () => (
       <Photo
-        src="/gallery/dargah-11-graves-courtyard.jpg"
+        src="/gallery/dargah-11-graves-courtyard.webp"
         alt="Marble graves in the open courtyard of the dargah"
       />
     ),
@@ -141,7 +146,7 @@ const items: GalleryItem[] = [
     caption: "Stone steps leading up through the dargah's courtyard.",
     render: () => (
       <Photo
-        src="/gallery/dargah-12-courtyard-steps.jpg"
+        src="/gallery/dargah-12-courtyard-steps.webp"
         alt="Stone steps leading through the dargah's courtyard"
       />
     ),
@@ -151,7 +156,7 @@ const items: GalleryItem[] = [
     caption: "A softly lit corner of the shrine's tiled hall.",
     render: () => (
       <Photo
-        src="/gallery/dargah-13-tiled-hall-corner.jpg"
+        src="/gallery/dargah-13-tiled-hall-corner.webp"
         alt="A softly lit corner of the shrine's tiled hall"
       />
     ),
@@ -161,7 +166,7 @@ const items: GalleryItem[] = [
     caption: "A dark wooden canopy shading a grave inside the shrine.",
     render: () => (
       <Photo
-        src="/gallery/dargah-14-tomb-canopy.jpg"
+        src="/gallery/dargah-14-tomb-canopy.webp"
         alt="A dark carved wooden canopy over a grave inside the shrine"
       />
     ),
@@ -173,7 +178,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-15-shrine-hall-visitors.jpg"
+        src="/gallery/dargah-15-shrine-hall-visitors.webp"
         alt="Visitors walking through the dargah's long tiled hall"
       />
     ),
@@ -185,7 +190,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-16-entrance-gate.jpg"
+        src="/gallery/dargah-16-entrance-gate.webp"
         alt="The twin-towered entrance gate of the dargah complex at Hala Sharif"
       />
     ),
@@ -195,7 +200,7 @@ const items: GalleryItem[] = [
     caption: "The open courtyard of the dargah beneath a clear sky.",
     render: () => (
       <Photo
-        src="/gallery/dargah-17-courtyard-view-1.jpg"
+        src="/gallery/dargah-17-courtyard-view-1.webp"
         alt="The open courtyard of the dargah under a clear sky"
       />
     ),
@@ -206,7 +211,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-18-courtyard-walkway-1.jpg"
+        src="/gallery/dargah-18-courtyard-walkway-1.webp"
         alt="A quiet walkway through the dargah's courtyard"
       />
     ),
@@ -217,7 +222,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-19-shrine-domes.jpg"
+        src="/gallery/dargah-19-shrine-domes.webp"
         alt="The white domes of the dargah rising above its tiled walls"
       />
     ),
@@ -229,7 +234,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-20-dargah-hala-facade.jpg"
+        src="/gallery/dargah-20-dargah-hala-facade.webp"
         alt="The tiled facade and twin minarets of the Dargah Sarwar-e-Nooh, Hala"
       />
     ),
@@ -239,7 +244,7 @@ const items: GalleryItem[] = [
     caption: "Light falling across the tiled floor of the shrine's prayer hall.",
     render: () => (
       <Photo
-        src="/gallery/dargah-21-sunlit-hall.jpg"
+        src="/gallery/dargah-21-sunlit-hall.webp"
         alt="Sunlight falling across the tiled floor of the prayer hall"
       />
     ),
@@ -250,7 +255,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-22-courtyard-wide-1.jpg"
+        src="/gallery/dargah-22-courtyard-wide-1.webp"
         alt="A wide view of the courtyard within the dargah complex"
       />
     ),
@@ -260,7 +265,7 @@ const items: GalleryItem[] = [
     caption: "A close view of the shrine's tiled facade and dome.",
     render: () => (
       <Photo
-        src="/gallery/dargah-23-facade-detail-1.jpg"
+        src="/gallery/dargah-23-facade-detail-1.webp"
         alt="A close view of the shrine's tiled facade and dome"
       />
     ),
@@ -270,7 +275,7 @@ const items: GalleryItem[] = [
     caption: "Detailed Kashi tilework along the shrine's outer wall.",
     render: () => (
       <Photo
-        src="/gallery/dargah-24-tilework-detail.jpg"
+        src="/gallery/dargah-24-tilework-detail.webp"
         alt="Detailed glazed Kashi tilework along the shrine's outer wall"
       />
     ),
@@ -280,7 +285,7 @@ const items: GalleryItem[] = [
     caption: "One of the dargah's domed structures, reached by a flight of steps.",
     render: () => (
       <Photo
-        src="/gallery/dargah-25-dome-and-steps.jpg"
+        src="/gallery/dargah-25-dome-and-steps.webp"
         alt="A domed structure of the dargah reached by a flight of steps"
       />
     ),
@@ -290,7 +295,7 @@ const items: GalleryItem[] = [
     caption: "A corner view of the tomb building's tiled exterior.",
     render: () => (
       <Photo
-        src="/gallery/dargah-26-tomb-corner.jpg"
+        src="/gallery/dargah-26-tomb-corner.webp"
         alt="A corner view of the tomb building's tiled exterior"
       />
     ),
@@ -300,7 +305,7 @@ const items: GalleryItem[] = [
     caption: "A white domed structure within the dargah complex.",
     render: () => (
       <Photo
-        src="/gallery/dargah-27-domed-shrine.jpg"
+        src="/gallery/dargah-27-domed-shrine.webp"
         alt="A white domed structure within the dargah complex"
       />
     ),
@@ -310,7 +315,7 @@ const items: GalleryItem[] = [
     caption: "A blue calligraphic panel set into the shrine's interior wall.",
     render: () => (
       <Photo
-        src="/gallery/dargah-28-calligraphic-wall-panel.jpg"
+        src="/gallery/dargah-28-calligraphic-wall-panel.webp"
         alt="A blue calligraphic panel set into the shrine's interior wall"
       />
     ),
@@ -320,7 +325,7 @@ const items: GalleryItem[] = [
     caption: "A tiled pathway leading toward the graves within the complex.",
     render: () => (
       <Photo
-        src="/gallery/dargah-29-path-to-graves.jpg"
+        src="/gallery/dargah-29-path-to-graves.webp"
         alt="A tiled pathway leading toward the graves within the complex"
       />
     ),
@@ -330,7 +335,7 @@ const items: GalleryItem[] = [
     caption: "An arched doorway opening onto a row of graves.",
     render: () => (
       <Photo
-        src="/gallery/dargah-30-doorway-to-graves.jpg"
+        src="/gallery/dargah-30-doorway-to-graves.webp"
         alt="An arched doorway opening onto a row of graves"
       />
     ),
@@ -342,7 +347,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-31-chadars-at-grave.jpg"
+        src="/gallery/dargah-31-chadars-at-grave.webp"
         alt="Green and red chadars laid over a carved grave during the Urs"
       />
     ),
@@ -353,7 +358,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-32-graves-along-path.jpg"
+        src="/gallery/dargah-32-graves-along-path.webp"
         alt="A row of graves along a tiled pathway within the dargah"
       />
     ),
@@ -364,7 +369,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-33-chadar-covered-graves.jpg"
+        src="/gallery/dargah-33-chadar-covered-graves.webp"
         alt="Graves beneath a portico, covered with green chadars"
       />
     ),
@@ -374,7 +379,7 @@ const items: GalleryItem[] = [
     caption: "An ornately tiled archway leading into a small chamber of graves.",
     render: () => (
       <Photo
-        src="/gallery/dargah-34-tiled-archway.jpg"
+        src="/gallery/dargah-34-tiled-archway.webp"
         alt="An ornately tiled archway leading into a small chamber of graves"
       />
     ),
@@ -384,7 +389,7 @@ const items: GalleryItem[] = [
     caption: "Visitors walk through a tree-lined stretch of the dargah's courtyard.",
     render: () => (
       <Photo
-        src="/gallery/dargah-35-courtyard-walkway-2.jpg"
+        src="/gallery/dargah-35-courtyard-walkway-2.webp"
         alt="Visitors walking through a tree-lined stretch of the courtyard"
       />
     ),
@@ -395,7 +400,7 @@ const items: GalleryItem[] = [
     wide: true,
     render: () => (
       <Photo
-        src="/gallery/dargah-36-courtyard-wide-2.jpg"
+        src="/gallery/dargah-36-courtyard-wide-2.webp"
         alt="A wide-open stretch of the dargah's courtyard"
       />
     ),
@@ -405,7 +410,7 @@ const items: GalleryItem[] = [
     caption: "A quiet walkway beside the tiled tomb building.",
     render: () => (
       <Photo
-        src="/gallery/dargah-37-walkway-by-tomb.jpg"
+        src="/gallery/dargah-37-walkway-by-tomb.webp"
         alt="A quiet walkway beside the tiled tomb building"
       />
     ),
@@ -415,7 +420,7 @@ const items: GalleryItem[] = [
     caption: "Another view of the dargah's tiled courtyard.",
     render: () => (
       <Photo
-        src="/gallery/dargah-38-courtyard-wide-3.jpg"
+        src="/gallery/dargah-38-courtyard-wide-3.webp"
         alt="Another view of the dargah's tiled courtyard"
       />
     ),
@@ -619,7 +624,7 @@ export default function Gallery() {
 
                   {/* image frame overlay */}
                   <img
-                    src="/image-frame.png"
+                    src="/image-frame.webp"
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
@@ -647,7 +652,7 @@ export default function Gallery() {
 
                   {/* image frame overlay */}
                   <img
-                    src="/image-frame.png"
+                    src="/image-frame.webp"
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
@@ -717,7 +722,7 @@ export default function Gallery() {
 
                 {/* image frame overlay */}
                 <img
-                  src="/image-frame.png"
+                  src="/image-frame.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"

@@ -61,13 +61,13 @@ export default function UrsBanner() {
     <section className="w-full bg-[#0a2426] px-3 py-8 sm:px-5 sm:py-10">
       <div className="relative mx-auto max-w-[1500px] border-t-[3px] border-b-[3px] border-[#ded3b3]">
         <img
-          src="/nav-corner-left-190.png"
+          src="/nav-corner-left-190.webp"
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute left-0 top-0 z-20 h-full w-[190px] select-none object-contain"
         />
         <img
-          src="/nav-corner-right-190.png"
+          src="/nav-corner-right-190.webp"
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 z-20 h-full w-[190px] select-none object-contain"

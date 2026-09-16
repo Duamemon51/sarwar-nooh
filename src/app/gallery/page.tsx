@@ -21,18 +21,18 @@ import { ChevronRight, X, ChevronLeft, ChevronRight as ChevronRightIcon } from "
 const categories = ["All", "Dargah", "Urs Mubarak", "Mehfil", "Langar", "Architecture"];
 
 const galleryImages = [
-  { src: "/dargah-entrance-gate.jpg", alt: "Main entrance of the dargah", category: "Dargah" },
-  { src: "/dargah-hala.png", alt: "The dargah facade at Hala", category: "Dargah" },
-  { src: "/dargah-facade-tilework.jpg", alt: "Dome and minaret detail", category: "Architecture" },
-  { src: "/congregation-prayer-hall.jpg", alt: "Urs Mubarak gathering", category: "Urs Mubarak" },
-  { src: "/dargah-tomb-chadars.jpg", alt: "Chadar ceremony during Urs", category: "Urs Mubarak" },
-  { src: "/congregation-prayer-line.jpg", alt: "Qawwali at weekly mehfil", category: "Mehfil" },
-  { src: "/congregation-prayer-hall.jpg", alt: "Zikr circle in the main hall", category: "Mehfil" },
-  { src: "/congregation-prayer-line.jpg", alt: "Langar being served to visitors", category: "Langar" },
-  { src: "/dargah-facade-tilework.jpg", alt: "Carved wooden entrance doors", category: "Architecture" },
-  { src: "/dargah-hala.png", alt: "Night view of the dargah", category: "Dargah" },
-  { src: "/dargah-entrance-gate.jpg", alt: "Procession on Urs day", category: "Urs Mubarak" },
-  { src: "/dargah-tomb-chadars.jpg", alt: "Community kitchen preparing langar", category: "Langar" },
+  { src: "/dargah-entrance-gate.webp", alt: "Main entrance of the dargah", category: "Dargah" },
+  { src: "/dargah-hala.webp", alt: "The dargah facade at Hala", category: "Dargah" },
+  { src: "/dargah-facade-tilework.webp", alt: "Dome and minaret detail", category: "Architecture" },
+  { src: "/congregation-prayer-hall.webp", alt: "Urs Mubarak gathering", category: "Urs Mubarak" },
+  { src: "/dargah-tomb-chadars.webp", alt: "Chadar ceremony during Urs", category: "Urs Mubarak" },
+  { src: "/congregation-prayer-line.webp", alt: "Qawwali at weekly mehfil", category: "Mehfil" },
+  { src: "/congregation-prayer-hall.webp", alt: "Zikr circle in the main hall", category: "Mehfil" },
+  { src: "/congregation-prayer-line.webp", alt: "Langar being served to visitors", category: "Langar" },
+  { src: "/dargah-facade-tilework.webp", alt: "Carved wooden entrance doors", category: "Architecture" },
+  { src: "/dargah-hala.webp", alt: "Night view of the dargah", category: "Dargah" },
+  { src: "/dargah-entrance-gate.webp", alt: "Procession on Urs day", category: "Urs Mubarak" },
+  { src: "/dargah-tomb-chadars.webp", alt: "Community kitchen preparing langar", category: "Langar" },
 ];
 
 export default function GalleryPage() {
