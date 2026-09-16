@@ -188,14 +188,15 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-right">
             <MosqueMark className="h-10 w-10 shrink-0 md:h-12 md:w-12" />
             <div className="text-center md:text-right">
-              <p className="font-[Noto_Nastaliq_Urdu] text-base leading-tight text-white md:text-lg">
-                درگاهہ مخدوم سرور نوحؒ
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70">
-                ڏنري، ڀرزوع، هالا نوان
-                <br />
-                ضلعي مٺياري، سنڌ، پاڪستان
-              </p>
+             <p className="font-[Noto_Nastaliq_Urdu] text-base leading-tight text-white md:text-lg">
+  درگاهه مخدوم سرور نوحؒ
+</p>
+
+<p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70">
+  درگاهه روڊ، هالا نوان
+  <br />
+  ضلعو مٽياري، سنڌ، پاڪستان
+</p>
             </div>
           </div>
         </div>
