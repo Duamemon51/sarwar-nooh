@@ -18,6 +18,9 @@ const carouselElders = [...elders, elders[0]];
 export default function Home() {
   const { language } = useLanguage();
   const heroContent = language === "en" ? englishHeroContent : sindhiHeroContent;
+  const heroDisplayFont = language === "en"
+    ? "font-[family-name:var(--font-english-display)]"
+    : "font-[family-name:var(--font-display)]";
   const trackRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);
@@ -133,7 +136,7 @@ export default function Home() {
       className={`${language === "en" ? "max-w-none whitespace-nowrap text-[clamp(1.3rem,2.2vw,2.5rem)]" : "max-w-[600px] text-[clamp(1.8rem,3vw,3rem)]"} px-6 py-3
       text-[#e8c98a]
       font-bold
-      ${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"}
+      ${heroDisplayFont}
       [text-shadow:3px_3px_4px_rgba(0,0,0,1),-3px_-2px_3px_rgba(0,0,0,0.9),2px_0_6px_rgba(0,0,0,1),-2px_0_6px_rgba(0,0,0,1),0_4px_10px_rgba(0,0,0,1)]`}
     >
       {heroContent.title} {heroContent.name}
@@ -207,7 +210,7 @@ export default function Home() {
         text-[clamp(1rem,4.5vw,1.5rem)]
         leading-[1.2]
         tracking-tight
-        ${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"}
+        ${heroDisplayFont}
         [text-shadow:2px_2px_3px_rgba(0,0,0,1),-2px_-1px_2px_rgba(0,0,0,0.9),1px_0_5px_rgba(0,0,0,1),-1px_0_5px_rgba(0,0,0,1),0_3px_8px_rgba(0,0,0,1)]`}
       >
         <div className="mb-1">{heroContent.title}</div>

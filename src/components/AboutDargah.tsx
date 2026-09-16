@@ -82,7 +82,7 @@ export default function AboutDargah() {
             {content.signature}
           </p>
         </div>
-      </div>
+      </div> 
     </section>
   );
 }
