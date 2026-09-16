@@ -60,12 +60,14 @@ export default function AboutDargah() {
           <h2 className="text-xl sm:text-2xl md:text-5xl font-bold leading-snug text-[#123A3A] mb-1">
             درگاه حضرت مخدوم سرور نوح
           </h2>
+ 
+<p className="text-sm sm:text-[20px] leading-[1.9] text-[#123A3A] mb-6 max-w-md ml-auto">
+  هيءَ مقدس درگاهه ديني، روحاني ۽ مذهبي عقيدت جو هڪ اهم مرڪز آهي،
+  جتي هر سال هزارين عقيدتمند ۽ زائرين محبت، عقيدت ۽ احترام سان
+  حاضري ڀرين ٿا. هتي ايندڙ هر ماڻهوءَ کي روحاني سڪون، ديني رهنمائي
+  ۽ بزرگن جي تعليمات مان فيض حاصل ڪرڻ جو موقعو ملي ٿو.
+</p>
 
-          <p className="text-sm sm:text-[20px] leading-[1.9] text-[#123A3A] mb-6 max-w-md ml-auto">
-            هتي ڏيني عالمي، روحاني، ٻهڏيريءَ جو مرڪز آهبي، جتي انسان ڪي
-            معنوی، ڏيني ۽ ڍهيرين جي رهنمائين ملي ٿو منجي ٿام فيڏرن جي ڪناتي جي
-            هتي هزارين عقيدت مند عقيدو عقيمرد فراهم ڪيا.
-          </p>
 
           <img
             src="/botom-border.webp"

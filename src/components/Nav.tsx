@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -6,11 +7,11 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { href: "/", label: "هوم" },
-    { href: "/gallery", label: "گالري" },
-    { href: "/contact", label: "سان رابطو" },
-    { href: "/arabic-records", label: "عربي مدارڪ" },
-    { href: "/pashto-bayan", label: "پشتفي بڃاڻ پ" },
+   { href: "/", label: "هوم" },
+    { href: "/gallery", label: "گيلري" },
+    { href: "/contact", label: "رابطو" },
+    { href: "/arabic-records", label: "عربي رڪارڊ" },
+    { href: "/pashto-bayan", label: "پشتو بيان" },
   ];
 
   return (
@@ -23,6 +24,7 @@ export default function Nav() {
           alt=""
           className="hidden sm:block absolute left-0 top-0 h-full w-auto pointer-events-none select-none"
         />
+
         <img
           src="/nav-corner-right.webp"
           alt=""
@@ -47,7 +49,7 @@ export default function Nav() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-[#E8C98A] p-1"
-            aria-label="Toggle menu"
+            aria-label="مينيو کوليو"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +59,19 @@ export default function Nav() {
               stroke="currentColor"
             >
               {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -68,15 +80,17 @@ export default function Nav() {
           <div className="flex items-center gap-1 sm:gap-3" dir="ltr">
             <img
               src="/logo.webp"
-              alt="Dargah Logo"
+              alt="درگاه جو لوگو"
               className="w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover"
             />
-            <div className="text-left">
+
+            <div className="text-left" dir="rtl">
               <h1 className="text-white font-bold text-sm sm:text-lg leading-tight">
-                درگاہ مخدوم سرور ٿوح
+                درگاه مخدوم سرور نوح
               </h1>
+
               <p className="mt-1 text-white/70 text-[10px] sm:mt-2 sm:text-xs">
-                ھالا نو، ضلعي مٽياري، سنڌ
+                هالا، ضلعو مٽياري، سنڌ
               </p>
             </div>
           </div>
@@ -101,3 +115,4 @@ export default function Nav() {
     </nav>
   );
 }
+
