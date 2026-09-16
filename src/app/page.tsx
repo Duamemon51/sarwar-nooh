@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import StarDivider from "@/components/StarDivider";
@@ -33,8 +33,11 @@ const elders = [
   { name: "MAKHDOOM GHULAM HYDER", image: "/hyder.webp" },
 ];
 
+const carouselElders = [...elders, elders[0]];
+
 export default function Home() {
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const activeRef = useRef(0);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -53,7 +56,9 @@ export default function Home() {
           closest = i;
         }
       });
-      setActive(closest);
+      const normalized = closest % elders.length;
+      activeRef.current = normalized;
+      setActive(normalized);
     };
 
     el.addEventListener("scroll", onScroll, { passive: true });
@@ -61,7 +66,7 @@ export default function Home() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToIndex = (i: number) => {
+  const scrollToIndex = useCallback((i: number) => {
     const el = trackRef.current;
     if (!el) return;
     const idx = Math.max(0, Math.min(elders.length - 1, i));
@@ -71,7 +76,18 @@ export default function Home() {
       left: child.offsetLeft - (el.clientWidth - child.offsetWidth) / 2,
       behavior: "smooth",
     });
-  };
+  }, []);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 639px)");
+    if (!mobileQuery.matches) return;
+
+    const timer = window.setInterval(() => {
+      scrollToIndex((activeRef.current + 1) % elders.length);
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, [scrollToIndex]);
 
   return (
     <div id="top" className="bg-white">
@@ -225,12 +241,12 @@ export default function Home() {
     <div className="sm:hidden">
       <div
   ref={trackRef}
-  className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-3 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-3 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
 >
-  {elders.map(({ name, image }) => (
+  {carouselElders.map(({ name, image }, i) => (
     <div
-      key={name}
-      className="flex w-[32%] flex-shrink-0 snap-center flex-col items-center justify-start"
+      key={`${name}-${i}`}
+      className="flex w-[32vw] flex-shrink-0 snap-center flex-col items-center justify-start"
     >
       <div className="relative aspect-square w-full max-w-[105px] overflow-hidden rounded-full bg-[#03181a]">
         <Image src={image} alt={name} fill sizes="32vw" className="object-cover" />
