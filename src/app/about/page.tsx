@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StarDivider from "@/components/StarDivider";
@@ -12,6 +13,15 @@ import {
   SealMark,
   TombDome,
 } from "@/components/Illustrations";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Explore the life, lineage, scholarship, and Sufi legacy of Hazrat Makhdoom Sarwar Nooh in Hala, Sindh.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

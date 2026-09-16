@@ -1,10 +1,75 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl = "https://www.dargahsarwarnuoh.com";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0d2a28",
+};
+
 export const metadata: Metadata = {
-  title: "Makhdoom Sarwar Nooh | Hala, Sindh (1506–1590)",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Dargah Makhdoom Sarwar Nooh | Hala, Sindh",
+    template: "%s | Dargah Makhdoom Sarwar Nooh",
+  },
   description:
-    "The life, lineage and legacy of Hazrat Makhdoom Sarwar Nooh — Sufi scholar of Hala, founder of the Sarwari order, and translator of the Qur'an into Persian.",
+    "Learn about Hazrat Makhdoom Sarwar Nooh, the Sufi saint of Hala, Sindh, his Sarwari order, shrine, Urs celebrations, and the living heritage of the dargah.",
+  applicationName: "Dargah Makhdoom Sarwar Nooh",
+  keywords: [
+    "Dargah Makhdoom Sarwar Nooh",
+    "Makhdoom Sarwar Nooh",
+    "Makhdoom Nooh Hala",
+    "Sarwari order",
+    "Hala shrine Sindh",
+    "Urs Mubarak Hala",
+    "Sufi saint of Sindh",
+    "Hazrat Makhdoom Sarwar Nooh",
+    "Dargah Hala",
+  ],
+  authors: [{ name: "Dargah Makhdoom Sarwar Nooh" }],
+  creator: "Dargah Makhdoom Sarwar Nooh",
+  publisher: "Dargah Makhdoom Sarwar Nooh",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Dargah Makhdoom Sarwar Nooh | Hala, Sindh",
+    description:
+      "The life, shrine, legacy, and Urs traditions of Hazrat Makhdoom Sarwar Nooh in Hala, Sindh.",
+    url: siteUrl,
+    siteName: "Dargah Makhdoom Sarwar Nooh",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/hero-bg.webp",
+        width: 1600,
+        height: 900,
+        alt: "Dargah Makhdoom Sarwar Nooh, Hala Sindh",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dargah Makhdoom Sarwar Nooh | Hala, Sindh",
+    description:
+      "Explore the legacy, shrine, and spiritual heritage of Hazrat Makhdoom Sarwar Nooh in Hala, Sindh.",
+    images: ["/hero-bg.webp"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

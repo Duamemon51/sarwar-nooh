@@ -22,9 +22,12 @@ import {
  */
 
 export const metadata = {
-  title: "Dua & Ziyarat | Dargah Makhdoom Sarwar Noor",
+  title: "Dua & Ziyarat",
   description:
-    "Dua for ziyarat, adab of visiting the shrine, daily timings, and visit information for Dargah Makhdoom Sarwar Noor, Hala Naw.",
+    "Dua for ziyarat, adab of visiting the shrine, daily timings, and visit information for Dargah Makhdoom Sarwar Nooh in Hala, Sindh.",
+  alternates: {
+    canonical: "/dua-ziyarat",
+  },
 };
 
 const adabPoints = [

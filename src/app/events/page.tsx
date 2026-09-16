@@ -19,9 +19,12 @@ import {
  */
 
 export const metadata = {
-  title: "Events | Dargah Makhdoom Sarwar Noor",
+  title: "Events",
   description:
-    "Upcoming Urs Mubarak, mehfil-e-sama, and gatherings at Dargah Makhdoom Sarwar Noor, Hala Naw.",
+    "Upcoming Urs Mubarak, mehfil-e-sama, and gatherings at Dargah Makhdoom Sarwar Nooh in Hala, Sindh.",
+  alternates: {
+    canonical: "/events",
+  },
 };
 
 const featuredEvent = {
