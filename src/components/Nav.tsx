@@ -7,11 +7,9 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-   { href: "/", label: "هوم" },
-    { href: "/gallery", label: "گيلري" },
-    { href: "/contact", label: "رابطو" },
-    { href: "/arabic-records", label: "عربي رڪارڊ" },
-    { href: "/pashto-bayan", label: "پشتو بيان" },
+  { href: "/", label: "مک صفحو" },
+ { href: "/shajro", label: "شجرو" },
+  { href: "/gallery", label: "گيلري" },
   ];
 
   return (
