@@ -1,4 +1,10 @@
+import { englishGaadiMessage, gaadiMessage } from "@/content";
+import { useLanguage } from "@/components/LanguageProvider";
+
 export default function GaadiNasheenMessage() {
+  const { language } = useLanguage();
+  const content = language === "en" ? englishGaadiMessage : gaadiMessage;
+
   return (
     <section className="bg-white py-6 px-3 sm:py-12 sm:px-4">
       <div className="mx-auto max-w-[1400px] overflow-hidden rounded-2xl bg-[#123a3a]">
@@ -6,19 +12,11 @@ export default function GaadiNasheenMessage() {
           {/* Text content */}
           <div className="flex flex-col justify-center px-3 py-4 sm:px-8 sm:py-10 md:px-12 md:py-14 w-3/5">
            <h2 className="mb-1.5 sm:mb-4 text-[13px] sm:text-2xl md:text-4xl font-bold tracking-wide text-white uppercase leading-tight">
-  گادي نشين جو پيغام
+  {content.title}
 </h2>
 
 <p className="mb-3 sm:mb-8 max-w-xl text-[8.5px] sm:text-sm md:text-base leading-[1.5] sm:leading-relaxed text-gray-200">
-  درگاهه مخدوم سرور نوحؒ اسان لاءِ روحاني فيض، محبت ۽ انسانيت جي خدمت جو
-  روشن مرڪز آهي. بزرگن جي تعليمات اسان کي نيڪي، عاجزي، صبر، برداشت ۽
-  ڀائيچاري جو درس ڏين ٿيون.
- 
-  اسان جو مقصد اهو آهي ته هن پاڪ روحاني ورثي کي ايندڙ نسلن تائين پهچايون
-  ۽ هر انسان لاءِ محبت، امن، احترام ۽ خدمت جو پيغام عام ڪريون.
-
-  الله پاڪ اسان سڀني کي نيڪ عمل ڪرڻ، بزرگن جي تعليمات تي هلڻ ۽ پنهنجي
-  معاشري جي خدمت ڪرڻ جي توفيق عطا فرمائي. آمين
+  {content.description}
 </p>
 
             <button
@@ -38,7 +36,7 @@ export default function GaadiNasheenMessage() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
               <span className="font-medium text-[8.5px] sm:text-base whitespace-nowrap">
-                لائبريري ڏانھن وڃو
+                {content.button}
               </span>
             </button>
           </div>
@@ -47,7 +45,7 @@ export default function GaadiNasheenMessage() {
           <div className="w-2/5">
             <img
               src="/gaadi-nasheen.webp"
-              alt="Gaadi Nasheen"
+              alt={content.imageAlt}
               className="h-full w-full object-cover object-top"
             />
           </div>

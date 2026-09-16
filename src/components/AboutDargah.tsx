@@ -1,21 +1,27 @@
+import { aboutContent, englishAboutContent } from "@/content";
+import { useLanguage } from "@/components/LanguageProvider";
+
 export default function AboutDargah() {
+  const { language } = useLanguage();
+  const content = language === "en" ? englishAboutContent : aboutContent;
+
   return (
     <section
       className="mx-auto max-w-[1400px] bg-white px-4 sm:px-8 py-10 sm:py-14"
-      dir="rtl"
+      dir={language === "en" ? "ltr" : "rtl"}
     >
       <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 md:gap-12 items-center">
         {/* Video thumbnail - RIGHT side */}
         <div className="relative overflow-hidden rounded-sm shadow-md md:order-2 aspect-[4/3] sm:aspect-video md:aspect-auto md:h-full">
           <img
             src="/dargah-video-thumb.webp"
-            alt="درگاه مخدوم سرور نوح"
+            alt={content.imageAlt}
             className="w-full h-full object-cover"
           />
 
           {/* Play button */}
           <button
-            aria-label="ويڊيو هلايو"
+            aria-label={content.playLabel}
             className="absolute inset-0 m-auto flex h-11 w-20 sm:h-14 sm:w-24 max-w-[96px] shrink-0 items-center justify-center rounded-2xl bg-red-600 shadow-lg transition-transform hover:scale-105"
           >
             <svg
@@ -42,8 +48,8 @@ export default function AboutDargah() {
             <span className="text-white text-[10px] sm:text-xs font-medium shrink-0">
               YouTube
             </span>
-            <span className="text-amber-200 text-[10px] sm:text-xs shrink-0" dir="rtl">
-              پيرو ڪريو
+            <span className="text-amber-200 text-[10px] sm:text-xs shrink-0">
+              {content.followLabel}
             </span>
 
             <svg
@@ -56,16 +62,13 @@ export default function AboutDargah() {
         </div>
 
         {/* Text content - LEFT side */}
-        <div className="text-right md:order-1">
+        <div className={`md:order-1 ${language === "en" ? "text-left" : "text-right"}`}>
           <h2 className="text-xl sm:text-2xl md:text-5xl font-bold leading-snug text-[#123A3A] mb-1">
-            درگاه حضرت مخدوم سرور نوح
+            {content.title}
           </h2>
  
-<p className="text-sm sm:text-[20px] leading-[1.9] text-[#123A3A] mb-6 max-w-md ml-auto">
-  هيءَ مقدس درگاهه ديني، روحاني ۽ مذهبي عقيدت جو هڪ اهم مرڪز آهي،
-  جتي هر سال هزارين عقيدتمند ۽ زائرين محبت، عقيدت ۽ احترام سان
-  حاضري ڀرين ٿا. هتي ايندڙ هر ماڻهوءَ کي روحاني سڪون، ديني رهنمائي
-  ۽ بزرگن جي تعليمات مان فيض حاصل ڪرڻ جو موقعو ملي ٿو.
+<p className={`text-sm sm:text-[20px] leading-[1.9] text-[#123A3A] mb-6 max-w-md ${language === "en" ? "mr-auto" : "ml-auto"}`}>
+  {content.description}
 </p>
 
 
@@ -75,8 +78,8 @@ export default function AboutDargah() {
             className="w-full h-auto -my-6 max-w-md mx-auto sm:mx-0"
           />
 
-          <p className="text-sm sm:text-[22px] font-semibold text-[#123A3A] mt-4 mr-0 sm:mr-32 text-center sm:text-right">
-            حضرت مخدوم سرور نوح
+          <p className={`text-sm sm:text-[22px] font-semibold text-[#123A3A] mt-4 text-center ${language === "en" ? "sm:text-center sm:-translate-x-[85px]" : "mr-0 sm:mr-32 sm:text-right"}`}>
+            {content.signature}
           </p>
         </div>
       </div>

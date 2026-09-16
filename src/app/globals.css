@@ -30,6 +30,8 @@
   --font-display: "As Lateefi M", "Noto Nastaliq Urdu", "Noto Sans Arabic", "Amiri", serif;
   --font-sindhi: "MB Sindhi Sahat", "Noto Nastaliq Urdu", "Noto Sans Arabic", serif;
   --font-body: "Spectral", "Georgia", serif;
+  --font-english-display: "Cormorant Garamond", "Spectral", Georgia, serif;
+  --font-english-body: "DM Sans", "Segoe UI", sans-serif;
 }
 
 * {
@@ -56,6 +58,22 @@ body {
 
 #top [dir="ltr"] p {
   font-family: var(--font-body), serif;
+}
+
+#top.lang-en {
+  font-family: var(--font-english-body);
+}
+
+#top.lang-en :is(h1, h2, h3, h4) {
+  font-family: var(--font-english-display);
+  letter-spacing: 0;
+}
+
+#top.lang-en p,
+#top.lang-en button,
+#top.lang-en a,
+#top.lang-en span {
+  font-family: var(--font-english-body);
 }
 
 ::selection {

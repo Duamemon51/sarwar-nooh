@@ -8,21 +8,10 @@ import {
   Calendar,
   ArrowLeft,
 } from "lucide-react";
+import { englishFooterContent, englishNavLinks, footerContent, navLinks, socialLinks } from "@/content";
+import { useLanguage } from "@/components/LanguageProvider";
 
-const navLinks = [
-  { label: "هوم", href: "/" },
-  { label: "پنھنجي باري ۾", href: "/about" },
-  { label: "عرس مبارڪ", href: "/urs-mubarak" },
-  { label: "گيلري", href: "/gallery" },
-  { label: "سان رابطو", href: "/contact" },
-];
-
-const socialLinks = [
-  { icon: Globe, href: "https://facebook.com", label: "Facebook" },
-  { icon: Camera, href: "https://instagram.com", label: "Instagram" },
-  { icon: Play, href: "https://youtube.com", label: "YouTube" },
-  { icon: Send, href: "https://twitter.com", label: "Twitter / X" },
-];
+const socialIcons = { Globe, Camera, Play, Send };
 
 function CornerOrnament({ className = "" }) {
   return (
@@ -75,8 +64,12 @@ function LanternMark({ className = "" }) {
 }
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const content = language === "en" ? englishFooterContent : footerContent;
+  const links = language === "en" ? englishNavLinks : navLinks;
+
   return (
-    <footer dir="rtl" className="relative overflow-hidden bg-[#0d2a28] text-[#e9e4d8] font-[Noto_Sans_Arabic]">
+    <footer dir={language === "en" ? "ltr" : "rtl"} className="relative overflow-hidden bg-[#0d2a28] text-[#e9e4d8] font-[Noto_Sans_Arabic]">
       {/* ---------- Upcoming Events Banner ---------- */}
       <div className="relative border-b border-[#c9a961]/20 bg-[#0f2e2b]">
         <CornerOrnament className="pointer-events-none absolute right-0 top-0 h-16 w-16 -scale-x-100 md:h-24 md:w-24" />
@@ -84,19 +77,19 @@ export default function Footer() {
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:grid-cols-[1fr_auto_1fr] md:py-12">
           {/* Rightmost: event card */}
-          <div className="flex items-center gap-5 justify-self-center text-center md:justify-self-end md:text-right">
+          <div className={`flex items-center gap-5 justify-self-center text-center md:justify-self-end ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <div>
               <p className="font-[Noto_Nastaliq_Urdu] text-lg leading-relaxed text-white md:text-xl">
-                عرس مبارڪ
+                {content.ursTitle}
               </p>
               <div className="mt-3 flex items-center gap-4 rounded-xl border border-[#c9a961]/40 bg-[#0d2a28]/70 px-4 py-3 backdrop-blur-sm md:px-5 md:py-4">
                 <div className="flex flex-col items-center border-s border-[#c9a961]/25 ps-3 text-center md:ps-4">
                   <Calendar className="mb-1 h-4 w-4 text-[#c9a961] md:h-5 md:w-5" />
-                  <span className="text-xl font-semibold leading-none text-white md:text-2xl">۱۵</span>
-                  <span className="mt-1 text-[10px] text-[#e9e4d8]/70 md:text-xs">اَرجب</span>
+                  <span className="text-xl font-semibold leading-none text-white md:text-2xl">{content.ursDate}</span>
+                  <span className="mt-1 text-[10px] text-[#e9e4d8]/70 md:text-xs">{content.ursMonth}</span>
                 </div>
                 <p className="max-w-[160px] text-xs leading-relaxed text-[#e9e4d8]/75 md:max-w-[180px] md:text-sm">
-                  عرس جي موقعي تي خصوصي روحاني تقريب جو انعقاد ٿيندو.
+                  {content.ursDescription}
                 </p>
               </div>
             </div>
@@ -105,29 +98,29 @@ export default function Footer() {
           {/* Center: quote */}
           <div className="flex flex-col items-center text-center">
             <p className="font-[Noto_Nastaliq_Urdu] text-xl leading-loose text-white sm:text-2xl md:text-3xl">
-              &rdquo;درگاهہ حضرت مخدوم سرور نوحؒ&ldquo;
+              &rdquo;{content.quote}&ldquo;
             </p>
             <p className="mt-3 max-w-xs text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
-              جتي عقيدت مند دلين، زندہ دلي، نيڪ نيت ۽ برڪت جي اميد سان اچن ٿا.
+              {content.quoteDescription}
             </p>
           </div>
 
           {/* Leftmost: lantern + heading + CTA */}
-          <div className="flex flex-col items-center gap-3 text-center justify-self-center md:flex-row md:items-center md:gap-4 md:text-right md:justify-self-start">
+          <div className={`flex min-w-0 max-w-full flex-col items-center gap-3 text-center justify-self-center md:flex-row md:items-center md:gap-4 md:justify-self-start ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <LanternMark className="h-20 w-12 shrink-0 md:h-28 md:w-16" />
-            <div className="max-w-xs">
+            <div className="min-w-0 max-w-xs">
               <h2 className="font-[Noto_Nastaliq_Urdu] text-xl leading-snug text-white sm:text-2xl md:text-3xl">
-                عرس جا سالانہ گڏجاڻيون
+                {content.gatheringsTitle}
               </h2>
               <p className="mt-2 text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
-                درگاهہ جي روحاني ماحول ۾ ٿيندڙ گڏجاڻيون، دعائن ۽ برڪتن جو سلسلو آهي.
+                {content.gatheringsDescription}
               </p>
               <Link
-                href="/events"
+                href="/gallery"
                 className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 px-4 py-2 text-xs text-[#e9e4d8] transition-colors hover:border-[#c9a961] hover:text-[#c9a961] sm:px-5 sm:py-2.5 sm:text-sm"
               >
-                <ArrowLeft className="h-4 w-4" />
-                سڀ واقعات ڏسو
+                <ArrowLeft className={`h-4 w-4 ${language === "en" ? "rotate-180" : ""}`} />
+                {content.eventsButton}
               </Link>
             </div>
           </div>
@@ -143,7 +136,7 @@ export default function Footer() {
           {/* Rightmost: nav + social */}
           <div className="flex flex-col items-center gap-4 md:items-start">
             <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#e9e4d8]/80 md:justify-start md:gap-5">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -154,7 +147,9 @@ export default function Footer() {
               ))}
             </nav>
             <div className="flex items-center gap-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
+              {socialLinks.map(({ icon, href, label }) => {
+                const Icon = socialIcons[{ globe: "Globe", camera: "Camera", play: "Play", send: "Send" }[icon] as keyof typeof socialIcons];
+                return (
                 
                  <a key={label}
                   href={href}
@@ -165,7 +160,8 @@ export default function Footer() {
                 >
                   <Icon className="h-4 w-4" />
                 </a>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -179,23 +175,23 @@ export default function Footer() {
               className="h-12 w-12 object-contain md:h-15 md:w-15"
             />
             <div>
-              <p className="font-serif text-base leading-tight text-white">Sindhi</p>
-              <p className="font-serif text-base leading-tight text-[#c9a961]">Digital Archive</p>
+              <p className="font-serif text-base leading-tight text-white">{content.archiveName}</p>
+              <p className="font-serif text-base leading-tight text-[#c9a961]">{content.archiveType}</p>
             </div>
           </div>
 
           {/* Leftmost: brand */}
-          <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-right">
+          <div className={`flex min-w-0 max-w-full flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <MosqueMark className="h-10 w-10 shrink-0 md:h-12 md:w-12" />
-            <div className="text-center md:text-right">
+            <div className={`min-w-0 text-center ${language === "en" ? "md:text-left" : "md:text-right"}`}>
              <p className="font-[family-name:var(--font-display)] text-base leading-tight text-white md:text-lg">
-  درگاهه مخدوم سرور نوحؒ
+  {content.brand}
 </p>
 
 <p className="mt-1 font-[family-name:var(--font-sindhi)] text-xs leading-relaxed text-[#e9e4d8]/70">
-  درگاهه روڊ، هالا نوان
+  {content.address[0]}
   <br />
-  ضلعو مٽياري، سنڌ، پاڪستان
+  {content.address[1]}
 </p>
             </div>
           </div>
@@ -206,18 +202,18 @@ export default function Footer() {
       <div className="relative">
        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
   <p>
-    ڊيزائن ۽ ڊويلپمينٽ:{" "}
+    {content.credit}{" "}
     <a
       href="https://udaar.pk/"
       target="_blank"
       rel="noopener noreferrer"
       className="transition-colors hover:text-[#e9e4d8]"
     >
-      اُڏار اڪيڊمي
+      {content.creditName}
     </a>
   </p>
 
-  <p>© {new Date().getFullYear()} درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.</p>
+  <p>© {new Date().getFullYear()} {content.copyright}</p>
 </div>
       </div>
     </footer>

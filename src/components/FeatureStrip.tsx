@@ -1,38 +1,16 @@
-const features = [
- {
-  image: "/1.webp",
-  title: "عقيدت جو اظهار",
-  lines: ["روحاني ۽ ديني", "برڪتن جو تسلسل"],
-},
-{
-  image: "/2.webp",
-  title: "تعليمي ڄاڻ",
-  lines: ["تصوف، علم ۽", "اوليا جي تعليمات"],
-},
-{
-  image: "/1.webp",
-  title: "سچائي جو پيغام",
-  lines: ["محبت، امن ۽", "روحاني واڌارو"],
-},
-{
-  image: "/2.webp",
-  title: "عرس مبارڪ",
-  lines: ["ايمان، دعا ۽ برڪتن", "جو پيغام"],
-},
-{
-  image: "/1.webp",
-  title: "اڳتي جي سرپرستي",
-  lines: ["ايندڙ نسلن لاءِ", "هدايت ۽ خدمت"],
-},
-];
+import { englishFeatures, features } from "@/content";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function FeatureStrip() {
+  const { language } = useLanguage();
+  const content = language === "en" ? englishFeatures : features;
+
   return (
     <section className="relative bg-[#f9f4e8] border-y-4 border-[#193D44]">
       <div className="mx-auto max-w-[1400px] px-4 py-8 md:py-10">
         {/* Mobile & sm: wrapped flex, 3 per row, centered last row */}
         <div className="flex flex-wrap justify-center gap-y-6 md:hidden">
-          {features.map((feature, i) => (
+          {content.map((feature, i) => (
             <div
               key={i}
               className="flex flex-col items-center text-center px-2"
@@ -60,8 +38,8 @@ export default function FeatureStrip() {
 
         {/* md and up: original 5-column strip with dividers */}
         <div className="hidden md:grid md:grid-cols-5 md:gap-x-0 md:gap-y-0">
-          {features.map((feature, i) => {
-            const isLastMd = i === features.length - 1;
+          {content.map((feature, i) => {
+            const isLastMd = i === content.length - 1;
             return (
               <div
                 key={i}

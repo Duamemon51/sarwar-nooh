@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { englishGalleryContent, galleryContent } from "@/content";
+import { useLanguage } from "@/components/LanguageProvider";
 
 type GalleryItem = {
   title: string;
@@ -429,8 +431,7 @@ const items: GalleryItem[] = [
 
 // 4 featured tiles shown in the compact preview grid; the lightbox lets
 // visitors page through the full set above via next/prev.
-const featuredIndexes = [19, 6, 15, 7];
-const referenceGallery = featuredIndexes.map((i) => items[i]);
+const referenceGallery = galleryContent.featuredIndexes.map((i) => items[i]);
 
 function EyeIcon() {
   return (
@@ -487,6 +488,8 @@ function ArrowRightIcon() {
 }
 
 export default function Gallery() {
+  const { language } = useLanguage();
+  const content = language === "en" ? englishGalleryContent : galleryContent;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [entered, setEntered] = useState(false);
   const touchStartX = useRef<number | null>(null);
@@ -573,28 +576,31 @@ export default function Gallery() {
     <section
       id="gallery"
       className="scroll-mt-24 w-full bg-[#f7f4ee] px-0 py-8 sm:py-10"
+      dir={language === "en" ? "ltr" : "rtl"}
     >
       <div className="mx-auto max-w-[1500px] px-3 sm:px-5 lg:px-8">
         <div className="flex flex-col gap-4 lg:grid lg:items-center lg:gap-6 lg:grid-cols-[0.62fr_2.38fr]">
           <div className="flex flex-col items-center text-center px-2 py-2 sm:items-start sm:px-4 sm:py-3 sm:text-right lg:pl-5">
             <h2
-              className="w-full max-w-[290px] text-center font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:-translate-x-20 sm:text-right sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1]"
+              className={`w-full max-w-[290px] text-center font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1] ${language === "en" ? "sm:translate-x-0 sm:text-left" : "sm:-translate-x-20 sm:text-right"}`}
             >
-              گيلري
+              {content.title}
             </h2>
 
            <p 
-  className="mt-4 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px]"
+  className={`mt-4 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px] ${language === "en" ? "sm:text-left" : "sm:text-right"}`}
 >
-  هيءَ گيلري درگاهه جي پاڪيزه فضا، مزارن، روحاني ماحول ۽ عقيدتمند زائرين جي حسين منظرن کي پنهنجي اندر سمائي ٿي، جيڪي عقيدت، محبت ۽ احترام جو خوبصورت اظهار آهن.
+  {content.description}
 </p>
 
             <Link
               href="/gallery"
               className="mt-3 hidden items-center gap-2 rounded-full bg-[#0d3b36] px-7 py-2.5 text-[11px] font-medium text-white transition-opacity hover:opacity-90 sm:mt-5 sm:inline-flex sm:text-[15px] md:mt-10"
             >
-              <span>گيلري ڏسو</span>
-              <ArrowRightIcon />
+              <span>{content.button}</span>
+              <span className={language === "sd" ? "rotate-180" : ""}>
+                <ArrowRightIcon />
+              </span>
             </Link>
           </div>
 
@@ -639,9 +645,9 @@ export default function Gallery() {
             <div className="hidden sm:grid sm:grid-cols-4 sm:gap-3">
               {referenceGallery.map((item, index) => (
                 <button
-                  key={item.title + featuredIndexes[index]}
+                  key={item.title + galleryContent.featuredIndexes[index]}
                   type="button"
-                  onClick={() => openAt(featuredIndexes[index])}
+                  onClick={() => openAt(galleryContent.featuredIndexes[index])}
                   className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
