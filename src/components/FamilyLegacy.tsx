@@ -1,4 +1,5 @@
 import { DargahSkyline } from "@/components/Illustrations";
+import { useLanguage } from "@/components/LanguageProvider";
 
 type LineageFigure = {
   initials: string;
@@ -55,39 +56,47 @@ function ArrowIcon() {
 }
 
 export default function FamilyLegacy() {
+  const { language } = useLanguage();
+  const isSindhi = language !== "en";
+
   return (
     <section
       id="family"
-      className="scroll-mt-24 relative overflow-hidden bg-parchment-warm/70 border-y border-indigo/10"
+      dir={isSindhi ? "rtl" : "ltr"}
+      className="scroll-mt-24 relative overflow-hidden border-y border-indigo/10 bg-parchment-warm/70"
     >
       {/* faint architectural watermark, echoes the hero banner */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
         <DargahSkyline className="w-[140%] sm:w-full h-full object-cover" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-14 sm:py-16 md:py-20">
-        <div className="grid md:grid-cols-[minmax(0,300px)_1fr] gap-8 md:gap-12 items-center">
-          {/* left: intro + CTA */}
-          <div>
-            <span className="block text-[11px] sm:text-[12px] tracking-[0.18em] uppercase text-gold mb-2 sm:mb-3">
-              The Makhdoom family
-            </span>
-            <h2 className="font-[family-name:var(--font-display)] text-[28px] sm:text-[32px] md:text-[34px] leading-[1.15] text-indigo mb-3 sm:mb-4">
-              A Legacy of Spiritual Leadership
-            </h2>
-            <p className="text-[14.5px] sm:text-[15.5px] leading-[1.7] text-ink/75 max-w-[42ch] mb-6">
-              For over five centuries, the Makhdoom family has carried
-              forward the mission of Hazrat Makhdoom Sarwar Nooh,
-              guiding seekers through faith, knowledge and service.
-            </p>
-            <a
-              href="#legacy"
-              className="inline-flex items-center gap-2 bg-indigo text-parchment text-[13.5px] sm:text-[14px] font-medium px-4 sm:px-5 py-2.5 sm:py-3 rounded-full hover:bg-indigo-deep transition-colors"
-            >
-              Explore Full Lineage
-              <ArrowIcon />
-            </a>
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-10 md:py-20">
+        <div className="relative min-h-[320px] md:min-h-[420px]">
+          <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-4 md:pr-10 lg:pr-14">
+            <div className={`w-full max-w-[620px] ${isSindhi ? "ml-auto text-right" : "mr-auto text-left"}`}>
+              <span className="mb-2 block text-[11px] uppercase tracking-[0.18em] text-gold sm:mb-3 sm:text-[12px]">
+                {isSindhi ? "مخدوم خاندان" : "The Makhdoom family"}
+              </span>
+              <h2 className="mb-3 text-[clamp(2rem,3vw,3rem)] font-[family-name:var(--font-display)] leading-[1.15] text-indigo sm:mb-4">
+                {isSindhi ? "روحاني قيادت جو ورثو" : "A Legacy of Spiritual Leadership"}
+              </h2>
+              <p className="mb-6 max-w-[42ch] text-[14.5px] leading-[1.7] text-ink/75 sm:text-[15.5px]">
+                {isSindhi
+                  ? "پانجه صديءَ کان وٺي، مخدوم خاندان حضرت مخدوم سرور نوحؒ جي مشن کي آمن، علم ۽ خدمت جي رستي تي اڳتي وڌي رهيو آهي."
+                  : "For over five centuries, the Makhdoom family has carried forward the mission of Hazrat Makhdoom Sarwar Nooh, guiding seekers through faith, knowledge and service."}
+              </p>
+              <a
+                href="#legacy"
+                className="inline-flex items-center gap-2 rounded-full bg-indigo px-4 py-2.5 text-[13.5px] font-medium text-parchment transition-colors hover:bg-indigo-deep sm:px-5 sm:py-3 sm:text-[14px]"
+              >
+                {isSindhi ? "سڀ شجره ڏسو" : "Explore Full Lineage"}
+                <ArrowIcon />
+              </a>
+            </div>
           </div>
+        </div>
+
+        <div className="mt-10 grid items-center gap-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-12">
 
           {/* right: succession chain */}
           <div className="min-w-0">

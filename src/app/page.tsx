@@ -20,7 +20,7 @@ export default function Home() {
   const heroContent = language === "en" ? englishHeroContent : sindhiHeroContent;
   const heroDisplayFont = language === "en"
     ? "font-[family-name:var(--font-english-display)]"
-    : "font-[family-name:var(--font-display)]";
+    : "font-[family-name:var(--font-sindhi)]";
   const trackRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);

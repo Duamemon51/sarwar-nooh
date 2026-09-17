@@ -64,7 +64,7 @@ export const galleryContent = {
 
 export const navLinks = [
   { href: "/", label: "مک صفحو" },
-  { href: "/#family", label: "شجرو" },
+  { href: "/shajra", label: "شجرو" },
   { href: "/gallery", label: "گيلري" },
 ];
 

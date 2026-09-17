@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Globe,
   Camera,
@@ -162,21 +161,6 @@ export default function Footer() {
                 </a>
                 );
               })}
-            </div>
-          </div>
-
-          {/* Center: Sindhi Digital Archive mark (Latin, kept LTR) */}
-          <div dir="ltr" className="flex items-center gap-3">
-            <Image
-              src="/logo.webp"
-              alt="Sindhi Digital Archive emblem"
-              width={44}
-              height={44}
-              className="h-12 w-12 object-contain md:h-15 md:w-15"
-            />
-            <div>
-              <p className="font-serif text-base leading-tight text-white">{content.archiveName}</p>
-              <p className="font-serif text-base leading-tight text-[#c9a961]">{content.archiveType}</p>
             </div>
           </div>
 
