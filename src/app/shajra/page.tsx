@@ -29,12 +29,12 @@ export default function ShajraPage() {
           className="relative mt-[60px] overflow-hidden border-b border-[#0d2a28]/10 sm:mt-[75px]"
         >
           <img
-            src="/shajro-bg.png"
+            src="/shajro-bg.webp"
             alt={heroAlt}
             className="hidden h-[520px] w-screen object-cover md:block"
           />
           <img
-            src="/shajro-bg.png"
+            src="/shajro-bg.webp"
             alt={heroAlt}
             className="block h-[340px] w-full object-cover md:hidden"
           />
