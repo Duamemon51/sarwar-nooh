@@ -172,10 +172,8 @@ export default function Footer() {
   {content.brand}
 </p>
 
-<p className="mt-1 font-[family-name:var(--font-sindhi)] text-xs leading-relaxed text-[#e9e4d8]/70">
-  {content.address[0]}
-  <br />
-  {content.address[1]}
+<p className="mt-1 whitespace-nowrap font-[family-name:var(--font-sindhi)] text-xs leading-relaxed text-[#e9e4d8]/70">
+  {content.address[0]}، {content.address[1]}
 </p>
             </div>
           </div>

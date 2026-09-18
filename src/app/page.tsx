@@ -89,8 +89,8 @@ export default function Home() {
 
   <div className={`absolute inset-0 hidden md:flex flex-col justify-center px-4 sm:px-8 md:px-12 ${language === "en" ? "items-start" : "items-end"}`}>
     <div className={`${language === "en" ? "w-[56%] max-w-[680px]" : "w-[42%] max-w-[500px]"} flex flex-col ${language === "en" ? "items-start text-left" : "items-end text-right"}`}>
-      <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[340px] items-end me-[68px]"} flex flex-col gap-0`}>
-        <h1 className="text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-normal">
+          <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[400px] items-end me-[68px]"} flex flex-col gap-0`}>
+        <h1 className="text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-nowrap">
           {heroContent.title}
         </h1>
         <h2 className="text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold text-[#e8c98a] leading-[1.0] whitespace-normal">

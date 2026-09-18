@@ -82,7 +82,7 @@ export default function FamilyLegacy() {
               </h2>
               <p className="mb-6 max-w-[42ch] text-[14.5px] leading-[1.7] text-ink/75 sm:text-[15.5px]">
                 {isSindhi
-                  ? "پانجه صديءَ کان وٺي، مخدوم خاندان حضرت مخدوم سرور نوحؒ جي مشن کي آمن، علم ۽ خدمت جي رستي تي اڳتي وڌي رهيو آهي."
+                  ? "پانجه صديءَ کان وٺي، مخدوم خاندان غوثُ الحق حضرت مخدوم سرور نوحؒ جي مشن کي آمن، علم ۽ خدمت جي رستي تي اڳتي وڌي رهيو آهي."
                   : "For over five centuries, the Makhdoom family has carried forward the mission of Hazrat Makhdoom Sarwar Nooh, guiding seekers through faith, knowledge and service."}
               </p>
               <a

@@ -14,10 +14,10 @@ export default function ShajraPage() {
   const heroTitle = isEn ? "Lineage of Hazrat" : "عزيز جي لائين";
   const heroSubtitle = isEn
     ? "Hazrat Makhdoom Sarwar Nooh's Genealogy"
-    : "حضرت مخدوم سرور نوح جي نسب نامي";
+    : "غوثُ الحق حضرت مخدوم سرور نوحؒ جي نسب نامي";
   const heroAlt = isEn
     ? "Lineage of Hazrat Makhdoom Sarwar Nooh"
-    : "عزيز جي لائين - حضرت مخدوم سرور نوح جي نسب نامي";
+    : "عزيز جي لائين - غوثُ الحق حضرت مخدوم سرور نوحؒ جي نسب نامي";
 
   return (
     <div className="min-h-screen bg-[#f7f5ef] text-[#0d2a28]">

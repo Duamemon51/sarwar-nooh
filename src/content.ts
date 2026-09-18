@@ -1,8 +1,10 @@
 export type Language = "sd" | "en";
 
 export const heroContent = {
-  title: "درگاہِ حضرت",
-  name: "مخدوم سرور نوح",
+ 
+  title: "درگاہِ غوثُ الحق حضرت",
+  name: "مخدوم سرور نوحؒ",
+
   location: "ھالا نوں، ضلعي مٽياري، سنڌ",
   description:
     "مخدوم سرور نوح سنڌ جو عظيم صوفي بزرگ هو، جنهن فارسي ۾ قرآن مجيد جو ترجمو ڪيو ۽ سروري سلسلو قائم ڪيو، جنهن جو مقبرو هالا ۾ اڄ به زيارت گاهه آهي.",
@@ -15,7 +17,7 @@ export const elders = [
   { name: "MAKHDOOM MEHBOOB ZAMAN", image: "/mahboob.webp" },
   { name: "MAKHDOOM JAMEEL ZAMAN", image: "/jameel.webp" },
   { name: "MAKHDOOM AMIN FAHEEM", image: "/amin.webp" },
-  { name: "MAKHDOOM TALIB UL MOLA", image: "/talib.webp" },
+  { name: "MAKHDOOM MUHAMMAD ZAMAN TALIB-UL-MOLA", image: "/talib.webp" },
   { name: "MAKHDOOM GHULAM HYDER", image: "/hyder.webp" },
 ];
 
@@ -38,12 +40,12 @@ export const libraryContent = {
 
 export const aboutContent = {
   imageAlt: "درگاه مخدوم سرور نوح",
-  title: "درگاه حضرت مخدوم سرور نوح",
+  title: "درگاه غوثُ الحق حضرت مخدوم سرور نوحؒ",
   description:
     "هيءَ مقدس درگاهه ديني، روحاني ۽ مذهبي عقيدت جو هڪ اهم مرڪز آهي، جتي هر سال هزارين عقيدتمند ۽ زائرين محبت، عقيدت ۽ احترام سان حاضري ڀرين ٿا. هتي ايندڙ هر ماڻهوءَ کي روحاني سڪون، ديني رهنمائي ۽ بزرگن جي تعليمات مان فيض حاصل ڪرڻ جو موقعو ملي ٿو.",
   playLabel: "ويڊيو هلايو",
   followLabel: "پيرو ڪريو",
-  signature: "حضرت مخدوم سرور نوح",
+  signature: "غوثُ الحق حضرت مخدوم سرور نوحؒ",
 };
 
 export const gaadiMessage = {
@@ -80,18 +82,18 @@ export const footerContent = {
   ursDate: "۱۵",
   ursMonth: "اَرجب",
   ursDescription: "عرس جي موقعي تي خصوصي روحاني تقريب جو انعقاد ٿيندو.",
-  quote: "درگاهہ حضرت مخدوم سرور نوحؒ",
+quote: "درگاهه غوثُ الحق حضرت مخدوم سرور نوحؒ",
   quoteDescription: "جتي عقيدت مند دلين، زندہ دلي، نيڪ نيت ۽ برڪت جي اميد سان اچن ٿا.",
   gatheringsTitle: "عرس جا سالانہ گڏجاڻيون",
   gatheringsDescription: "درگاهہ جي روحاني ماحول ۾ ٿيندڙ گڏجاڻيون، دعائن ۽ برڪتن جو سلسلو آهي.",
   eventsButton: "سڀ واقعات ڏسو",
-  brand: "درگاهه مخدوم سرور نوحؒ",
+ brand: "درگاهه غوثُ الحق حضرت مخدوم سرور نوحؒ",
   address: ["درگاهه روڊ، هالا نوان", "ضلعو مٽياري، سنڌ، پاڪستان"],
   archiveName: "Sindhi",
   archiveType: "Digital Archive",
   credit: "ڊيزائن ۽ ڊويلپمينٽ:",
   creditName: "اُڏار اڪيڊمي",
-  copyright: "درگاهہ مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.",
+copyright: "درگاهه غوثُ الحق حضرت مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.",
 };
 
 export const englishHeroContent = {
