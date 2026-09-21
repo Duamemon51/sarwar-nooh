@@ -11,14 +11,17 @@ export default function ShajraPage() {
   const { language } = useLanguage();
   const isEn = language === "en";
 
-  const heroTitle = isEn ? "Lineage of Hazrat" : "عزيز جي لائين";
-  const heroSubtitle = isEn
-    ? "Hazrat Makhdoom Sarwar Nooh's Genealogy"
-    : "غوثُ الحق حضرت مخدوم سرور نوحؒ جي نسب نامي";
-  const heroAlt = isEn
-    ? "Lineage of Hazrat Makhdoom Sarwar Nooh"
-    : "عزيز جي لائين - غوثُ الحق حضرت مخدوم سرور نوحؒ جي نسب نامي";
+const heroTitle = isEn
+  ? "Lineage of Hazrat"
+  : "حضرت جو شجرو نسب";
 
+const heroSubtitle = isEn
+  ? "Hazrat Makhdoom Sarwar Nooh's Genealogy"
+  : "غوثُ الحق حضرت مخدوم سرور نوحؒ جو شجرو نسب";
+
+const heroAlt = isEn
+  ? "Lineage of Hazrat Makhdoom Sarwar Nooh"
+  : "غوثُ الحق حضرت مخدوم سرور نوحؒ جو شجرو نسب";
   return (
     <div className="min-h-screen bg-[#f7f5ef] text-[#0d2a28]">
       <Nav />
