@@ -39,11 +39,11 @@ export default function HeroSection({ compact = false, gallery = false }: { comp
       <div className="absolute inset-0 hidden flex-col justify-center px-4 sm:px-8 md:flex md:px-12 items-start">
         <div className={`flex flex-col ${gallery || language !== "en" ? "w-[42%] max-w-[500px] items-start text-left" : "w-[56%] max-w-[680px] items-start text-left"}`}>
           <div className={`flex flex-col gap-0 ${gallery ? "ms-[70px] max-w-[520px] items-start" : language === "en" ? "ms-[24px] max-w-[520px] items-start" : "ms-[12px] max-w-[340px] items-start"}`}>
-            <h1 className="text-[clamp(2.8rem,4vw,3.8rem)] font-bold leading-none text-[#e8c98a]">
+            <h1 className={`${displayFont} text-[clamp(2.8rem,4vw,3.8rem)] font-bold leading-none text-[#e8c98a]`}>
               {content.title}
             </h1>
             {!gallery && (
-              <h2 className="text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold leading-none text-[#e8c98a]">
+              <h2 className={ `${displayFont} text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold leading-none text-[#e8c98a]` }>
                 {name}
               </h2>
             )}
@@ -52,7 +52,7 @@ export default function HeroSection({ compact = false, gallery = false }: { comp
             {location}
           </p>}
           <p
-            className={`mb-6 max-w-[390px] text-[clamp(1rem,1.5vw,1.3rem)] leading-8 text-white/80 ${gallery ? "mt-4 ms-[24px]" : language === "en" ? "ms-[24px]" : "me-[12px]"}`}
+            className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} mb-6 max-w-[390px] text-[clamp(1rem,1.5vw,1.3rem)] leading-8 text-white/80 ${gallery ? "mt-4 ms-[24px]" : language === "en" ? "ms-[24px]" : "me-[12px]"}`}
             style={language === "en" ? undefined : { direction: "rtl", textAlign: "right" }}
           >
             {content.description}
@@ -69,11 +69,11 @@ export default function HeroSection({ compact = false, gallery = false }: { comp
         <img src="/hero-bg.webp" alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,25,0.15)_0%,rgba(7,27,25,0.55)_38%,rgba(7,27,25,0.88)_100%)]" />
         <div className="relative flex flex-1 flex-col items-start justify-center px-4 py-6 text-left">
-          <h1 className="text-[clamp(1.5rem,6vw,2rem)] font-bold leading-tight text-[#e8c98a]">{content.title}</h1>
-          {!gallery && <h2 className="text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold leading-tight text-[#e8c98a]">{name}</h2>}
+          <h1 className={`${displayFont} text-[clamp(1.5rem,6vw,2rem)] font-bold leading-tight text-[#e8c98a]`}>{content.title}</h1>
+          {!gallery && <h2 className={`${displayFont} text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold leading-tight text-[#e8c98a]`}>{name}</h2>}
           {!gallery && <p className="mt-2 mb-2 text-[clamp(0.85rem,3.2vw,1rem)] text-white">{location}</p>}
           <p
-            className={`mb-4 max-w-[270px] text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6 text-white/80 ${gallery ? "mt-3" : ""}`}
+            className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} mb-4 max-w-[270px] text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6 text-white/80 ${gallery ? "mt-3" : ""}`}
             style={language === "en" ? undefined : { direction: "rtl", textAlign: "right" }}
           >
             {content.description}

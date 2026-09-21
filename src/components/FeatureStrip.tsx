@@ -29,7 +29,7 @@ export default function FeatureStrip() {
                 />
               </div>
 
-              <div className="mt-1 text-[12px] sm:text-[15px] font-bold text-[#0d3d3a] leading-normal">
+              <div className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} mt-1 text-[12px] sm:text-[15px] font-bold text-[#0d3d3a] leading-normal`}>
                 {feature.title}
               </div>
               <div className="mt-1 leading-[1.5] text-[10px] sm:text-[12.5px] font-medium text-[#5f4026]">
@@ -61,7 +61,7 @@ export default function FeatureStrip() {
                   />
                 </div>
 
-                <div className="mt-0 text-[16px] font-bold text-[#0d3d3a] leading-normal">
+                <div className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} mt-0 text-[16px] font-bold text-[#0d3d3a] leading-normal`}>
                   {feature.title}
                 </div>
                 <div className="mt-1 leading-[1.8] text-[13px] font-medium text-[#5f4026]">

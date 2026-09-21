@@ -620,13 +620,13 @@ export default function Gallery() {
         <div className="flex flex-col gap-4 lg:grid lg:items-center lg:gap-6 lg:grid-cols-[0.62fr_2.38fr]">
           <div className="flex flex-col items-center text-center px-2 py-2 sm:items-start sm:px-4 sm:py-3 sm:text-right lg:pl-5">
             <h2
-              className={`w-full max-w-[290px] text-center font-[family-name:var(--font-display)] text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1] ${language === "en" ? "sm:translate-x-0 sm:text-left" : "sm:-translate-x-20 sm:text-right"}`}
+              className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} w-full max-w-[290px] text-center text-[20px] font-bold leading-[1.2] text-[#1f2e2f] sm:text-[clamp(1.8rem,2.3vw,2.8rem)] sm:leading-[1.1] ${language === "en" ? "sm:translate-x-0 sm:text-left" : "sm:-translate-x-20 sm:text-right"}`}
             >
               {content.title}
             </h2>
 
            <p 
-  className={`mt-4 max-w-[390px] font-[family-name:var(--font-display)] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px] ${language === "en" ? "sm:text-left" : "sm:text-right"}`}
+  className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} mt-4 max-w-[390px] text-[11px] leading-[1.7] text-[#2b2f34] sm:mt-8 sm:text-[12px] sm:leading-[1.9] md:text-[13px] ${language === "en" ? "sm:text-left" : "sm:text-right"}`}
 >
   {content.description}
 </p>
@@ -776,7 +776,7 @@ export default function Gallery() {
                 <span className="text-[11px] tracking-[0.14em] uppercase text-gold/90">
                   {String(openIndex! + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
                 </span>
-                <h3 className="font-[family-name:var(--font-display)] text-[20px] sm:text-[22px] text-indigo mt-0.5">
+                <h3 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[20px] sm:text-[22px] text-indigo mt-0.5`}>
                   {displayGalleryTitle(active.title)}
                 </h3>
                 <p className="text-[14px] sm:text-[15px] text-ink/75 mt-1 max-w-[55ch]">

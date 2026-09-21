@@ -139,7 +139,7 @@ export default function GalleryPage() {
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-10">
         {filteredImages.length === 0 ? (
           <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#0d2a28]/20 bg-white px-6 py-14 text-center">
-            <p className="font-serif text-lg text-[#0d2a28]">
+            <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-lg text-[#0d2a28]`}>
               No photos in this category yet
             </p>
             <p className="max-w-sm text-sm text-[#1c2b28]/60">

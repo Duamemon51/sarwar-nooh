@@ -63,7 +63,8 @@ export default function FamilyLegacy() {
     <section
       id="family"
       dir={isSindhi ? "rtl" : "ltr"}
-      className="scroll-mt-24 relative overflow-hidden border-y border-indigo/10 bg-parchment-warm/70"
+      lang={isSindhi ? "sd" : "en"}
+      className={`scroll-mt-24 relative overflow-hidden border-y border-indigo/10 bg-parchment-warm/70 ${isSindhi ? "font-[family-name:var(--font-sindhi)]" : "font-[family-name:var(--font-english-body)]"}`}
     >
       {/* faint architectural watermark, echoes the hero banner */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
@@ -77,10 +78,10 @@ export default function FamilyLegacy() {
               <span className="mb-2 block text-[11px] uppercase tracking-[0.18em] text-gold sm:mb-3 sm:text-[12px]">
                 {isSindhi ? "مخدوم خاندان" : "The Makhdoom family"}
               </span>
-              <h2 className="mb-3 text-[clamp(2rem,3vw,3rem)] font-[family-name:var(--font-display)] leading-[1.15] text-indigo sm:mb-4">
+              <h2 className={`${isSindhi ? "font-[family-name:var(--font-display)]" : "font-[family-name:var(--font-english-display)]"} mb-3 text-[clamp(2rem,3vw,3rem)] leading-[1.15] text-indigo sm:mb-4`}>
                 {isSindhi ? "روحاني قيادت جو ورثو" : "A Legacy of Spiritual Leadership"}
               </h2>
-              <p className="mb-6 max-w-[42ch] text-[14.5px] leading-[1.7] text-ink/75 sm:text-[15.5px]">
+              <p className={`${isSindhi ? "font-[family-name:var(--font-sindhi)]" : "font-[family-name:var(--font-english-body)]"} mb-6 max-w-[42ch] text-[14.5px] leading-[1.7] text-ink/75 sm:text-[15.5px]`}>
                 {isSindhi
                   ? "پانجه صديءَ کان وٺي، مخدوم خاندان غوثُ الحق حضرت مخدوم سرور نوحؒ جي مشن کي آمن، علم ۽ خدمت جي رستي تي اڳتي وڌي رهيو آهي."
                   : "For over five centuries, the Makhdoom family has carried forward the mission of Hazrat Makhdoom Sarwar Nooh, guiding seekers through faith, knowledge and service."}

@@ -78,7 +78,7 @@ export default function Home() {
   }, [scrollToIndex]);
 
   return (
-    <div id="top" className={`bg-white ${language === "en" ? "lang-en" : ""}`}>
+    <div id="top" lang={language === "en" ? "en" : "sd"} className={`bg-white ${language === "en" ? "lang-en" : ""}`}>
       <Nav />
 <section
   className="relative overflow-hidden mt-[60px] sm:mt-[75px]"
@@ -93,10 +93,10 @@ export default function Home() {
   <div className={`absolute inset-0 hidden md:flex flex-col justify-center px-4 sm:px-8 md:px-12 ${language === "en" ? "items-start" : "items-end"}`}>
     <div className={`${language === "en" ? "w-[56%] max-w-[680px]" : "w-[42%] max-w-[500px]"} flex flex-col ${language === "en" ? "items-start text-left" : "items-end text-right"}`}>
           <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[400px] items-end me-[68px]"} flex flex-col gap-0`}>
-        <h1 className="text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-nowrap">
+        <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-nowrap`}>
           {heroContent.title}
         </h1>
-        <h2 className="text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold text-[#e8c98a] leading-[1.0] whitespace-normal">
+        <h2 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold text-[#e8c98a] leading-[1.0] whitespace-normal`}>
           {heroContent.name}
         </h2>
       </div>
@@ -105,7 +105,7 @@ export default function Home() {
         {heroContent.location}
       </p>
 
-      <p className={`text-white/80 text-[clamp(1rem,1.5vw,1.3rem)] leading-8 mb-6 max-w-[390px] ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
+      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white/80 text-[clamp(1rem,1.5vw,1.3rem)] leading-8 mb-6 max-w-[390px] ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
         {heroContent.description}
       </p>
 
@@ -158,10 +158,10 @@ export default function Home() {
     {/* Text column — RIGHT side */}
     <div className={`relative flex-1 px-4 py-6 flex flex-col justify-center items-start ${language === "en" ? "text-left" : "text-right"}`}>
       <div className="flex flex-col items-start gap-0">
-        <h1 className="text-[clamp(1.5rem,6vw,2rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal">
+        <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(1.5rem,6vw,2rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal`}>
           {heroContent.title}
         </h1>
-        <h2 className="text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal">
+        <h2 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal`}>
           {heroContent.name}
         </h2>
       </div>
@@ -170,7 +170,7 @@ export default function Home() {
         {heroContent.location}
       </p>
 
-      <p className="text-white/80 text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6 mb-4">
+      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white/80 text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6 mb-4`}>
         {heroContent.description}
       </p>
 
