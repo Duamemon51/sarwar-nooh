@@ -68,7 +68,14 @@ export default function Footer() {
   const links = language === "en" ? englishNavLinks : navLinks;
 
   return (
-    <footer dir={language === "en" ? "ltr" : "rtl"} className="relative overflow-hidden bg-[#0d2a28] text-[#e9e4d8] font-[Noto_Sans_Arabic]">
+    <footer
+      dir={language === "en" ? "ltr" : "rtl"}
+      className={`relative overflow-hidden bg-[#0d2a28] text-[#e9e4d8] ${
+        language === "en"
+          ? "font-[family-name:var(--font-english-body)]"
+          : "font-[family-name:var(--font-sindhi)]"
+      }`}
+    >
       {/* ---------- Upcoming Events Banner ---------- */}
       <div className="relative border-b border-[#c9a961]/20 bg-[#0f2e2b]">
         <CornerOrnament className="pointer-events-none absolute right-0 top-0 h-16 w-16 -scale-x-100 md:h-24 md:w-24" />

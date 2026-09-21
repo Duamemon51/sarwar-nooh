@@ -49,10 +49,15 @@ body {
 }
 
 #top :is(h1, h2, h3, h4) {
-  font-family: var(--font-sindhi);
+  font-family: var(--font-display);
 }
 
 #top p {
+  font-family: var(--font-sindhi);
+}
+
+#top button,
+#top a {
   font-family: var(--font-sindhi);
 }
 
@@ -74,6 +79,14 @@ body {
 #top.lang-en a,
 #top.lang-en span {
   font-family: var(--font-english-body);
+}
+
+:lang(sd) :is(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+}
+
+:lang(sd) :is(p, button, a, dt, dd) {
+  font-family: var(--font-sindhi);
 }
 
 ::selection {
