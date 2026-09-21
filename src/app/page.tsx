@@ -12,6 +12,9 @@ import GaadiNasheenMessage from "@/components/GaadiNasheenMessage";
 import FamilyLegacy from "@/components/FamilyLegacy";
 import { elders, englishHeroContent, heroContent as sindhiHeroContent } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import DargahHistory from "@/components/DargahHistory";
+import SawanehMakhdoomNooh from "@/components/SawanehMakhdoomNooh";
+import SarwariJamatActivities from "@/components/Sarwarijamatactivities";
 
 const carouselElders = [...elders, elders[0]];
 
@@ -295,9 +298,10 @@ export default function Home() {
     </div>
   </div>
 </section>
-
+<DargahHistory />
       <FeatureStrip />
       <LibrarySection />
+   <SarwariJamatActivities />
       <GaadiNasheenMessage />
       <AboutDargah />
       {/* <FamilyLegacy /> */}
