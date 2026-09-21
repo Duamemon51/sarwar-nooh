@@ -300,9 +300,10 @@ export default function Home() {
 </section>
 <DargahHistory />
       <FeatureStrip />
-      <LibrarySection />
+        <GaadiNasheenMessage />
+    
    <SarwariJamatActivities />
-      <GaadiNasheenMessage />
+       <LibrarySection />
       <AboutDargah />
       {/* <FamilyLegacy /> */}
 
