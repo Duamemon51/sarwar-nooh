@@ -93,7 +93,7 @@ const SOURCES = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Decorative building blocks — site ki ornate arch/gold language     */
+/*  Decorative building blocks — site ki ornate gold language           */
 /* ------------------------------------------------------------------ */
 
 function CornerFlourish({ className = "" }: { className?: string }) {
@@ -109,123 +109,50 @@ function CornerFlourish({ className = "" }: { className?: string }) {
   );
 }
 
-/** line-art icon set — gold stroke, feature-badge ke andar bharay */
-type IconName = "chain" | "dome" | "book" | "hands";
+type HighlightIconName = "chain" | "dome" | "book" | "hands";
 
-function GlyphIcon({ name }: { name: IconName }) {
+function HighlightIcon({ name }: { name: HighlightIconName }) {
   const common = {
     fill: "none",
-    stroke: GOLD_LIGHT,
+    stroke: GOLD_DARK,
     strokeWidth: 1.8,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
-  switch (name) {
-    case "chain": // silsila / lineage
-      return (
-        <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-          <circle cx="12" cy="12" r="6" {...common} />
-          <circle cx="20" cy="20" r="6" {...common} />
-        </svg>
-      );
-    case "dome": // shrine / urs
-      return (
-        <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-          <path d="M6 27 V17 C6 10 10 5 16 5 C22 5 26 10 26 17 V27" {...common} />
-          <path d="M16 5 V2" {...common} />
-          <circle cx="16" cy="2" r="1.3" fill={GOLD_LIGHT} stroke="none" />
-          <path d="M4 27 H28" {...common} />
-        </svg>
-      );
-    case "book": // literary work
-      return (
-        <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-          <path d="M16 8 C13 6 9 6 5 7 V24 C9 23 13 23 16 25" {...common} />
-          <path d="M16 8 C19 6 23 6 27 7 V24 C23 23 19 23 16 25" {...common} />
-          <path d="M16 8 V25" {...common} />
-        </svg>
-      );
-    case "hands": // social service / unity
-      return (
-        <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-          <path d="M4 18 L11 14 L18 17 L26 12" {...common} />
-          <path d="M18 17 L23 22 C24 23 24 25 22 25 C21 25 20.5 24.5 20 24" {...common} />
-          <path d="M11 14 L15 20" {...common} />
-        </svg>
-      );
-  }
-}
 
-/** pointed-arch (mehrab) badge — homepage ke feature icons jaisa */
-function ArchBadge({ icon }: { icon: IconName }) {
   return (
-    <div className="relative mx-auto h-20 w-20">
-      <svg viewBox="0 0 100 110" className="h-full w-full" aria-hidden="true">
-        <path
-          d="M8 108 V48 C8 16 26 6 50 6 C74 6 92 16 92 48 V108 Z"
-          fill={TEAL}
-          stroke={GOLD}
-          strokeWidth="2.5"
-        />
-        <path
-          d="M18 108 V50 C18 24 32 16 50 16 C68 16 82 24 82 50 V108"
-          fill="none"
-          stroke={GOLD}
-          strokeWidth="1"
-          opacity="0.5"
-        />
-      </svg>
-      <div className="absolute inset-x-0 top-[26%] flex justify-center">
-        <GlyphIcon name={icon} />
-      </div>
-    </div>
-  );
-}
-
-/** pointed-arch image/illustration frame — chapters ke sath */
-function ArchFrame({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative ${className}`}>
-      <svg viewBox="0 0 220 260" className="h-full w-full" aria-hidden="true">
-        <defs>
-          <linearGradient id="archFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={TEAL_SOFT} />
-            <stop offset="100%" stopColor={TEAL} />
-          </linearGradient>
-          <pattern id="tileDots" width="26" height="26" patternUnits="userSpaceOnUse">
-            <circle cx="13" cy="13" r="1.3" fill={GOLD} opacity="0.35" />
-          </pattern>
-        </defs>
-        <path
-          d="M10 256 V110 C10 40 55 12 110 12 C165 12 210 40 210 110 V256 Z"
-          fill="url(#archFill)"
-          stroke={GOLD}
-          strokeWidth="3"
-        />
-        <path
-          d="M10 256 V110 C10 40 55 12 110 12 C165 12 210 40 210 110 V256 Z"
-          fill="url(#tileDots)"
-        />
-        <path
-          d="M26 256 V112 C26 52 62 28 110 28 C158 28 194 52 194 112 V256"
-          fill="none"
-          stroke={GOLD}
-          strokeWidth="1"
-          opacity="0.6"
-        />
-        <circle cx="110" cy="70" r="6" fill={GOLD_LIGHT} opacity="0.9" />
-      </svg>
-    </div>
-  );
-}
-
-function Diamond() {
-  return (
-    <span
-      className="h-2.5 w-2.5 shrink-0 rotate-45"
-      style={{ background: GOLD }}
-      aria-hidden="true"
-    />
+    <svg viewBox="0 0 32 32" className="mx-auto mb-2 h-8 w-8" aria-hidden="true">
+      {name === "chain" && (
+        <>
+          <path d="M8 10h16M8 22h16M10 10v12M22 10v12" {...common} />
+          <circle cx="8" cy="10" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
+          <circle cx="24" cy="10" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
+          <circle cx="8" cy="22" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
+          <circle cx="24" cy="22" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
+        </>
+      )}
+      {name === "dome" && (
+        <>
+          <path d="M6 27V17C6 10 10 5 16 5s10 5 10 12v10" {...common} />
+          <path d="M16 5V2M4 27h24" {...common} />
+          <circle cx="16" cy="2" r="1.3" fill={GOLD_DARK} stroke="none" />
+        </>
+      )}
+      {name === "book" && (
+        <>
+          <path d="M16 8C13 6 9 6 5 7v17c4-1 8-1 11 1" {...common} />
+          <path d="M16 8c3-2 7-2 11-1v17c-4-1-8-1-11 1M16 8v17" {...common} />
+        </>
+      )}
+      {name === "hands" && (
+        <>
+          <circle cx="16" cy="9" r="3" {...common} />
+          <circle cx="8" cy="14" r="2.5" {...common} />
+          <circle cx="24" cy="14" r="2.5" {...common} />
+          <path d="M10 25c.5-4 2.5-6 6-6s5.5 2 6 6M3 25c.3-3 1.8-4.5 5-4.5M29 25c-.3-3-1.8-4.5-5-4.5" {...common} />
+        </>
+      )}
+    </svg>
   );
 }
 
@@ -239,53 +166,53 @@ export default function SarwariJamatActivities() {
       dir="rtl"
       lang="sd"
       aria-labelledby="sarwari-title"
-      className={`${amiri.className} relative w-full overflow-x-hidden py-10 sm:py-16`}
+      className={`${amiri.className} relative w-full overflow-x-hidden py-8 sm:py-16`}
       style={{ background: CREAM, color: TEAL }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
         {/* Intro banner — homepage hero jaisa dark teal card */}
         <header
-          className="relative overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-14 sm:py-14"
+          className="relative overflow-hidden rounded-xl px-4 py-8 text-center sm:rounded-2xl sm:px-14 sm:py-14"
           style={{ background: TEAL, border: `1px solid ${GOLD}55` }}
         >
-          <CornerFlourish className="pointer-events-none absolute right-2 top-2 h-16 w-16 -scale-x-100" />
-          <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-16 w-16" />
+          <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-10 w-10 -scale-x-100 sm:right-2 sm:top-2 sm:h-16 sm:w-16" />
+          <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-10 w-10 sm:left-2 sm:top-2 sm:h-16 sm:w-16" />
 
           <div
             className="mx-auto flex items-center justify-center gap-2"
             aria-hidden="true"
           >
-            <span className="h-px w-10" style={{ background: GOLD }} />
+            <span className="h-px w-7 sm:w-10" style={{ background: GOLD }} />
             <span className="h-1.5 w-1.5 rotate-45" style={{ background: GOLD_LIGHT }} />
-            <span className="h-px w-10" style={{ background: GOLD }} />
+            <span className="h-px w-7 sm:w-10" style={{ background: GOLD }} />
           </div>
 
           <h2
             id="sarwari-title"
-            className="mt-4 text-3xl font-bold leading-snug text-white sm:text-5xl"
+            className="mt-3 text-2xl font-bold leading-snug text-white sm:mt-4 sm:text-4xl lg:text-5xl"
           >
             {TITLE}
           </h2>
-          <p className="mt-2 text-xl sm:text-2xl" style={{ color: GOLD_LIGHT }}>
+          <p className="mt-2 text-base sm:text-2xl" style={{ color: GOLD_LIGHT }}>
             {SUBTITLE}
           </p>
           <p
-            className="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed sm:text-[18px]"
+            className="mx-auto mt-4 max-w-2xl text-[14.5px] leading-relaxed sm:mt-5 sm:text-[18px]"
             style={{ color: "#dbe4e2" }}
           >
             {INTRO}
           </p>
 
           <dl
-            className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-5 pt-6 sm:grid-cols-4"
+            className="mx-auto mt-6 grid max-w-3xl grid-cols-2 gap-x-4 gap-y-4 pt-5 sm:mt-8 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-5 sm:pt-6"
             style={{ borderTop: `1px solid ${GOLD}40` }}
           >
             {FACTS.map((f) => (
               <div key={f.label}>
-                <dt className="text-[13px]" style={{ color: GOLD_LIGHT }}>
+                <dt className="text-[11.5px] sm:text-[13px]" style={{ color: GOLD_LIGHT }}>
                   {f.label}
                 </dt>
-                <dd className="mt-0.5 text-[16px] font-bold leading-snug text-white">
+                <dd className="mt-0.5 text-[14px] font-bold leading-snug text-white sm:text-[16px]">
                   {f.value}
                 </dd>
               </div>
@@ -293,45 +220,43 @@ export default function SarwariJamatActivities() {
           </dl>
         </header>
 
-        {/* Highlights row — arch badges jaisa homepage feature strip */}
-        <div className="relative mt-10 grid grid-cols-2 gap-6 sm:mt-14 sm:grid-cols-4 sm:gap-8">
+        {/* Highlights row */}
+        <div className="relative mt-8 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-4 sm:gap-8">
           {HIGHLIGHTS.map((h) => (
-            <div key={h.title} className="text-center">
-              <ArchBadge icon={h.icon} />
-              <h4 className="mt-3 text-lg font-bold sm:text-xl">{h.title}</h4>
-              <p className="mt-1 text-[14px]" style={{ color: GOLD_DARK }}>
+            <div
+              key={h.title}
+              className="rounded-xl px-2 py-4 text-center sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0"
+              style={{ background: CARD, border: `1px solid ${GOLD}30` }}
+            >
+              <HighlightIcon name={h.icon} />
+              <h4 className="text-[15px] font-bold sm:text-xl">{h.title}</h4>
+              <p className="mt-1 text-[12.5px] sm:text-[14px]" style={{ color: GOLD_DARK }}>
                 {h.text}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Chapters — arch-frame illustration + text, alternating sides */}
-        <div className="mt-14 space-y-10 sm:mt-20 sm:space-y-14">
+        {/* Chapters — text cards, alternating sides */}
+        <div className="mt-10 space-y-6 sm:mt-20 sm:space-y-14">
           {CHAPTERS.map((c, i) => {
             const reversed = i % 2 === 1;
             return (
               <article
                 key={c.id}
                 id={c.id}
-                className={`grid items-center gap-6 rounded-2xl p-5 sm:gap-10 sm:p-8 md:grid-cols-[180px_minmax(0,1fr)] ${
+                className={`grid items-center gap-4 rounded-xl p-4 sm:gap-10 sm:rounded-2xl sm:p-8 md:grid-cols-[180px_minmax(0,1fr)] ${
                   reversed ? "md:[direction:ltr]" : ""
                 }`}
                 style={{ background: CARD, border: `1px solid ${GOLD}33` }}
               >
-                <div className={reversed ? "md:[direction:rtl]" : ""}>
-                  <ArchFrame className="mx-auto h-40 w-32 sm:h-48 sm:w-40" />
-                </div>
-                <div className={reversed ? "md:[direction:rtl]" : ""}>
-                  <h3 className="flex items-center gap-3 text-xl font-bold sm:text-2xl">
-                    <Diamond />
-                    {c.heading}
-                  </h3>
-                  <div className="mt-3 space-y-3 sm:mt-4 sm:space-y-4">
+                <div className={`${reversed ? "md:[direction:rtl]" : ""} md:col-span-2`}>
+                  <h3 className="text-lg font-bold sm:text-2xl">{c.heading}</h3>
+                  <div className="mt-2.5 space-y-2.5 sm:mt-4 sm:space-y-4">
                     {c.paragraphs.map((p, j) => (
                       <p
                         key={j}
-                        className="text-[16px] leading-[1.95] sm:text-[18px] sm:leading-[2.05]"
+                        className="text-[14.5px] leading-[1.85] sm:text-[18px] sm:leading-[2.05]"
                       >
                         {p}
                       </p>
@@ -343,34 +268,9 @@ export default function SarwariJamatActivities() {
           })}
         </div>
 
-        {/* Sources */}
-        <div
-          className="mt-14 rounded-2xl p-5 sm:mt-20 sm:p-8"
-          style={{ background: CARD, border: `1px solid ${GOLD}33` }}
-        >
-          <h3 className="flex items-center gap-3 text-xl font-bold sm:text-2xl">
-            <Diamond />
-            ماخذ
-          </h3>
-          <ul className="mt-4 divide-y" style={{ borderColor: `${GOLD}30` }}>
-            {SOURCES.map((s) => (
-              <li
-                key={s.title}
-                className="flex flex-wrap items-baseline justify-between gap-2 py-3"
-                style={{ borderColor: `${GOLD}30` }}
-              >
-                <span className="text-[16px] font-bold">{s.title}</span>
-                <span className="text-[13px]" style={{ color: GOLD_DARK }}>
-                  {s.by}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+   
       </div>
 
-     
-     
     </section>
   );
 }

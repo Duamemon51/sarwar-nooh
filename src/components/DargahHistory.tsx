@@ -58,86 +58,22 @@ const CHAPTERS = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Unwan: pointed-arch heading (mehrab), manuscript ke unwan jaisa   */
+/*  Compact section heading                                            */
 /* ------------------------------------------------------------------ */
 
 function ArchHeading({ title, caption }: { title: string; caption: string }) {
   return (
-    <div className="relative mx-auto w-full max-w-5xl">
-      <svg
-        viewBox="0 0 600 300"
-        preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full"
-        aria-hidden="true"
-      >
-        <defs>
-          <radialGradient id="dargahArchFill" cx="50%" cy="28%" r="75%">
-            <stop offset="0%" stopColor="#1d5252" />
-            <stop offset="100%" stopColor={TEAL} />
-          </radialGradient>
-        </defs>
-        {/* outer arch */}
-        <path
-          d="M4 300 V130 C4 70 110 58 300 6 C490 58 596 70 596 130 V300 Z"
-          fill="url(#dargahArchFill)"
-        />
-        {/* gold double line */}
-        <path
-          d="M4 300 V130 C4 70 110 58 300 6 C490 58 596 70 596 130 V300"
-          fill="none"
-          stroke={GOLD}
-          strokeWidth="2.5"
-          vectorEffect="non-scaling-stroke"
-        />
-        <path
-          d="M20 300 V132 C20 84 122 72 300 26 C478 72 580 84 580 132 V300"
-          fill="none"
-          stroke={GOLD}
-          strokeWidth="1"
-          opacity=".7"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-
-      {/* arch ke neeche gold threshold line */}
-      <span
-        className="absolute bottom-0 left-[0.6%] right-[0.6%] h-[3px]"
-        style={{ background: GOLD }}
-        aria-hidden="true"
-      />
-
-      {/* apex diamond (SVG stretch se bachne ke liye alag) */}
-      <span
-        className="absolute left-1/2 top-[11%] h-2.5 w-2.5 -translate-x-1/2 rotate-45"
-        style={{ background: GOLD_LIGHT }}
-        aria-hidden="true"
-      />
-
-      <div className="relative flex min-h-[320px] flex-col items-center justify-end px-6 pb-9 pt-32 text-center sm:min-h-[300px] sm:px-16 sm:pb-11 sm:pt-28 lg:min-h-[360px] lg:pt-36">
-        <h2
-          id="dargah-title"
-          className="text-2xl font-bold leading-snug text-white sm:text-4xl"
-        >
-          {title}
-        </h2>
-        <div
-          className="mt-4 flex items-center gap-2 sm:mt-5"
-          aria-hidden="true"
-        >
-          <span className="h-px w-10 sm:w-16" style={{ background: GOLD }} />
-          <span
-            className="h-1.5 w-1.5 rotate-45"
-            style={{ background: GOLD_LIGHT }}
-          />
-          <span className="h-px w-10 sm:w-16" style={{ background: GOLD }} />
-        </div>
-        <p
-          className="mt-3 text-base sm:text-xl"
-          style={{ color: GOLD_LIGHT }}
-        >
-          {caption}
-        </p>
-      </div>
+    <div
+      className="mx-auto flex max-w-5xl flex-col items-center rounded-xl px-5 py-7 text-center sm:rounded-2xl sm:px-10 sm:py-9"
+      style={{ background: TEAL, border: `1px solid ${GOLD}66` }}
+    >
+      <h2 id="dargah-title" className="text-2xl font-bold leading-snug text-white sm:text-4xl">
+        {title}
+      </h2>
+      <span className="mt-3 h-px w-24" style={{ background: GOLD }} aria-hidden="true" />
+      <p className="mt-3 text-base sm:text-xl" style={{ color: GOLD_LIGHT }}>
+        {caption}
+      </p>
     </div>
   );
 }
