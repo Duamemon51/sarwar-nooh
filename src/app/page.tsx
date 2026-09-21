@@ -284,6 +284,15 @@ export default function Home() {
         </div>
       ))}
     </div>
+
+    <div className="mt-8 flex justify-center">
+      <a
+        href="/shajra"
+        className="rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold text-[#F3EAD9] transition hover:bg-[#0d2a28]"
+      >
+        شجرو ڏسو
+      </a>
+    </div>
   </div>
 </section>
 
