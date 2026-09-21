@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { X, ChevronLeft, ChevronRight as ChevronRightIcon } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 
 /**
  * /gallery
@@ -65,8 +66,23 @@ const galleryImages = [
 }));
 
 export default function GalleryPage() {
+  const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const categoryLabels: Record<string, string> = language === "en"
+    ? {
+        All: "All",
+        Dargah: "Dargah",
+        "Urs Mubarak": "Urs Mubarak",
+        Architecture: "Architecture",
+      }
+    : {
+        All: "سڀ",
+        Dargah: "درگاهه",
+        "Urs Mubarak": "عرس مبارڪ",
+        Architecture: "فنِ تعمير",
+      };
 
   const filteredImages =
     activeCategory === "All"
@@ -87,7 +103,15 @@ export default function GalleryPage() {
     });
 
   return (
-    <div className="min-h-screen bg-[#f7f5ef] text-[#1c2b28]">
+    <div
+      lang={language === "en" ? "en" : "sd"}
+      dir={language === "en" ? "ltr" : "rtl"}
+      className={`min-h-screen bg-[#f7f5ef] text-[#1c2b28] ${
+        language === "en"
+          ? "font-[family-name:var(--font-english-body)]"
+          : "font-[family-name:var(--font-sindhi)]"
+      }`}
+    >
       <Nav />
       <main>
       <HeroSection compact gallery />
@@ -105,7 +129,7 @@ export default function GalleryPage() {
                   : "border-[#0d2a28]/20 text-[#1c2b28]/70 hover:border-[#c9a961] hover:text-[#0d2a28]"
               }`}
             >
-              {cat}
+              {categoryLabels[cat]}
             </button>
           ))}
         </div>
