@@ -299,8 +299,9 @@ export default function Home() {
   </div>
 </section>
 <DargahHistory />
+ <GaadiNasheenMessage />
       <FeatureStrip />
-        <GaadiNasheenMessage />
+       
     
    <SarwariJamatActivities />
        <LibrarySection />
