@@ -1,12 +1,6 @@
 "use client";
 
-import { Amiri } from "next/font/google";
-
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
+import { useLanguage } from "@/components/LanguageProvider";
 
 /* ------------------------------------------------------------------ */
 /*  Theme — site ke screenshot (dark teal + gold + cream) se liye gaye */
@@ -79,6 +73,58 @@ const CHAPTERS = [
     paragraphs: [
       "سرواري جماعت جي سجاده نشينن جو سنڌ جي سياست ۾ به تاريخي ڪردار رهيو آهي۔ پاڪستان پيپلز پارٽي جو بنياد 1967ع ۾ هالا ۾ مخدوم طالب الموليٰ جي گهر تي رکيو ويو، ۽ خاندان جا ڪيترائي فرد مسلسل قومي ۽ صوبائي اسيمبليءَ جا ميمبر ٿيندا رهيا آهن.",
       "موجوده سجاده نشين مخدوم جميل الزمان، درگاهه غوث الحق مخدوم سرور نوح جا 19هون سرپرست ليکيا وڃن ٿا. هو پنهنجي والد مخدوم امين فهيم جي وفات کان پوءِ سرواري جماعت جي روحاني اڳواڻيءَ تي فائز ٿيا، ۽ سياسي ميدان ۾ به مسلسل سرگرم رهيا آهن.",
+    ],
+  },
+];
+
+const ENGLISH_TITLE = "Sarwari Jamaat Activities";
+const ENGLISH_SUBTITLE = "The spiritual legacy of Makhdoom Nooh lives on in Sindh";
+const ENGLISH_INTRO =
+  "The Sarwari Jamaat is a branch of the Suhrawardi order founded by Makhdoom Sarwar Nooh, active in Sindh through spiritual, literary and social service since the sixteenth century.";
+const ENGLISH_FACTS = [
+  { label: "Founder", value: "Makhdoom Sarwar Nooh" },
+  { label: "Order", value: "Suhrawardi (Sarwari branch)" },
+  { label: "Centre", value: "Dargah Hala, Matiari" },
+  { label: "Current custodian", value: "Makhdoom Jamiluz Zaman" },
+];
+const ENGLISH_HIGHLIGHTS = [
+  { icon: "chain", title: "Sarwari followers", text: "Direct disciples of Makhdoom Nooh" },
+  { icon: "dome", title: "Suhno Somar", text: "Annual Urs Mubarak" },
+  { icon: "book", title: "Literary service", text: "Talib-ul-Moula Academy" },
+  { icon: "hands", title: "Social service", text: "Service, unity and community" },
+] as const;
+const ENGLISH_CHAPTERS = [
+  {
+    id: "bunyad",
+    heading: "Foundation and spread",
+    paragraphs: [
+      "Makhdoom Sarwar Nooh is regarded as the founder of the Sarwari Jamaat, a branch of the Suhrawardi order that became influential in Sindh during the sixteenth and seventeenth centuries. Those who entered the Sarwari order directly through Makhdoom Nooh became known as Sarwari disciples.",
+      "His deputies and disciples spread across Sindh, Punjab and Kutch. After his passing, the tradition continued through successive generations under the custodianship of his descendants.",
+    ],
+  },
+  {
+    id: "urs",
+    heading: "Annual Urs - Suhno Somar",
+    paragraphs: [
+      "The annual Urs of Makhdoom Nooh Sarwar is held at the Hala dargah on the first Monday of Zul-Hajj and is locally known as Suhno Somar. Thousands of devotees travel to Hala from across the country.",
+      "A Sufi sama gathering is held before the Urs begins. The current custodian opens the observances with flowers and prayers, sharing a message of unity and neighbourly love.",
+    ],
+  },
+  {
+    id: "adab",
+    heading: "Literary and cultural service",
+    paragraphs: [
+      "The Sarwari family's connection with literature and culture grew especially strong through Makhdoom Muhammad Zaman Talib-ul-Moula, the seventeenth custodian, who loved Sindhi poetry and music from an early age.",
+      "He founded Anjuman Ilm-o-Adab in Hala and published the Sindhi weeklies Pasban and Al-Zaman. The Talib-ul-Moula Academy in Hyderabad continues to support Sindhi prose and poetry.",
+      "The family also remains connected with the Sindhi Adabi Board, supporting book fairs, poetry gatherings and the growth of the Sindhi language.",
+    ],
+  },
+  {
+    id: "khidmat",
+    heading: "Social and political role",
+    paragraphs: [
+      "The custodians of the Sarwari Jamaat have also played a historic role in Sindh's public life. The Pakistan Peoples Party was founded in 1967 at Makhdoom Talib-ul-Moula's home in Hala, and several family members have served in national and provincial assemblies.",
+      "The current custodian, Makhdoom Jamiluz Zaman, is regarded as the nineteenth guardian of Dargah Ghaus-ul-Haq Makhdoom Sarwar Nooh. He assumed spiritual leadership after the passing of his father, Makhdoom Amin Fahim, and remains active in public life.",
     ],
   },
 ];
@@ -161,12 +207,21 @@ function HighlightIcon({ name }: { name: HighlightIconName }) {
 /* ------------------------------------------------------------------ */
 
 export default function SarwariJamatActivities() {
+  const { language } = useLanguage();
+  const isEnglish = language === "en";
+  const title = isEnglish ? ENGLISH_TITLE : TITLE;
+  const subtitle = isEnglish ? ENGLISH_SUBTITLE : SUBTITLE;
+  const intro = isEnglish ? ENGLISH_INTRO : INTRO;
+  const facts = isEnglish ? ENGLISH_FACTS : FACTS;
+  const highlights = isEnglish ? ENGLISH_HIGHLIGHTS : HIGHLIGHTS;
+  const chapters = isEnglish ? ENGLISH_CHAPTERS : CHAPTERS;
+
   return (
     <section
-      dir="rtl"
-      lang="sd"
+      dir={isEnglish ? "ltr" : "rtl"}
+      lang={isEnglish ? "en" : "sd"}
       aria-labelledby="sarwari-title"
-      className={`${amiri.className} relative w-full overflow-x-hidden py-8 sm:py-16`}
+      className={`${isEnglish ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} relative w-full overflow-x-hidden py-8 sm:py-16`}
       style={{ background: CREAM, color: TEAL }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
@@ -191,23 +246,23 @@ export default function SarwariJamatActivities() {
             id="sarwari-title"
             className="mt-3 text-2xl font-bold leading-snug text-white sm:mt-4 sm:text-4xl lg:text-5xl"
           >
-            {TITLE}
+            {title}
           </h2>
           <p className="mt-2 text-base sm:text-2xl" style={{ color: GOLD_LIGHT }}>
-            {SUBTITLE}
+            {subtitle}
           </p>
           <p
             className="mx-auto mt-4 max-w-2xl text-[14.5px] leading-relaxed sm:mt-5 sm:text-[18px]"
             style={{ color: "#dbe4e2" }}
           >
-            {INTRO}
+            {intro}
           </p>
 
           <dl
             className="mx-auto mt-6 grid max-w-3xl grid-cols-2 gap-x-4 gap-y-4 pt-5 sm:mt-8 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-5 sm:pt-6"
             style={{ borderTop: `1px solid ${GOLD}40` }}
           >
-            {FACTS.map((f) => (
+            {facts.map((f) => (
               <div key={f.label}>
                 <dt className="text-[11.5px] sm:text-[13px]" style={{ color: GOLD_LIGHT }}>
                   {f.label}
@@ -222,7 +277,7 @@ export default function SarwariJamatActivities() {
 
         {/* Highlights row */}
         <div className="relative mt-8 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-4 sm:gap-8">
-          {HIGHLIGHTS.map((h) => (
+          {highlights.map((h) => (
             <div
               key={h.title}
               className="rounded-xl px-2 py-4 text-center sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0"
@@ -239,7 +294,7 @@ export default function SarwariJamatActivities() {
 
         {/* Chapters — text cards, alternating sides */}
         <div className="mt-10 space-y-6 sm:mt-20 sm:space-y-14">
-          {CHAPTERS.map((c, i) => {
+          {chapters.map((c, i) => {
             const reversed = i % 2 === 1;
             return (
               <article

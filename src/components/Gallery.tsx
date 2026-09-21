@@ -433,6 +433,42 @@ const items: GalleryItem[] = [
 // visitors page through the full set above via next/prev.
 const referenceGallery = galleryContent.featuredIndexes.map((i) => items[i]);
 
+const sindhiGalleryTitles: Record<string, string> = {
+  "Calligraphic panel": "خطاطيءَ وارو پينل",
+  "Arched mihrab niche": "محراب وارو طاق",
+  "The dargah complex": "درگاهه جو احاطو",
+  "Calligraphic inscription": "خطاطيءَ وارو ڪتبو",
+  "Prayer hall interior": "نماز هال جو اندريون منظر",
+  "The courtyard fountain": "صحن جو چشمو",
+  "At the mazar": "مزار وٽ",
+  "Inside the shrine hall": "درگاهه جي هال اندر",
+  "Arched cloister": "محرابي برآمدو",
+  "Graves in the courtyard": "صحن جون قبرون",
+  "Courtyard steps": "صحن جون ڏاڪڻيون",
+  "The tiled hall": "ٽائيلن وارو هال",
+  "The tomb canopy": "قبر جي ڇت",
+  "The entrance at Hala Sharif": "هالا شريف جو دروازو",
+  "Courtyard view": "صحن جو منظر",
+  "Courtyard walkway": "صحن جو رستو",
+  "Domes of the shrine": "درگاهه جا گنبذ",
+  "The dargah at Hala": "هالا جي درگاهه",
+  "Sunlit hall": "روشنيءَ وارو هال",
+  "The courtyard": "درگاهه جو صحن",
+  "Facade detail": "عمارت جو تفصيلی منظر",
+  "Tilework detail": "ٽائيلن جو تفصيل",
+  "Dome and steps": "گنبذ ۽ ڏاڪڻيون",
+  "Corner of the tomb": "مزار جو ڪنڊ",
+  "The domed shrine": "گنبذن واري درگاهه",
+  "Calligraphic wall panel": "ڀت جو خطاطيءَ وارو پينل",
+  "Path to the graves": "قبرن ڏانهن رستو",
+  "Doorway to the graves": "قبرن ڏانهن دروازو",
+  "Chadars at the grave": "قبر تي چادرون",
+  "Graves along the path": "رستي جي ڪناري قبرون",
+  "Chadar-covered graves": "چادرن سان ڍڪيل قبرون",
+  "Tiled archway": "ٽائيلن وارو محراب",
+  "Walkway by the tomb": "مزار ڀرسان رستو",
+};
+
 function EyeIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" aria-hidden="true">
@@ -490,6 +526,8 @@ function ArrowRightIcon() {
 export default function Gallery() {
   const { language } = useLanguage();
   const content = language === "en" ? englishGalleryContent : galleryContent;
+  const displayGalleryTitle = (title: string) =>
+    language === "en" ? title : (sindhiGalleryTitles[title] ?? title);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [entered, setEntered] = useState(false);
   const touchStartX = useRef<number | null>(null);
@@ -685,7 +723,7 @@ export default function Gallery() {
           onClick={() => setOpenIndex(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={active.title}
+          aria-label={displayGalleryTitle(active.title)}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -739,7 +777,7 @@ export default function Gallery() {
                   {String(openIndex! + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
                 </span>
                 <h3 className="font-[family-name:var(--font-display)] text-[20px] sm:text-[22px] text-indigo mt-0.5">
-                  {active.title}
+                  {displayGalleryTitle(active.title)}
                 </h3>
                 <p className="text-[14px] sm:text-[15px] text-ink/75 mt-1 max-w-[55ch]">
                   {active.caption}

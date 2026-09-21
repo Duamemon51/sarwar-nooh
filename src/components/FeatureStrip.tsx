@@ -6,7 +6,12 @@ export default function FeatureStrip() {
   const content = language === "en" ? englishFeatures : features;
 
   return (
-    <section className="relative bg-[#f9f4e8] border-y-4 border-[#193D44]">
+    <section
+      lang={language === "en" ? "en" : "sd"}
+      className={`relative border-y-4 border-[#193D44] bg-[#f9f4e8] ${
+        language === "en" ? "" : "font-[family-name:var(--font-sindhi)]"
+      }`}
+    >
       <div className="mx-auto max-w-[1400px] px-4 py-8 md:py-10">
         {/* Mobile & sm: wrapped flex, 3 per row, centered last row */}
         <div className="flex flex-wrap justify-center gap-y-6 md:hidden">

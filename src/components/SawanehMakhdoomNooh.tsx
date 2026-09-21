@@ -1,15 +1,5 @@
 "use client";
 
-import { Amiri } from "next/font/google";
-
-// Site ke font se milta-julta Naskh font. Apna font ho to `amiri.className`
-// ki jagah apni class laga dein.
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
-
 /* Theme (site ke screenshots se liye gaye rang) */
 const TEAL = "#123a3a";
 const GOLD = "#c5a964";
@@ -218,7 +208,7 @@ export default function SawanehMakhdoomNooh() {
       dir="rtl"
       lang="sd"
       aria-labelledby="sawaneh-title"
-      className={`${amiri.className} w-full overflow-x-hidden bg-white px-4 py-10 sm:px-10 sm:py-16 lg:px-16`}
+      className="font-[family-name:var(--font-sindhi)] w-full overflow-x-hidden bg-white px-4 py-10 sm:px-10 sm:py-16 lg:px-16"
       style={{ color: TEAL }}
     >
       <div className="mx-auto max-w-7xl">

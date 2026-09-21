@@ -1,14 +1,6 @@
 "use client";
 
-import { Amiri } from "next/font/google";
-
-// Site ke font se milta-julta Naskh font. Apna font ho to `amiri.className`
-// ki jagah apni class laga dein.
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
+import { useLanguage } from "@/components/LanguageProvider";
 
 /* Theme (site ke screenshots se liye gaye rang) */
 const TEAL = "#123a3a";
@@ -57,6 +49,38 @@ const CHAPTERS = [
   },
 ];
 
+const ENGLISH_TITLE = "The History of Dargah Sharif Makhdoom Sarwar Nooh";
+const ENGLISH_CAPTION = "Ghaus-ul-Haq Hazrat Makhdoom Sarwar Nooh";
+const ENGLISH_CHAPTERS = [
+  {
+    heading: "Lineage and birth",
+    text: "Makhdoom Sarwar Nooh, originally named Makhdoom Lutfullah, was a great Sufi, scholar and teacher of Sindh in the sixteenth century. He was born around 1505 near Tori village, close to Halkandi. His father, Makhdoom Nematullah, was a renowned figure of the Suhrawardi order.",
+    notes: [
+      { label: "Original name", value: "Makhdoom Lutfullah" },
+      { label: "Birth", value: "Around 1505, Tori village" },
+      { label: "Father", value: "Makhdoom Nematullah" },
+    ],
+  },
+  {
+    heading: "Learning and spiritual order",
+    text: "He received his early religious education in Halkandi from Makhdoom Arabi, also known as Shah Deno. He belonged to the Suhrawardi-Owaisi tradition and is regarded as the founder of the Sarwari order in Sindh. He translated the Holy Quran into Persian and held religious gatherings and sermons at his khanqah, inspiring many people through his knowledge and spiritual grace.",
+    notes: [
+      { label: "Teacher", value: "Makhdoom Arabi (Shah Deno)" },
+      { label: "Order", value: "Suhrawardi-Owaisi, Sarwari" },
+      { label: "Scholarly work", value: "Persian translation of the Quran" },
+    ],
+  },
+  {
+    heading: "Passing and the dargah",
+    text: "Makhdoom Sarwar Nooh passed away in 1590. His blessed tomb is in Hala. The custodianship of the dargah has continued through his descendants, and large numbers of visitors come every day to pay their respects.",
+    notes: [
+      { label: "Passed away", value: "1590" },
+      { label: "Tomb", value: "Hala, Sindh" },
+      { label: "Distance", value: "Around 56 km from Hyderabad" },
+    ],
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Compact section heading                                            */
 /* ------------------------------------------------------------------ */
@@ -90,18 +114,24 @@ export default function DargahHistory({
   ctaHref?: string;
   ctaLabel?: string;
 }) {
+  const { language } = useLanguage();
+  const isEnglish = language === "en";
+  const title = isEnglish ? ENGLISH_TITLE : TITLE;
+  const caption = isEnglish ? ENGLISH_CAPTION : CAPTION;
+  const chapters = isEnglish ? ENGLISH_CHAPTERS : CHAPTERS;
+
   return (
     <section
-      dir="rtl"
-      lang="sd"
+      dir={isEnglish ? "ltr" : "rtl"}
+      lang={isEnglish ? "en" : "sd"}
       aria-labelledby="dargah-title"
-      className={`${amiri.className} w-full overflow-x-hidden bg-white px-4 pb-16 pt-10 sm:px-10 sm:pb-24 sm:pt-14 lg:px-16`}
+      className={`${isEnglish ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} w-full overflow-x-hidden bg-white px-4 pb-16 pt-10 sm:px-10 sm:pb-24 sm:pt-14 lg:px-16`}
       style={{ color: TEAL }}
     >
-      <ArchHeading title={TITLE} caption={CAPTION} />
+      <ArchHeading title={title} caption={caption} />
 
       <div className="mx-auto mt-8 max-w-7xl sm:mt-16">
-        {CHAPTERS.map((c, i) => (
+        {chapters.map((c, i) => (
           <article
             key={c.heading}
             className="grid gap-5 py-7 sm:py-9 md:grid-cols-[minmax(0,1fr)_320px] md:gap-16"

@@ -78,7 +78,7 @@ export default function Footer() {
           {/* Rightmost: event card */}
           <div className={`flex items-center gap-5 justify-self-center text-center md:justify-self-end ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <div>
-              <p className="font-[Noto_Nastaliq_Urdu] text-lg leading-relaxed text-white md:text-xl">
+              <p className="font-[family-name:var(--font-sindhi)] text-lg leading-relaxed text-white md:text-xl">
                 {content.ursTitle}
               </p>
               <div className="mt-3 flex items-center gap-4 rounded-xl border border-[#c9a961]/40 bg-[#0d2a28]/70 px-4 py-3 backdrop-blur-sm md:px-5 md:py-4">
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Center: quote */}
           <div className="flex flex-col items-center text-center">
-            <p className="font-[Noto_Nastaliq_Urdu] text-xl leading-loose text-white sm:text-2xl md:text-3xl">
+            <p className="font-[family-name:var(--font-sindhi)] text-xl leading-loose text-white sm:text-2xl md:text-3xl">
               &rdquo;{content.quote}&ldquo;
             </p>
             <p className="mt-3 max-w-xs text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
@@ -108,7 +108,7 @@ export default function Footer() {
           <div className={`flex min-w-0 max-w-full flex-col items-center gap-3 text-center justify-self-center md:flex-row md:items-center md:gap-4 md:justify-self-start ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <LanternMark className="h-20 w-12 shrink-0 md:h-28 md:w-16" />
             <div className="min-w-0 max-w-xs">
-              <h2 className="font-[Noto_Nastaliq_Urdu] text-xl leading-snug text-white sm:text-2xl md:text-3xl">
+              <h2 className="font-[family-name:var(--font-sindhi)] text-xl leading-snug text-white sm:text-2xl md:text-3xl">
                 {content.gatheringsTitle}
               </h2>
               <p className="mt-2 text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">

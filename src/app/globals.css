@@ -27,8 +27,8 @@
   --color-parchment: #f3ead9;
   --color-parchment-warm: #ece0c8;
 
-  --font-display: "As Lateefi M", "Noto Nastaliq Urdu", "Noto Sans Arabic", "Amiri", serif;
-  --font-sindhi: "MB Sindhi Sahat", "Noto Nastaliq Urdu", "Noto Sans Arabic", serif;
+  --font-display: "As Lateefi M", "MB Sindhi Sahat", "Noto Sans Arabic", serif;
+  --font-sindhi: "MB Sindhi Sahat", "Noto Sans Arabic", serif;
   --font-body: "Spectral", "Georgia", serif;
   --font-english-display: "Cormorant Garamond", "Spectral", Georgia, serif;
   --font-english-body: "DM Sans", "Segoe UI", sans-serif;

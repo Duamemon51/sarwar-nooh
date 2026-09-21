@@ -1,15 +1,6 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
-import { Amiri } from "next/font/google";
-
-// Crisp Arabic/Sindhi-friendly Naskh font (vector, never blurry)
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
-
 /**
  * Design ki minimum width (px). Jis screen ki width is se kam ho,
  * poora design proportionally chhota (scale) ho jata hai — layout wahi rehta hai.
@@ -320,7 +311,7 @@ export default function ShajroTree() {
     <section
       dir="rtl"
       lang="sd"
-      className={`${amiri.className} relative w-full overflow-hidden px-2 py-4 sm:px-6 sm:py-6`}
+      className="font-[family-name:var(--font-sindhi)] relative w-full overflow-hidden px-2 py-4 sm:px-6 sm:py-6"
       style={{ background: "linear-gradient(180deg,#fbf6de 0%,#f1e8bd 100%)" }}
     >
       <FitWidth minWidth={DESIGN_WIDTH}>
