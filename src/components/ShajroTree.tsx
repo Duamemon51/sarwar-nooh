@@ -6,10 +6,11 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
  * poora design proportionally chhota (scale) ho jata hai — layout wahi rehta hai.
  * Zyada bara number = mobile par text aur chhota, kam number = text bara.
  */
-const DESIGN_WIDTH = 820;
+const DESIGN_WIDTH = 900;
 
 /* ------------------------------------------------------------------ */
 /*  DATA  — yahan se text edit karein, UI khud update ho jayegi        */
+/*  (names untouched — do not edit the array below)                   */
 /* ------------------------------------------------------------------ */
 
 const PREFIX = "حضرت سيدنا";
@@ -66,12 +67,6 @@ const NASAB = [
   "حضرت سيدنا مخدوم محمدامين فهيم رابع بن مخدوم محمد زمان طالب الموليٰ",
   "حضرت سيدنا مخدوم ظهير الدين جميل الزمان بن مخدوم امين فهيم رابع سجاده نشين درگاھ شريف هالادام حياته",
 ];
-
-const ROW_1 = NASAB.slice(0, 7);
-const ROW_2 = NASAB.slice(7, 14);
-const CENTER = NASAB[14] ?? "مخدوم امام علي ولد فبله نجميلن الدين";
-const ROW_3 = NASAB.slice(15, 22);
-const ROW_4 = NASAB.slice(22, 26);
 
 /* ------------------------------------------------------------------ */
 /*  Scale-to-fit wrapper                                               */
@@ -133,19 +128,148 @@ function FitWidth({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Small building blocks                                              */
+/*  Palette                                                             */
 /* ------------------------------------------------------------------ */
 
 const GOLD = "#c9a227";
+const GOLD_LIGHT = "#e6c55a";
+const GOLD_SOFT = "#f0dfa0";
+const DEEP_GREEN = "#0a3a2b";
+const MID_GREEN = "#125541";
+const INK = "#0a3a2b";
+
+/* ------------------------------------------------------------------ */
+/*  Ornamental building blocks                                         */
+/* ------------------------------------------------------------------ */
 
 function Star({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <g fill="none" stroke="#e6c55a" strokeWidth="1.6">
+      <g fill="none" stroke={GOLD_LIGHT} strokeWidth="1.6">
         <rect x="9" y="9" width="22" height="22" />
         <rect x="9" y="9" width="22" height="22" transform="rotate(45 20 20)" />
       </g>
-      <circle cx="20" cy="20" r="3.5" fill="#e6c55a" />
+      <circle cx="20" cy="20" r="3.5" fill={GOLD_LIGHT} />
+    </svg>
+  );
+}
+
+/** Ornate flourish used at the four corners of the outer frame */
+function CornerOrnament({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
+  const rotation = { tl: 0, tr: 90, bl: -90, br: 180 }[position];
+  const edge: Record<string, string> = {
+    tl: "top-2 left-2",
+    tr: "top-2 right-2",
+    bl: "bottom-2 left-2",
+    br: "bottom-2 right-2",
+  };
+  return (
+    <svg
+      viewBox="0 0 72 72"
+      className={`pointer-events-none absolute h-12 w-12 sm:h-16 sm:w-16 ${edge[position]}`}
+      style={{ transform: `rotate(${rotation}deg)` }}
+      aria-hidden="true"
+    >
+      <path
+        d="M4 4 H34 M4 4 V34"
+        fill="none"
+        stroke={GOLD}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <path d="M4 14 H20 M14 4 V20" fill="none" stroke={GOLD} strokeWidth="1.2" opacity="0.6" />
+      <path
+        d="M4 4 Q28 4 28 28 Q28 4 4 4"
+        fill="none"
+        stroke={GOLD_LIGHT}
+        strokeWidth="1.4"
+      />
+      <path
+        d="M9 4 Q4 4 4 9"
+        fill="none"
+        stroke={GOLD_LIGHT}
+        strokeWidth="1.2"
+      />
+      <circle cx="4" cy="4" r="3.6" fill={GOLD} />
+      <circle cx="4" cy="4" r="1.4" fill="#fff" />
+      <circle cx="21" cy="4" r="1.8" fill={GOLD_LIGHT} />
+      <circle cx="4" cy="21" r="1.8" fill={GOLD_LIGHT} />
+      <circle cx="34" cy="4" r="1" fill={GOLD} />
+      <circle cx="4" cy="34" r="1" fill={GOLD} />
+    </svg>
+  );
+}
+
+/** Small rosette / medallion, used above the main banner and to close the frame */
+function Medallion({ size = 44 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      className="mx-auto"
+      aria-hidden="true"
+    >
+      <g fill="none" stroke={GOLD} strokeWidth="1.4">
+        <circle cx="20" cy="20" r="17" />
+        <circle cx="20" cy="20" r="12.5" stroke={GOLD_LIGHT} strokeWidth="1" />
+      </g>
+      {Array.from({ length: 8 }).map((_, i) => {
+        const angle = (i * 360) / 8;
+        return (
+          <rect
+            key={i}
+            x="18.6"
+            y="4"
+            width="2.8"
+            height="7"
+            rx="1.4"
+            fill={GOLD_LIGHT}
+            transform={`rotate(${angle} 20 20)`}
+          />
+        );
+      })}
+      <circle cx="20" cy="20" r="5.5" fill={GOLD_SOFT} stroke={GOLD} strokeWidth="1.2" />
+      <circle cx="20" cy="20" r="2" fill={GOLD} />
+    </svg>
+  );
+}
+
+/** Small decorative swirl divider placed between sections */
+function Divider() {
+  return (
+    <div className="mx-auto flex w-full max-w-md items-center gap-3" aria-hidden="true">
+      <span className="h-px flex-1" style={{ background: `linear-gradient(90deg, transparent, ${GOLD})` }} />
+      <svg width="28" height="20" viewBox="0 0 28 20">
+        <path
+          d="M2 10 Q9 2 14 10 Q19 18 26 10"
+          fill="none"
+          stroke={GOLD}
+          strokeWidth="1.6"
+        />
+        <circle cx="14" cy="10" r="2.4" fill={GOLD_LIGHT} stroke={GOLD} strokeWidth="1" />
+      </svg>
+      <span className="h-px flex-1" style={{ background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
+    </div>
+  );
+}
+
+/** Faint repeating geometric motif used as a page backdrop */
+function PatternBackdrop() {
+  return (
+    <svg
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.06]"
+      aria-hidden="true"
+    >
+      <defs>
+        <pattern id="shajro-motif" width="42" height="42" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke={DEEP_GREEN} strokeWidth="1">
+            <rect x="9" y="9" width="24" height="24" />
+            <rect x="9" y="9" width="24" height="24" transform="rotate(45 21 21)" />
+          </g>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#shajro-motif)" />
     </svg>
   );
 }
@@ -159,79 +283,39 @@ function Banner({
 }) {
   const isLg = size === "lg";
   return (
-    <div
-      className={`mx-auto flex w-fit max-w-full items-center justify-center gap-3 rounded-[26px] border-[3px] text-center ${
-        isLg ? "px-14 py-3" : "px-10 py-1.5"
-      }`}
-      style={{
-        borderColor: GOLD,
-        background: "linear-gradient(180deg,#14614a 0%,#0a3a2b 100%)",
-        boxShadow:
-          "inset 0 0 0 2px rgba(230,197,90,.35), 0 6px 16px rgba(0,0,0,.25)",
-      }}
-    >
-      <Star className={isLg ? "h-8 w-8" : "h-5 w-5"} />
-      <h2 className={`font-bold text-white ${isLg ? "text-4xl" : "text-2xl"}`}>
-        {children}
-      </h2>
-      <Star className={isLg ? "h-8 w-8" : "h-5 w-5"} />
-    </div>
-  );
-}
-
-function Node({ name }: { name: string }) {
-  return (
-    <div
-      className="flex h-full min-h-[68px] flex-col items-center justify-center rounded-xl border-2 px-2 py-2 text-center"
-      style={{
-        borderColor: GOLD,
-        background: "linear-gradient(180deg,#14614a 0%,#0a3a2b 100%)",
-        boxShadow:
-          "inset 0 0 0 1.5px rgba(230,197,90,.3), 0 3px 8px rgba(0,0,0,.25)",
-      }}
-    >
-      <span className="text-[11px] leading-tight text-[#f1d77a]">{PREFIX}</span>
-      <span className="mt-0.5 text-[14px] font-bold leading-snug text-white">
-        {name}
-      </span>
-    </div>
-  );
-}
-
-const Stem = () => (
-  <div className="mx-auto h-5 w-[2px]" style={{ background: GOLD }} />
-);
-
-/** Ek row of boxes + upar wali horizontal line aur har box ka vertical stub */
-function TreeRow({ names }: { names: string[] }) {
-  const n = names.length;
-  return (
-    <div className="relative pt-5">
-      <span
-        className="absolute top-0 h-[2px]"
-        style={{
-          background: GOLD,
-          left: `calc(100% / ${n * 2})`,
-          right: `calc(100% / ${n * 2})`,
-        }}
-      />
+    <div className="relative mx-auto flex w-fit max-w-full flex-col items-center">
       <div
-        className="grid"
-        style={{ gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))` }}
+        className={`relative flex items-center justify-center gap-3 rounded-[26px] border-[3px] text-center ${
+          isLg ? "px-16 py-3.5" : "px-10 py-1.5"
+        }`}
+        style={{
+          borderColor: GOLD,
+          background: `linear-gradient(180deg, ${MID_GREEN} 0%, ${DEEP_GREEN} 100%)`,
+          boxShadow:
+            "inset 0 0 0 2px rgba(230,197,90,.35), inset 0 2px 6px rgba(255,255,255,.08), 0 8px 20px rgba(0,0,0,.28)",
+        }}
       >
-        {names.map((name, i) => (
-          <div key={`${name}-${i}`} className="relative px-1">
-            <span
-              className="absolute -top-5 left-1/2 h-5 w-[2px] -translate-x-1/2"
-              style={{ background: GOLD }}
-            />
-            <Node name={name} />
-          </div>
-        ))}
+        <Star className={isLg ? "h-8 w-8 shrink-0" : "h-5 w-5 shrink-0"} />
+        <h2
+          className={`font-bold tracking-wide text-white ${isLg ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"}`}
+          style={{ textShadow: "0 2px 6px rgba(0,0,0,.35)" }}
+        >
+          {children}
+        </h2>
+        <Star className={isLg ? "h-8 w-8 shrink-0" : "h-5 w-5 shrink-0"} />
       </div>
+      {/* small hanging accent under the banner */}
+      <svg width="46" height="16" viewBox="0 0 46 16" className="-mt-px" aria-hidden="true">
+        <path d="M23 0 L23 9" stroke={GOLD} strokeWidth="2" />
+        <circle cx="23" cy="12" r="3" fill={GOLD_LIGHT} stroke={GOLD} strokeWidth="1" />
+      </svg>
     </div>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/*  Enumerated list section                                            */
+/* ------------------------------------------------------------------ */
 
 function NasabList({
   items,
@@ -244,19 +328,35 @@ function NasabList({
 }) {
   return (
     <ol
-      className={`space-y-1.5 ${divider ? "border-r-2 pr-6" : "pl-6"}`}
+      className={`space-y-2 ${divider ? "border-r-2 pr-5 sm:pr-6" : "pl-3 sm:pl-6"}`}
       style={divider ? { borderColor: GOLD } : undefined}
     >
       {items.map((text, i) => {
         const n = start + i;
         const unknown = text === "؟";
+        const alt = n % 2 === 0;
         return (
           <li
             key={n}
-            className="flex items-baseline gap-2 text-[17px] leading-relaxed text-[#0a3a2b]"
+            className="flex items-center gap-3 rounded-xl px-3 py-2 text-[15.5px] sm:text-[17px] leading-relaxed transition-shadow"
+            style={{
+              color: INK,
+              background: alt
+                ? "linear-gradient(90deg, rgba(201,162,39,.14), rgba(201,162,39,.04))"
+                : "rgba(255,255,255,.5)",
+              border: `1px solid ${alt ? "rgba(201,162,39,.4)" : "rgba(201,162,39,.18)"}`,
+              boxShadow: "0 1px 2px rgba(10,58,43,.06)",
+            }}
           >
-            <span className="w-8 shrink-0 text-left font-bold text-[#8a6d10]">
-              {n}.
+            <span
+              className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white"
+              style={{
+                background: `linear-gradient(180deg, ${MID_GREEN}, ${DEEP_GREEN})`,
+                border: `1.5px solid ${GOLD_LIGHT}`,
+                boxShadow: "0 2px 5px rgba(10,58,43,.35)",
+              }}
+            >
+              {n}
             </span>
             <span className={unknown ? "text-[#8a6d10]/70" : "font-bold"}>
               {text}
@@ -273,7 +373,7 @@ function NasabList({
 /* ------------------------------------------------------------------ */
 
 export default function ShajroTree() {
-  const RIGHT_COLUMN_COUNT = 27;
+  const RIGHT_COLUMN_COUNT = 26;
   const rightCol = NASAB.slice(0, RIGHT_COLUMN_COUNT);
   const leftCol = NASAB.slice(RIGHT_COLUMN_COUNT);
 
@@ -281,50 +381,58 @@ export default function ShajroTree() {
     <section
       dir="rtl"
       lang="sd"
-      className="font-[family-name:var(--font-sindhi)] relative w-full overflow-hidden px-2 py-4 sm:px-6 sm:py-6"
-      style={{ background: "linear-gradient(180deg,#fbf6de 0%,#f1e8bd 100%)" }}
+      className="font-[family-name:var(--font-sindhi)] relative w-full overflow-hidden px-2 py-6 sm:px-6 sm:py-10"
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 0%, #fffaea 0%, #fbf6de 45%, #f1e8bd 100%)",
+      }}
     >
+      <PatternBackdrop />
+
       <FitWidth minWidth={DESIGN_WIDTH}>
         <div
-          className="relative rounded-2xl p-8"
+          className="relative rounded-[28px] p-6 sm:p-10"
           style={{
             border: `4px double ${GOLD}`,
-            boxShadow: "inset 0 0 0 6px rgba(201,162,39,.12)",
+            background:
+              "linear-gradient(160deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,.2) 100%)",
+            boxShadow:
+              "inset 0 0 0 6px rgba(201,162,39,.16), inset 0 0 60px rgba(201,162,39,.08), 0 18px 48px rgba(10,58,43,.2)",
           }}
         >
-          <Banner>شجرو حضرت غوث الحق مخدوم نوح</Banner>
+          <CornerOrnament position="tl" />
+          <CornerOrnament position="tr" />
+          <CornerOrnament position="bl" />
+          <CornerOrnament position="br" />
 
-          <div className="mt-5">
-            <Banner size="md">شجرو</Banner>
+          <Medallion />
+
+          <div className="mt-3">
+            <Banner>شجرو حضرت غوث الحق مخدوم نوح</Banner>
           </div>
 
-          <div className="mt-2">
-            <TreeRow names={ROW_1} />
-            <Stem />
-            <TreeRow names={ROW_2} />
-            <Stem />
-            <div className="mx-auto max-w-[460px] px-1">
-              <Node name={CENTER} />
-            </div>
-            <Stem />
-            <TreeRow names={ROW_3} />
-            <Stem />
-            <TreeRow names={ROW_4} />
+          <div className="mt-8 mb-3">
+            <Divider />
           </div>
 
-          <div className="mt-8">
-            <Banner>شجرو نسب غالب الستورة</Banner>
-          </div>
+          <Banner size="md">مڪمل شجرو</Banner>
 
           <div
-            className="mt-5 grid grid-cols-2 rounded-xl p-6"
+            className="mt-6 grid grid-cols-2 gap-2 rounded-2xl p-4 sm:gap-3 sm:p-8"
             style={{
               border: `2px solid ${GOLD}`,
-              background: "rgba(255,255,255,.35)",
+              background:
+                "linear-gradient(160deg, rgba(255,255,255,.55), rgba(255,250,230,.35))",
+              boxShadow:
+                "inset 0 0 40px rgba(201,162,39,.1), 0 6px 18px rgba(10,58,43,.08)",
             }}
           >
             <NasabList items={rightCol} start={1} />
             <NasabList items={leftCol} start={RIGHT_COLUMN_COUNT + 1} divider />
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <Medallion size={34} />
           </div>
         </div>
       </FitWidth>
