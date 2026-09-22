@@ -21,49 +21,17 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 const categories = ["All", "Dargah", "Urs Mubarak", "Architecture"];
 
-const galleryImages = [
-  ["01-calligraphic-panel", "Calligraphic panel", "Architecture"],
-  ["02-mihrab-niche", "Arched mihrab niche", "Architecture"],
-  ["03-dargah-complex-wide", "The dargah complex", "Dargah"],
-  ["04-calligraphic-inscription", "Calligraphic inscription", "Architecture"],
-  ["05-prayer-hall-interior", "Prayer hall interior", "Dargah"],
-  ["06-courtyard-fountain", "The courtyard fountain", "Dargah"],
-  ["07-mazar-chadars-railing", "At the mazar", "Urs Mubarak"],
-  ["09-shrine-hall-floor", "Inside the shrine hall", "Dargah"],
-  ["10-arched-cloister", "Arched cloister", "Architecture"],
-  ["11-graves-courtyard", "Graves in the courtyard", "Dargah"],
-  ["12-courtyard-steps", "Courtyard steps", "Dargah"],
-  ["13-tiled-hall-corner", "The tiled hall", "Architecture"],
-  ["14-tomb-canopy", "The tomb canopy", "Architecture"],
-  ["15-shrine-hall-visitors", "Inside the shrine hall", "Dargah"],
-  ["16-entrance-gate", "The entrance at Hala Sharif", "Architecture"],
-  ["17-courtyard-view-1", "Courtyard view", "Dargah"],
-  ["18-courtyard-walkway-1", "Courtyard walkway", "Dargah"],
-  ["19-shrine-domes", "Domes of the shrine", "Architecture"],
-  ["20-dargah-hala-facade", "The dargah at Hala", "Architecture"],
-  ["21-sunlit-hall", "Sunlit hall", "Dargah"],
-  ["22-courtyard-wide-1", "The courtyard", "Dargah"],
-  ["23-facade-detail-1", "Facade detail", "Architecture"],
-  ["24-tilework-detail", "Tilework detail", "Architecture"],
-  ["25-dome-and-steps", "Dome and steps", "Architecture"],
-  ["26-tomb-corner", "Corner of the tomb", "Architecture"],
-  ["27-domed-shrine", "The domed shrine", "Architecture"],
-  ["28-calligraphic-wall-panel", "Calligraphic wall panel", "Architecture"],
-  ["29-path-to-graves", "Path to the graves", "Dargah"],
-  ["30-doorway-to-graves", "Doorway to the graves", "Dargah"],
-  ["31-chadars-at-grave", "Chadars at the grave", "Urs Mubarak"],
-  ["32-graves-along-path", "Graves along the path", "Urs Mubarak"],
-  ["33-chadar-covered-graves", "Chadar-covered graves", "Urs Mubarak"],
-  ["34-tiled-archway", "Tiled archway", "Architecture"],
-  ["35-courtyard-walkway-2", "Courtyard walkway", "Dargah"],
-  ["36-courtyard-wide-2", "The courtyard", "Dargah"],
-  ["37-walkway-by-tomb", "Walkway by the tomb", "Dargah"],
-  ["38-courtyard-wide-3", "The courtyard", "Dargah"],
-].map(([name, alt, category]) => ({
-  src: `/gallery/dargah-${name}.webp`,
-  alt,
-  category,
-}));
+const galleryImages = Array.from({ length: 79 }, (_, index) => {
+  const number = index + 1;
+  const padded = String(number).padStart(2, "0");
+  const isWebp = number <= 38;
+
+  return {
+    src: `/gallery/gallery-${padded}.${isWebp ? "webp" : "jpeg"}`,
+    alt: `Gallery image ${number}`,
+    category: "Dargah",
+  };
+});
 
 export default function GalleryPage() {
   const { language } = useLanguage();
