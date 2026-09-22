@@ -20,9 +20,9 @@ const PREFIX = "حضرت سيدنا";
  * khalifa awwal Hazrat Abu Bakr Siddiq se le kar mojooda Sajjada Nashin tak).
  */
 const NASAB = [
-  "خليفه اول حضرت سيدنا ابو بڪر صديق",
-  "حضرت سيدنا محمد بن ابو بڪر صديق",
-  "حضرت سيدنا القاسم بن محمد بن ابو بڪر صديق",
+  "خليفه اول حضرت سيدنا ابو بڪر صديق ؓ",
+ "حضرت سيدنا محمد بن ابو بڪر صديق ؓ",
+  "حضرت سيدنا القاسم بن محمد بن ابو بڪر صديق ؓ",
   "حضرت سيدنا عبد الرحمٰن بن القاسم",
   "حضرت سيدنا عبدالله بن عبد الرحمٰن",
   "حضرت سيدنا محمد بن عبدالله",
@@ -335,30 +335,59 @@ function NasabList({
         const n = start + i;
         const unknown = text === "؟";
         const alt = n % 2 === 0;
+        const featured = n === 28 || n === 46;
         return (
           <li
             key={n}
-            className="flex items-center gap-3 rounded-xl px-3 py-2 text-[15.5px] sm:text-[17px] leading-relaxed transition-shadow"
+            className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15.5px] sm:text-[17px] leading-relaxed transition-shadow ${
+              featured ? "relative scale-[1.04] sm:scale-[1.06]" : ""
+            }`}
             style={{
-              color: INK,
-              background: alt
+              color: featured ? "#fff" : INK,
+              background: featured
+                ? `linear-gradient(135deg, ${MID_GREEN} 0%, ${DEEP_GREEN} 100%)`
+                : alt
                 ? "linear-gradient(90deg, rgba(201,162,39,.14), rgba(201,162,39,.04))"
                 : "rgba(255,255,255,.5)",
-              border: `1px solid ${alt ? "rgba(201,162,39,.4)" : "rgba(201,162,39,.18)"}`,
-              boxShadow: "0 1px 2px rgba(10,58,43,.06)",
+              border: featured
+                ? `2px solid ${GOLD_LIGHT}`
+                : `1px solid ${alt ? "rgba(201,162,39,.4)" : "rgba(201,162,39,.18)"}`,
+              boxShadow: featured
+                ? "0 0 0 3px rgba(201,162,39,.25), 0 6px 18px rgba(10,58,43,.35)"
+                : "0 1px 2px rgba(10,58,43,.06)",
+              zIndex: featured ? 1 : undefined,
             }}
           >
+            {featured && (
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 40 40"
+                className="absolute -top-2 -right-2 drop-shadow"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 3 L23.5 15.5 L36 16.5 L26 24.5 L29.5 37 L20 29.5 L10.5 37 L14 24.5 L4 16.5 L16.5 15.5 Z"
+                  fill={GOLD_LIGHT}
+                  stroke={GOLD}
+                  strokeWidth="1.2"
+                />
+              </svg>
+            )}
             <span
               className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white"
               style={{
-                background: `linear-gradient(180deg, ${MID_GREEN}, ${DEEP_GREEN})`,
-                border: `1.5px solid ${GOLD_LIGHT}`,
+                background: featured
+                  ? `linear-gradient(180deg, ${GOLD_LIGHT}, ${GOLD})`
+                  : `linear-gradient(180deg, ${MID_GREEN}, ${DEEP_GREEN})`,
+                border: `1.5px solid ${featured ? "#fff" : GOLD_LIGHT}`,
                 boxShadow: "0 2px 5px rgba(10,58,43,.35)",
+                color: featured ? DEEP_GREEN : "#fff",
               }}
             >
               {n}
             </span>
-            <span className={unknown ? "text-[#8a6d10]/70" : "font-bold"}>
+            <span className={unknown ? "text-[#8a6d10]/70" : "font-bold"} style={featured ? { textShadow: "0 1px 3px rgba(0,0,0,.4)" } : undefined}>
               {text}
             </span>
           </li>
