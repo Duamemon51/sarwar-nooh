@@ -35,7 +35,7 @@ const FACTS = [
 
 /** arch-badge icon row — homepage ke feature-icon strip jaisa */
 const HIGHLIGHTS = [
-  { icon: "chain", title: "سرواري ٽور", text: "سڌو مخدوم نوح جا مريد" },
+  { icon: "chain", title: "سروري ٽور", text: "سڌو مخدوم نوح جا مريد" },
   { icon: "dome", title: "سهڻو سومر", text: "سالياني عرس مبارڪ" },
   { icon: "book", title: "ادبي خدمت", text: "طالب الموليٰ اڪيڊمي" },
   { icon: "hands", title: "سماجي ڪردار", text: "خدمتِ خلق ۽ اتحاد" },
