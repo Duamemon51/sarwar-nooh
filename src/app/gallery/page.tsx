@@ -21,8 +21,15 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 const categories = ["All", "Dargah", "Urs Mubarak", "Architecture"];
 
+const hiddenGalleryNumbers = new Set([9, 24, 48, 46, 51, 45, 56, 53, 58, 61, 74, 79, 76]);
+
 const galleryImages = Array.from({ length: 79 }, (_, index) => {
   const number = index + 1;
+
+  if (hiddenGalleryNumbers.has(number)) {
+    return null;
+  }
+
   const padded = String(number).padStart(2, "0");
   const isWebp = number <= 38;
 
@@ -31,7 +38,7 @@ const galleryImages = Array.from({ length: 79 }, (_, index) => {
     alt: `Gallery image ${number}`,
     category: "Dargah",
   };
-});
+}).filter((image): image is NonNullable<typeof image> => image !== null);
 
 export default function GalleryPage() {
   const { language } = useLanguage();
