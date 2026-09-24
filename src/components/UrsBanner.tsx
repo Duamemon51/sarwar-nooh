@@ -74,7 +74,7 @@ export default function UrsBanner() {
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 z-20 h-full w-[190px] select-none object-contain"
         />
-
+ 
         <div className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0f3538] to-[#0a2426] px-6 py-10 sm:px-10 sm:py-12 md:py-14">
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.15fr_0.5fr_1.15fr_0.85fr]">
             {/* heading + button (visual left) */}
