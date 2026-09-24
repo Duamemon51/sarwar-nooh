@@ -12,7 +12,7 @@ const GOLD_DARK = "#8a6f2a"; // chhote text ke liye (white par readable)
 /*  DATA  — yahan se text edit karein, UI khud update ho jayegi        */
 /* ------------------------------------------------------------------ */
 
-const TITLE = "درگاهه شريف مخدوم سرور نوح جو تاريخ";
+const TITLE = "درگاهه شريف مخدوم سرور نوح جي تاريخ";
 const CAPTION = "غوث الحق حضرت مخدوم سرور نوح";
 
 /**
