@@ -32,6 +32,7 @@ type GalleryResponse = {
 export default function GalleryPage() {
   const { language } = useLanguage();
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [settledImageSources, setSettledImageSources] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -46,6 +47,7 @@ export default function GalleryPage() {
         if (!response.ok) throw new Error("Gallery request failed");
 
         const data = (await response.json()) as GalleryResponse;
+        setSettledImageSources([]);
         setGalleryImages(data.images);
       } catch {
         if (!controller.signal.aborted) setLoadError(true);
@@ -78,6 +80,13 @@ export default function GalleryPage() {
     activeCategory === "All"
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
+  const areImagesLoading = isLoading || (
+    !loadError && galleryImages.length > 0 && settledImageSources.length < galleryImages.length
+  );
+
+  function markImageSettled(src: string) {
+    setSettledImageSources((current) => current.includes(src) ? current : [...current, src]);
+  }
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -145,27 +154,42 @@ export default function GalleryPage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
-            {filteredImages.map((img, i) => (
-              <button
-                key={`${img.src}-${img.alt}-${i}`}
-                onClick={() => openLightbox(i)}
-                className="group relative aspect-square overflow-hidden rounded-lg bg-[#0d2a28]/10"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
-                <span className="absolute inset-0 bg-[#0d2a28]/0 transition-colors group-hover:bg-[#0d2a28]/20" />
-                <span className="absolute bottom-0 left-0 right-0 translate-y-full bg-gradient-to-t from-[#0d2a28]/80 to-transparent px-3 py-2 text-left text-xs text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  {img.category}
-                </span>
-              </button>
-            ))}
-          </div>
+          <>
+            {areImagesLoading && (
+              <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-[#f7f5ef]" role="status" aria-live="polite">
+                <span className="h-9 w-9 animate-spin rounded-full border-4 border-[#0d2a28]/15 border-t-[#9b7837]" aria-hidden="true" />
+                <p className="text-sm text-[#1c2b28]/70">
+                  {language === "en" ? "Loading gallery images" : "گيلري جون تصويرون لوڊ ٿي رهيون آهن"}
+                  {galleryImages.length > 0 && ` ${settledImageSources.length} / ${galleryImages.length}`}
+                </p>
+              </div>
+            )}
+            <div className={`grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 ${areImagesLoading ? "opacity-0" : "opacity-100"}`}>
+              {filteredImages.map((img, i) => (
+                <button
+                  key={`${img.src}-${img.alt}-${i}`}
+                  onClick={() => openLightbox(i)}
+                  className="group relative aspect-square overflow-hidden rounded-lg bg-[#0d2a28]/10"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    quality={65}
+                    loading="eager"
+                    onLoad={() => markImageSettled(img.src)}
+                    onError={() => markImageSettled(img.src)}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  <span className="absolute inset-0 bg-[#0d2a28]/0 transition-colors group-hover:bg-[#0d2a28]/20" />
+                  <span className="absolute bottom-0 left-0 right-0 translate-y-full bg-gradient-to-t from-[#0d2a28]/80 to-transparent px-3 py-2 text-left text-xs text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    {img.category}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </>
         )}
       </section>
 
