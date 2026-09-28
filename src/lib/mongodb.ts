@@ -2,7 +2,7 @@ import { MongoClient, type Db } from "mongodb";
 
 type MongoGlobal = typeof globalThis & {
   galleryMongoClientPromise?: Promise<MongoClient>;
-  galleryMongoDbPromise?: Promise<Db>;
+  galleryMongoDbPromise?: Promise<Db | null>;
 };
 
 const globalForMongo = globalThis as MongoGlobal;

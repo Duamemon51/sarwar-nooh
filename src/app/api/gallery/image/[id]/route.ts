@@ -26,7 +26,7 @@ export async function GET(_request: Request, context: RouteContext<"/api/gallery
     );
     if (!image) return Response.json({ error: "Image not found." }, { status: 404 });
 
-    return new Response(new Uint8Array(image.imageData.value(true)), {
+    return new Response(new Uint8Array(image.imageData.value()), {
       headers: {
         "Content-Type": image.mimeType,
         "Cache-Control": "public, max-age=31536000, immutable",
@@ -58,7 +58,7 @@ export async function PATCH(request: Request, context: RouteContext<"/api/galler
   if (!database) return Response.json({ error: "MongoDB is not configured." }, { status: 503 });
 
   try {
-    const result = await database.collection("gallery_images").updateOne(
+    const result = await database.collection<GalleryImageDocument>("gallery_images").updateOne(
       { _id: id },
       { $set: { title: caption } },
     );
@@ -84,7 +84,7 @@ export async function DELETE(request: Request, context: RouteContext<"/api/galle
   if (!database) return Response.json({ error: "MongoDB is not configured." }, { status: 503 });
 
   try {
-    const result = await database.collection("gallery_images").deleteOne({ _id: id });
+    const result = await database.collection<GalleryImageDocument>("gallery_images").deleteOne({ _id: id });
     if (result.deletedCount === 0) return Response.json({ error: "Image not found." }, { status: 404 });
 
     return Response.json({ deleted: true });
