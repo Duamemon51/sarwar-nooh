@@ -13,6 +13,12 @@ type GalleryItem = {
   render: (large?: boolean) => ReactNode;
 };
 
+type GalleryApiImage = {
+  src: string;
+  alt: string;
+  category: string;
+};
+
 function Photo({ src, alt }: { src: string; alt: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -431,8 +437,6 @@ const items: GalleryItem[] = [
 
 // 4 featured tiles shown in the compact preview grid; the lightbox lets
 // visitors page through the full set above via next/prev.
-const referenceGallery = galleryContent.featuredIndexes.map((i) => items[i]);
-
 const sindhiGalleryTitles: Record<string, string> = {
   "Calligraphic panel": "خطاطيءَ وارو پينل",
   "Arched mihrab niche": "محراب وارو طاق",
@@ -526,6 +530,34 @@ function ArrowRightIcon() {
 export default function Gallery() {
   const { language } = useLanguage();
   const content = language === "en" ? englishGalleryContent : galleryContent;
+  const [databaseItems, setDatabaseItems] = useState<GalleryItem[] | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadGallery() {
+      try {
+        const response = await fetch("/api/gallery", { signal: controller.signal });
+        if (!response.ok) throw new Error("Gallery request failed");
+
+        const data = (await response.json()) as { images: GalleryApiImage[] };
+        setDatabaseItems(data.images.map((image) => ({
+          title: image.alt,
+          caption: image.alt,
+          render: () => <Photo src={image.src} alt={image.alt} />,
+        })));
+      } catch {
+        if (!controller.signal.aborted) setDatabaseItems(null);
+      }
+    }
+
+    void loadGallery();
+    return () => controller.abort();
+  }, []);
+
+  const displayItems = databaseItems ?? items;
+  const featuredItems = databaseItems === null
+    ? galleryContent.featuredIndexes.map((itemIndex) => ({ item: items[itemIndex], itemIndex }))
+    : displayItems.slice(0, 4).map((item, itemIndex) => ({ item, itemIndex }));
   const displayGalleryTitle = (title: string) =>
     language === "en" ? title : (sindhiGalleryTitles[title] ?? title);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -575,9 +607,9 @@ export default function Gallery() {
 
   const openAt = (idx: number) => setOpenIndex(idx);
   const next = () =>
-    setOpenIndex((i) => (i === null ? i : (i + 1) % items.length));
+    setOpenIndex((i) => (i === null ? i : (i + 1) % displayItems.length));
   const prev = () =>
-    setOpenIndex((i) => (i === null ? i : (i - 1 + items.length) % items.length));
+    setOpenIndex((i) => (i === null ? i : (i - 1 + displayItems.length) % displayItems.length));
 
   useEffect(() => {
     if (openIndex === null) {
@@ -598,7 +630,7 @@ export default function Gallery() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openIndex]);
 
-  const active = openIndex !== null ? items[openIndex] : null;
+  const active = openIndex !== null ? displayItems[openIndex] : null;
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -655,7 +687,7 @@ export default function Gallery() {
               style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x", overscrollBehaviorX: "contain" }}
               className="flex gap-2.5 overflow-x-auto px-3 pb-2 sm:hidden snap-x snap-mandatory scroll-px-3 cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {items.map((item, index) => (
+              {displayItems.map((item, index) => (
                 <button
                   key={item.title + index}
                   type="button"
@@ -681,11 +713,11 @@ export default function Gallery() {
 
             {/* sm and up: original grid */}
             <div className="hidden sm:grid sm:grid-cols-4 sm:gap-3">
-              {referenceGallery.map((item, index) => (
+              {featuredItems.map(({ item, itemIndex }) => (
                 <button
-                  key={item.title + galleryContent.featuredIndexes[index]}
+                  key={item.title + itemIndex}
                   type="button"
-                  onClick={() => openAt(galleryContent.featuredIndexes[index])}
+                  onClick={() => openAt(itemIndex)}
                   className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
@@ -774,7 +806,7 @@ export default function Gallery() {
               </div>
               <div>
                 <span className="text-[11px] tracking-[0.14em] uppercase text-gold/90">
-                  {String(openIndex! + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
+                  {String(openIndex! + 1).padStart(2, "0")} / {String(displayItems.length).padStart(2, "0")}
                 </span>
                 <h3 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[20px] sm:text-[22px] text-indigo mt-0.5`}>
                   {displayGalleryTitle(active.title)}

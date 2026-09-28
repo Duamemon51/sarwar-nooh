@@ -16,6 +16,12 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Gallery administration
+
+Set `MONGODB_URI` in `.env.local` to your MongoDB Atlas connection string, including the `dargah` database name. Add the deployment/server IP to the Atlas Network Access list and make sure the database user has read/write access. No schema migration is required; the app creates its indexes automatically. Open `/login` to register the first admin. Passwords use scrypt hashes, and revocable session tokens are stored hashed in MongoDB.
+
+Run `npm run seed:gallery` to import bundled photos from `public/gallery` into MongoDB; the seed is repeat-safe. Newly uploaded photos and gallery metadata are stored in MongoDB. Uploads are limited to 10 MB.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

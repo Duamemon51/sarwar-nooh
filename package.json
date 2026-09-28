@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:gallery": "node scripts/seed-gallery.mjs",
+    "seed:admin": "node scripts/seed-admin.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.45.0",
+    "mongodb": "^7.7.0",
     "next": "16.3.4",
     "react": "19.2.8",
     "react-dom": "19.2.8"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -19,31 +19,46 @@ import { useLanguage } from "@/components/LanguageProvider";
  * Replace the placeholder image paths below with real photos in /public/images/gallery/
  */
 
-const categories = ["All", "Dargah", "Urs Mubarak", "Architecture"];
+type GalleryImage = {
+  src: string;
+  alt: string;
+  category: string;
+};
 
-const hiddenGalleryNumbers = new Set([9, 24, 48, 46, 51, 45, 56, 53, 58, 61, 74, 79, 76]);
-
-const galleryImages = Array.from({ length: 79 }, (_, index) => {
-  const number = index + 1;
-
-  if (hiddenGalleryNumbers.has(number)) {
-    return null;
-  }
-
-  const padded = String(number).padStart(2, "0");
-  const isWebp = number <= 38;
-
-  return {
-    src: `/gallery/gallery-${padded}.${isWebp ? "webp" : "jpeg"}`,
-    alt: `Gallery image ${number}`,
-    category: "Dargah",
-  };
-}).filter((image): image is NonNullable<typeof image> => image !== null);
+type GalleryResponse = {
+  images: GalleryImage[];
+};
 
 export default function GalleryPage() {
   const { language } = useLanguage();
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadGallery() {
+      try {
+        const response = await fetch("/api/gallery", { signal: controller.signal });
+        if (!response.ok) throw new Error("Gallery request failed");
+
+        const data = (await response.json()) as GalleryResponse;
+        setGalleryImages(data.images);
+      } catch {
+        if (!controller.signal.aborted) setLoadError(true);
+      } finally {
+        if (!controller.signal.aborted) setIsLoading(false);
+      }
+    }
+
+    void loadGallery();
+    return () => controller.abort();
+  }, []);
+
+  const categories = ["All", ...new Set(galleryImages.map((image) => image.category))];
 
   const categoryLabels: Record<string, string> = language === "en"
     ? {
@@ -112,7 +127,15 @@ export default function GalleryPage() {
 
       {/* ---------- Image grid ---------- */}
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-10">
-        {filteredImages.length === 0 ? (
+        {isLoading ? (
+          <p className="py-14 text-center text-sm text-[#1c2b28]/60" role="status">
+            {language === "en" ? "Loading gallery..." : "گيلري لوڊ ٿي رهي آهي..."}
+          </p>
+        ) : loadError ? (
+          <p className="py-14 text-center text-sm text-[#1c2b28]/60" role="alert">
+            {language === "en" ? "Gallery could not be loaded. Please try again later." : "گيلري لوڊ نه ٿي سگهي. مهرباني ڪري پوءِ ٻيهر ڪوشش ڪريو."}
+          </p>
+        ) : filteredImages.length === 0 ? (
           <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#0d2a28]/20 bg-white px-6 py-14 text-center">
             <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-lg text-[#0d2a28]`}>
               No photos in this category yet
