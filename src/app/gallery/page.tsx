@@ -29,6 +29,26 @@ type GalleryResponse = {
   images: GalleryImage[];
 };
 
+function GalleryLoadingOverlay({
+  language,
+  loaded,
+  total,
+}: {
+  language: "en" | "sd";
+  loaded: number;
+  total: number;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-[#f7f5ef]" role="status" aria-live="polite">
+      <span className="h-9 w-9 animate-spin rounded-full border-4 border-[#0d2a28]/15 border-t-[#9b7837]" aria-hidden="true" />
+      <p className="text-sm text-[#1c2b28]/70">
+        {language === "en" ? "Loading gallery images" : "گيلري جون تصويرون لوڊ ٿي رهيون آهن"}
+      </p>
+      {total > 0 && <p className="text-xs text-[#1c2b28]/55">{loaded} / {total}</p>}
+    </div>
+  );
+}
+
 export default function GalleryPage() {
   const { language } = useLanguage();
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
@@ -122,7 +142,7 @@ export default function GalleryPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-1.5 text-sm transition-colors ${
+              className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1 text-sm transition-colors sm:px-4 sm:py-1.5 ${
                 activeCategory === cat
                   ? "border-[#0d2a28] bg-[#0d2a28] text-white"
                   : "border-[#0d2a28]/20 text-[#1c2b28]/70 hover:border-[#c9a961] hover:text-[#0d2a28]"
@@ -137,9 +157,7 @@ export default function GalleryPage() {
       {/* ---------- Image grid ---------- */}
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-10">
         {isLoading ? (
-          <p className="py-14 text-center text-sm text-[#1c2b28]/60" role="status">
-            {language === "en" ? "Loading gallery..." : "گيلري لوڊ ٿي رهي آهي..."}
-          </p>
+          <GalleryLoadingOverlay language={language} loaded={0} total={0} />
         ) : loadError ? (
           <p className="py-14 text-center text-sm text-[#1c2b28]/60" role="alert">
             {language === "en" ? "Gallery could not be loaded. Please try again later." : "گيلري لوڊ نه ٿي سگهي. مهرباني ڪري پوءِ ٻيهر ڪوشش ڪريو."}
@@ -156,13 +174,11 @@ export default function GalleryPage() {
         ) : (
           <>
             {areImagesLoading && (
-              <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-[#f7f5ef]" role="status" aria-live="polite">
-                <span className="h-9 w-9 animate-spin rounded-full border-4 border-[#0d2a28]/15 border-t-[#9b7837]" aria-hidden="true" />
-                <p className="text-sm text-[#1c2b28]/70">
-                  {language === "en" ? "Loading gallery images" : "گيلري جون تصويرون لوڊ ٿي رهيون آهن"}
-                  {galleryImages.length > 0 && ` ${settledImageSources.length} / ${galleryImages.length}`}
-                </p>
-              </div>
+              <GalleryLoadingOverlay
+                language={language}
+                loaded={settledImageSources.length}
+                total={galleryImages.length}
+              />
             )}
             <div className={`grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 ${areImagesLoading ? "opacity-0" : "opacity-100"}`}>
               {filteredImages.map((img, i) => (
@@ -175,6 +191,7 @@ export default function GalleryPage() {
                     src={img.src}
                     alt={img.alt}
                     fill
+                    unoptimized
                     quality={65}
                     loading="eager"
                     onLoad={() => markImageSettled(img.src)}
@@ -226,6 +243,7 @@ export default function GalleryPage() {
               src={filteredImages[lightboxIndex].src}
               alt={filteredImages[lightboxIndex].alt}
               fill
+              unoptimized
               className="object-contain"
               sizes="100vw"
             />
