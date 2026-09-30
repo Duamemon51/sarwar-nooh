@@ -68,6 +68,7 @@ export const navLinks = [
   { href: "/", label: "مک صفحو" },
   { href: "/shajra", label: "شجرو" },
   { href: "/gallery", label: "گيلري" },
+  { href: "/library", label: "لائبريري" },
 ];
 
 export const socialLinks = [
@@ -148,6 +149,7 @@ export const englishNavLinks = [
   { href: "/", label: "Home" },
   { href: "/#family", label: "Lineage" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/library", label: "Library" },
 ];
 
 export const englishFooterContent = {

@@ -1,5 +1,6 @@
 import { englishLibraryContent, libraryContent } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import Link from "next/link";
 
 export default function LibrarySection() {
   const { language } = useLanguage();
@@ -37,7 +38,7 @@ export default function LibrarySection() {
           {content.description}
         </p>
 
-        <button className={`flex items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end"}`}>
+        <Link href="/library" className={`flex items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end"}`}>
           <svg
             className={`h-2.5 w-2.5 ${language === "en" ? "order-3" : ""}`}
             viewBox="0 0 24 24"
@@ -56,7 +57,7 @@ export default function LibrarySection() {
             alt=""
             className={`h-[18px] w-[18px] object-contain ${language === "en" ? "order-1" : ""}`}
           />
-        </button>
+        </Link>
       </div>
 
       {/* DESKTOP: original absolute layout */}
@@ -83,7 +84,7 @@ export default function LibrarySection() {
             {content.description}
           </p>
 
-          <button className="flex items-center gap-2 rounded-full border border-[#FDDF96] px-6 py-1.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10">
+          <Link href="/library" className="flex items-center gap-2 rounded-full border border-[#FDDF96] px-6 py-1.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10">
             <svg
               className={`h-4 w-4 ${language === "en" ? "order-3" : ""}`}
               viewBox="0 0 24 24"
@@ -102,7 +103,7 @@ export default function LibrarySection() {
               alt=""
               className={`h-10 w-10 object-contain ${language === "en" ? "order-1" : ""}`}
             />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
