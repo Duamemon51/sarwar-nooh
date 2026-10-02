@@ -748,6 +748,18 @@ export default function Gallery() {
         </div>
       </div>
 
+      <div className="mt-4 flex justify-center sm:hidden">
+        <Link
+          href="/gallery"
+          className="inline-flex items-center gap-2 rounded-full bg-[#0d3b36] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        >
+          <span>{content.button}</span>
+          <span className={language === "sd" ? "rotate-180" : ""}>
+            <ArrowRightIcon />
+          </span>
+        </Link>
+      </div>
+
       {/* lightbox */}
       {active && (
         <div
