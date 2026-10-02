@@ -9,6 +9,7 @@ type GalleryImage = {
   src: string;
   alt: string;
   category: string;
+  featured?: boolean;
 };
 
 type PendingUpload = {
@@ -34,6 +35,7 @@ export default function GalleryAdminPage() {
   const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(null);
   const [captionDrafts, setCaptionDrafts] = useState<Record<string, string>>({});
   const [savingCaptionSrc, setSavingCaptionSrc] = useState<string | null>(null);
+  const [savingFeaturedSrc, setSavingFeaturedSrc] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
@@ -181,6 +183,32 @@ export default function GalleryAdminPage() {
       setMessage(error instanceof Error ? error.message : "Could not update caption.");
     } finally {
       setSavingCaptionSrc(null);
+    }
+  }
+
+  async function saveFeatured(image: GalleryImage, featured: boolean) {
+    setSavingFeaturedSrc(image.src);
+    setMessage("");
+    try {
+      const response = await fetch(image.src, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ featured }),
+      });
+      const result = (await response.json()) as ApiResult;
+      if (response.status === 401) setIsAuthenticated(false);
+      if (!response.ok) throw new Error(result.error ?? "Could not update homepage feature.");
+
+      setImages((currentImages) => currentImages.map((item) => (
+        item.src === image.src ? { ...item, featured } : item
+      )));
+      setIsError(false);
+      setMessage(featured ? "Photo added to the homepage gallery." : "Photo removed from the homepage gallery.");
+    } catch (error) {
+      setIsError(true);
+      setMessage(error instanceof Error ? error.message : "Could not update homepage feature.");
+    } finally {
+      setSavingFeaturedSrc(null);
     }
   }
 
@@ -336,6 +364,16 @@ export default function GalleryAdminPage() {
                           </button>
                         </form>
                         <p className="mt-1 text-xs text-[#1c2b28]/60">{image.category}</p>
+                        <label className="mt-2 flex cursor-pointer items-center gap-2 text-xs text-[#1c2b28]/75">
+                          <input
+                            type="checkbox"
+                            checked={image.featured === true}
+                            disabled={savingFeaturedSrc !== null}
+                            onChange={(event) => void saveFeatured(image, event.target.checked)}
+                            className="h-4 w-4 accent-[#0d2a28]"
+                          />
+                          Show on homepage
+                        </label>
                         <button
                           type="button"
                           onClick={() => void deleteImage(image)}

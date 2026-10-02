@@ -9,6 +9,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 type GalleryItem = {
   title: string;
   caption: string;
+  featured?: boolean;
   wide?: boolean;
   render: (large?: boolean) => ReactNode;
 };
@@ -17,6 +18,7 @@ type GalleryApiImage = {
   src: string;
   alt: string;
   category: string;
+  featured?: boolean;
 };
 
 function Photo({ src, alt }: { src: string; alt: string }) {
@@ -543,6 +545,7 @@ export default function Gallery() {
         setDatabaseItems(data.images.map((image) => ({
           title: image.alt,
           caption: image.alt,
+          featured: image.featured === true,
           render: () => <Photo src={image.src} alt={image.alt} />,
         })));
       } catch {
@@ -557,7 +560,7 @@ export default function Gallery() {
   const displayItems = databaseItems ?? items;
   const featuredItems = databaseItems === null
     ? galleryContent.featuredIndexes.map((itemIndex) => ({ item: items[itemIndex], itemIndex }))
-    : displayItems.slice(0, 4).map((item, itemIndex) => ({ item, itemIndex }));
+    : displayItems.flatMap((item, itemIndex) => item.featured ? [{ item, itemIndex }] : []);
   const displayGalleryTitle = (title: string) =>
     language === "en" ? title : (sindhiGalleryTitles[title] ?? title);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -687,11 +690,11 @@ export default function Gallery() {
               style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x", overscrollBehaviorX: "contain" }}
               className="flex gap-2.5 overflow-x-auto px-3 pb-2 sm:hidden snap-x snap-mandatory scroll-px-3 cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {displayItems.map((item, index) => (
+              {featuredItems.map(({ item, itemIndex }) => (
                 <button
-                  key={item.title + index}
+                  key={item.title + itemIndex}
                   type="button"
-                  onClick={() => openAt(index)}
+                  onClick={() => openAt(itemIndex)}
                   className="group relative aspect-[3/4] w-[27%] flex-none snap-start overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">

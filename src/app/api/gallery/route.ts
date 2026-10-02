@@ -24,6 +24,7 @@ type GalleryImageDocument = {
   _id: string;
   title: string;
   category: string;
+  featured?: boolean;
   mimeType: string;
   imageData: Binary;
   createdAt: Date;
@@ -52,13 +53,14 @@ export async function GET() {
     const database = await getMongoDb();
     if (database) {
       const uploadedImages = await database.collection<GalleryImageDocument>("gallery_images")
-        .find({}, { projection: { title: 1, category: 1, createdAt: 1 } })
+        .find({}, { projection: { title: 1, category: 1, featured: 1, createdAt: 1 } })
         .sort({ createdAt: -1 })
         .toArray();
       return Response.json({ images: uploadedImages.map((image) => ({
         src: `/api/gallery/image/${image._id}`,
         alt: image.title,
         category: image.category,
+        featured: image.featured === true,
       })) });
     }
 
@@ -77,6 +79,7 @@ export async function GET() {
           src: `/gallery/${encodeURIComponent(file.name)}`,
           alt: title,
           category: getCategory(file.name),
+          featured: false,
         };
       });
 
@@ -138,6 +141,7 @@ export async function POST(request: Request) {
       _id: randomUUID(),
       title: (captions[index] as string).trim(),
       category,
+      featured: false,
       mimeType: file.type,
       imageData: new Binary(imageBuffers[index]),
       createdAt: new Date(),

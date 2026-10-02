@@ -49,8 +49,25 @@ export async function PATCH(request: Request, context: RouteContext<"/api/galler
   }
 
   const body = await request.json().catch(() => null);
-  const caption = body && typeof body.caption === "string" ? body.caption.trim() : "";
-  if (!caption || caption.length > 80) {
+  if (!body || typeof body !== "object") {
+    return Response.json({ error: "Choose valid image details to update." }, { status: 400 });
+  }
+
+  const updates: { title?: string; featured?: boolean } = {};
+  if ("caption" in body) {
+    const caption = typeof body.caption === "string" ? body.caption.trim() : "";
+    if (!caption || caption.length > 80) {
+      return Response.json({ error: "Caption must be between 1 and 80 characters." }, { status: 400 });
+    }
+    updates.title = caption;
+  }
+  if ("featured" in body) {
+    if (typeof body.featured !== "boolean") {
+      return Response.json({ error: "Featured status must be true or false." }, { status: 400 });
+    }
+    updates.featured = body.featured;
+  }
+  if (Object.keys(updates).length === 0) {
     return Response.json({ error: "Caption must be between 1 and 80 characters." }, { status: 400 });
   }
 
@@ -60,13 +77,13 @@ export async function PATCH(request: Request, context: RouteContext<"/api/galler
   try {
     const result = await database.collection<GalleryImageDocument>("gallery_images").updateOne(
       { _id: id },
-      { $set: { title: caption } },
+      { $set: updates },
     );
     if (result.matchedCount === 0) return Response.json({ error: "Image not found." }, { status: 404 });
 
-    return Response.json({ caption });
+    return Response.json({ caption: updates.title, featured: updates.featured });
   } catch {
-    return Response.json({ error: "Unable to update image caption." }, { status: 503 });
+    return Response.json({ error: "Unable to update image details." }, { status: 503 });
   }
 }
 
