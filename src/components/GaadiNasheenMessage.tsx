@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { englishGaadiMessage, gaadiMessage } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -31,7 +32,8 @@ export default function GaadiNasheenMessage() {
             </div>
           </div>
 
-          <button
+            <Link
+              href="/library"
               className="col-start-1 row-start-2 mb-4 ml-3 flex w-fit max-w-full items-center gap-1 self-end justify-self-start rounded-full border border-[#FDDF96] px-2.5 py-1 text-[#FDDF96] transition-colors hover:bg-amber-400/10 sm:mb-6 sm:ml-8 sm:gap-2 sm:px-6 sm:py-1.5 md:mb-8 md:ml-12"
               dir="rtl"
             >
@@ -50,7 +52,7 @@ export default function GaadiNasheenMessage() {
               <span className="font-medium text-[8.5px] sm:text-base whitespace-nowrap">
                 {content.button}
               </span>
-          </button>
+          </Link>
 
           {/* Image */}
           <div className="col-start-2 row-start-2 w-full self-end md:row-span-2 md:row-start-1">
