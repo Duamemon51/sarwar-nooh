@@ -11,7 +11,27 @@ export const heroContent = {
   videoLabel: "وڊيو ڏسو",
   imageAlt: "Dargah Hazrat Makhdoom Sarwar Nooh, Hala New",
 };
+export const visitInfoContent = {
+  title: "زائرن لاءِ ڄاڻ",
+  subtitle: "درگاهه شريف جي حاضريءَ کان اڳ ضروري ڳالهيون",
+  cards: [
+    { icon: "clock", title: "حاضريءَ جو وقت", text: "روزانو فجر کان عشا تائين\nجمعرات: اڌ رات تائين" },
+    { icon: "map", title: "هنڌ", text: "درگاهه شريف، هالا نوان، ضلعو مٽياري، سنڌ" },
+    { icon: "book", title: "آداب", text: "وضو ڪري اچو، مٿو ڍڪيو، ادب ۽ خاموشي جو خيال رکو" },
+    { icon: "heart", title: "لنگر ۽ خدمت", text: "روزانو لنگر جو انتظام، نذرانا ۽ چندو قبول ڪيا وڃن ٿا" },
+  ],
+};
 
+export const englishVisitInfoContent = {
+  title: "Visitor Information",
+  subtitle: "Essential details before you visit the Dargah",
+  cards: [
+    { icon: "clock", title: "Visiting Hours", text: "Daily from Fajr to Isha\nThursday: open until midnight" },
+    { icon: "map", title: "Location", text: "Dargah Sharif, Hala New, Matiari District, Sindh" },
+    { icon: "book", title: "Etiquette", text: "Come with wudu, cover your head, maintain silence and respect" },
+    { icon: "heart", title: "Langar & Service", text: "Daily langar, donations and nazrana accepted" },
+  ],
+};
 export const elders = [
   { name: "MAKHDOOM SARKAR ALI", nameSd: "مخدوم سرڪار علي", image: "/sarkar-ali.webp" },
   { name: "MAKHDOOM MEHBOOB ZAMAN", nameSd: "مخدوم محبوب زمان", image: "/mahboob.webp" },

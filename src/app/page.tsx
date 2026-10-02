@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 import Gallery from "@/components/Gallery";
 import FeatureStrip from "@/components/FeatureStrip";
 import LibrarySection from "@/components/LibrarySection";
-import AboutDargah from "@/components/AboutDargah";
+import VisitInfo from "@/components/VisitInfo";
 import Footer from "@/components/Footer";
 import GaadiNasheenMessage from "@/components/GaadiNasheenMessage";
 import FamilyLegacy from "@/components/FamilyLegacy";
@@ -316,7 +316,7 @@ export default function Home() {
     
    <SarwariJamatActivities />
        <LibrarySection />
-      <AboutDargah />
+    <VisitInfo />
       {/* <FamilyLegacy /> */}
 
       <Gallery />

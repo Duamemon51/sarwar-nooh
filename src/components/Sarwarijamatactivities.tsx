@@ -9,7 +9,6 @@ const TEAL = "#0d2b2b";
 const TEAL_SOFT = "#163f3f";
 const GOLD = "#c9a961";
 const GOLD_LIGHT = "#f3da8f";
-const GOLD_DARK = "#8a6f2a";
 const CREAM = "#f6efdf"; // page background, jaisa feature-icon strip mein hai
 const CARD = "#fffdf6";
 
@@ -32,14 +31,6 @@ const FACTS = [
   { label: "مرڪز", value: "درگاهه هالا، مٽيارِي" },
   { label: "موجوده سجاده نشين", value: "مخدوم جميل الزمان" },
 ];
-
-/** arch-badge icon row — homepage ke feature-icon strip jaisa */
-const HIGHLIGHTS = [
-  { icon: "chain", title: "سروري ٽور", text: "سڌو مخدوم نوح جا مريد" },
-  { icon: "dome", title: "سهڻو سومر", text: "سالياني عرس مبارڪ" },
-  { icon: "book", title: "ادبي خدمت", text: "طالب الموليٰ اڪيڊمي" },
-  { icon: "hands", title: "سماجي ڪردار", text: "خدمتِ خلق ۽ اتحاد" },
-] as const;
 
 const CHAPTERS = [
   {
@@ -87,12 +78,6 @@ const ENGLISH_FACTS = [
   { label: "Centre", value: "Dargah Hala, Matiari" },
   { label: "Current custodian", value: "Makhdoom Jamiluz Zaman" },
 ];
-const ENGLISH_HIGHLIGHTS = [
-  { icon: "chain", title: "Sarwari followers", text: "Direct disciples of Makhdoom Nooh" },
-  { icon: "dome", title: "Suhno Somar", text: "Annual Urs Mubarak" },
-  { icon: "book", title: "Literary service", text: "Talib-ul-Moula Academy" },
-  { icon: "hands", title: "Social service", text: "Service, unity and community" },
-] as const;
 const ENGLISH_CHAPTERS = [
   {
     id: "bunyad",
@@ -155,53 +140,6 @@ function CornerFlourish({ className = "" }: { className?: string }) {
   );
 }
 
-type HighlightIconName = "chain" | "dome" | "book" | "hands";
-
-function HighlightIcon({ name }: { name: HighlightIconName }) {
-  const common = {
-    fill: "none",
-    stroke: GOLD_DARK,
-    strokeWidth: 1.8,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-
-  return (
-    <svg viewBox="0 0 32 32" className="mx-auto mb-2 h-8 w-8" aria-hidden="true">
-      {name === "chain" && (
-        <>
-          <path d="M8 10h16M8 22h16M10 10v12M22 10v12" {...common} />
-          <circle cx="8" cy="10" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
-          <circle cx="24" cy="10" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
-          <circle cx="8" cy="22" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
-          <circle cx="24" cy="22" r="2.5" fill={CARD} stroke={GOLD_DARK} strokeWidth="1.8" />
-        </>
-      )}
-      {name === "dome" && (
-        <>
-          <path d="M6 27V17C6 10 10 5 16 5s10 5 10 12v10" {...common} />
-          <path d="M16 5V2M4 27h24" {...common} />
-          <circle cx="16" cy="2" r="1.3" fill={GOLD_DARK} stroke="none" />
-        </>
-      )}
-      {name === "book" && (
-        <>
-          <path d="M16 8C13 6 9 6 5 7v17c4-1 8-1 11 1" {...common} />
-          <path d="M16 8c3-2 7-2 11-1v17c-4-1-8-1-11 1M16 8v17" {...common} />
-        </>
-      )}
-      {name === "hands" && (
-        <>
-          <circle cx="16" cy="9" r="3" {...common} />
-          <circle cx="8" cy="14" r="2.5" {...common} />
-          <circle cx="24" cy="14" r="2.5" {...common} />
-          <path d="M10 25c.5-4 2.5-6 6-6s5.5 2 6 6M3 25c.3-3 1.8-4.5 5-4.5M29 25c-.3-3-1.8-4.5-5-4.5" {...common} />
-        </>
-      )}
-    </svg>
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /*  Main component                                                     */
 /* ------------------------------------------------------------------ */
@@ -213,7 +151,6 @@ export default function SarwariJamatActivities() {
   const subtitle = isEnglish ? ENGLISH_SUBTITLE : SUBTITLE;
   const intro = isEnglish ? ENGLISH_INTRO : INTRO;
   const facts = isEnglish ? ENGLISH_FACTS : FACTS;
-  const highlights = isEnglish ? ENGLISH_HIGHLIGHTS : HIGHLIGHTS;
   const chapters = isEnglish ? ENGLISH_CHAPTERS : CHAPTERS;
 
   return (
@@ -275,25 +212,8 @@ export default function SarwariJamatActivities() {
           </dl>
         </header>
 
-        {/* Highlights row */}
-        <div className="relative mt-8 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-4 sm:gap-8">
-          {highlights.map((h) => (
-            <div
-              key={h.title}
-              className="rounded-xl px-2 py-4 text-center sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0"
-              style={{ background: CARD, border: `1px solid ${GOLD}30` }}
-            >
-              <HighlightIcon name={h.icon} />
-              <h4 className="text-[15px] font-bold sm:text-xl">{h.title}</h4>
-              <p className="mt-1 text-[12.5px] sm:text-[14px]" style={{ color: GOLD_DARK }}>
-                {h.text}
-              </p>
-            </div>
-          ))}
-        </div>
-
         {/* Chapters — text cards, alternating sides */}
-        <div className="mt-10 space-y-6 sm:mt-20 sm:space-y-14">
+        <div className="mt-4 space-y-2 sm:mt-8 sm:space-y-4">
           {chapters.map((c, i) => {
             const reversed = i % 2 === 1;
             return (
