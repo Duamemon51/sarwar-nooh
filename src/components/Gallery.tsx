@@ -610,9 +610,9 @@ export default function Gallery() {
 
   const openAt = (idx: number) => setOpenIndex(idx);
   const next = () =>
-    setOpenIndex((i) => (i === null ? i : (i + 1) % displayItems.length));
+    setOpenIndex((i) => (i === null || featuredItems.length === 0 ? null : (i + 1) % featuredItems.length));
   const prev = () =>
-    setOpenIndex((i) => (i === null ? i : (i - 1 + displayItems.length) % displayItems.length));
+    setOpenIndex((i) => (i === null || featuredItems.length === 0 ? null : (i - 1 + featuredItems.length) % featuredItems.length));
 
   useEffect(() => {
     if (openIndex === null) {
@@ -633,7 +633,7 @@ export default function Gallery() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openIndex]);
 
-  const active = openIndex !== null ? displayItems[openIndex] : null;
+  const active = openIndex !== null ? featuredItems[openIndex]?.item ?? null : null;
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -690,11 +690,11 @@ export default function Gallery() {
               style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x", overscrollBehaviorX: "contain" }}
               className="flex gap-2.5 overflow-x-auto px-3 pb-2 sm:hidden snap-x snap-mandatory scroll-px-3 cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {featuredItems.map(({ item, itemIndex }) => (
+              {featuredItems.map(({ item, itemIndex }, index) => (
                 <button
                   key={item.title + itemIndex}
                   type="button"
-                  onClick={() => openAt(itemIndex)}
+                  onClick={() => openAt(index)}
                   className="group relative aspect-[3/4] w-[27%] flex-none snap-start overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
@@ -716,11 +716,11 @@ export default function Gallery() {
 
             {/* sm and up: original grid */}
             <div className="hidden sm:grid sm:grid-cols-4 sm:gap-3">
-              {featuredItems.map(({ item, itemIndex }) => (
+              {featuredItems.map(({ item, itemIndex }, index) => (
                 <button
                   key={item.title + itemIndex}
                   type="button"
-                  onClick={() => openAt(itemIndex)}
+                  onClick={() => openAt(index)}
                   className="group relative aspect-[3/4] overflow-hidden rounded-md bg-[#dfe3dd] ring-1 ring-[#16333d]/15"
                 >
                   <div className="absolute inset-0 overflow-hidden">
@@ -809,7 +809,7 @@ export default function Gallery() {
               </div>
               <div>
                 <span className="text-[11px] tracking-[0.14em] uppercase text-gold/90">
-                  {String(openIndex! + 1).padStart(2, "0")} / {String(displayItems.length).padStart(2, "0")}
+                  {String(openIndex! + 1).padStart(2, "0")} / {String(featuredItems.length).padStart(2, "0")}
                 </span>
                 <h3 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[20px] sm:text-[22px] text-indigo mt-0.5`}>
                   {displayGalleryTitle(active.title)}

@@ -10,7 +10,13 @@ import AboutDargah from "@/components/AboutDargah";
 import Footer from "@/components/Footer";
 import GaadiNasheenMessage from "@/components/GaadiNasheenMessage";
 import FamilyLegacy from "@/components/FamilyLegacy";
-import { elders, englishHeroContent, heroContent as sindhiHeroContent } from "@/content";
+import {
+  elders,
+  elderSectionContent as sindhiElderSectionContent,
+  englishElderSectionContent,
+  englishHeroContent,
+  heroContent as sindhiHeroContent,
+} from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
 import DargahHistory from "@/components/DargahHistory";
 import SawanehMakhdoomNooh from "@/components/SawanehMakhdoomNooh";
@@ -21,6 +27,7 @@ const carouselElders = [...elders, elders[0]];
 export default function Home() {
   const { language } = useLanguage();
   const heroContent = language === "en" ? englishHeroContent : sindhiHeroContent;
+  const elderContent = language === "en" ? englishElderSectionContent : sindhiElderSectionContent;
   const heroDisplayFont = language === "en"
     ? "font-[family-name:var(--font-english-display)]"
     : "font-[family-name:var(--font-sindhi)]";
@@ -233,21 +240,23 @@ export default function Home() {
   ref={trackRef}
       className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-3 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
 >
-  {carouselElders.map(({ name, image }, i) => (
+  {carouselElders.map(({ name, nameSd, image }, i) => {
+    const displayName = language === "en" ? name : nameSd;
+    return (
     <div
       key={`${name}-${i}`}
       className="flex w-[32vw] flex-shrink-0 snap-center flex-col items-center justify-start"
     >
       <div className="relative aspect-square w-full max-w-[105px] overflow-hidden rounded-full bg-[#03181a]">
-        <Image src={image} alt={name} fill sizes="32vw" className="object-cover" />
+        <Image src={image} alt={displayName} fill sizes="32vw" className="object-cover" />
       </div>
-      <div className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f]">
-        {name.split(" ").slice(0, 1).join(" ")}
+      <div className={`mt-2 text-center text-[8px] font-semibold leading-snug text-[#0a1a1f] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
+        {displayName.split(" ").slice(0, 1).join(" ")}
         <br />
-        {name.split(" ").slice(1).join(" ")}
+        {displayName.split(" ").slice(1).join(" ")}
       </div>
     </div>
-  ))}
+  );})}
 </div>
 
       {/* dots */}
@@ -256,7 +265,7 @@ export default function Home() {
           <button
             key={name}
             type="button"
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`${elderContent.goToSlide} ${i + 1}`}
             onClick={() => scrollToIndex(i)}
             className={`h-1.5 rounded-full transition-all ${
               i === active ? "w-5 bg-[#123A3A]" : "w-1.5 bg-[#F3EAD9]"
@@ -268,24 +277,26 @@ export default function Home() {
 
     {/* sm and up: original grid */}
     <div className="hidden sm:grid sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 md:grid-cols-6 md:gap-x-8 md:gap-y-10">
-      {elders.map(({ name, image }) => (
+      {elders.map(({ name, nameSd, image }) => {
+        const displayName = language === "en" ? name : nameSd;
+        return (
         <div key={name} className="flex flex-col items-center justify-start">
           <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-full bg-[#03181a]">
             <Image
               src={image}
-              alt={name}
+              alt={displayName}
               fill
               sizes="(max-width: 1024px) 25vw, 220px"
               className="object-cover"
             />
           </div>
-          <div className="mt-3 text-center text-[10px] font-semibold uppercase tracking-wide leading-snug text-[#0a1a1f] sm:mt-4 sm:text-[11px] md:text-[clamp(0.75rem,1vw,0.95rem)]">
-            {name.split(" ").slice(0, 1).join(" ")}
+          <div className={`mt-3 text-center text-[10px] font-semibold leading-snug text-[#0a1a1f] sm:mt-4 sm:text-[11px] md:text-[clamp(0.75rem,1vw,0.95rem)] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
+            {displayName.split(" ").slice(0, 1).join(" ")}
             <br />
-            {name.split(" ").slice(1).join(" ")}
+            {displayName.split(" ").slice(1).join(" ")}
           </div>
         </div>
-      ))}
+      );})}
     </div>
 
     <div className="mt-8 flex justify-center">
@@ -293,7 +304,7 @@ export default function Home() {
         href="/shajra"
         className="rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold text-[#F3EAD9] transition hover:bg-[#0d2a28]"
       >
-        شجرو ڏسو
+        {elderContent.button}
       </a>
     </div>
   </div>

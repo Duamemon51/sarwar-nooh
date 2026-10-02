@@ -13,13 +13,23 @@ export const heroContent = {
 };
 
 export const elders = [
-  { name: "MAKHDOOM SARKAR ALI", image: "/sarkar-ali.webp" },
-  { name: "MAKHDOOM MEHBOOB ZAMAN", image: "/mahboob.webp" },
-  { name: "MAKHDOOM JAMEEL ZAMAN", image: "/jameel.webp" },
-  { name: "MAKHDOOM AMIN FAHEEM", image: "/amin.webp" },
-  { name: "MAKHDOOM MUHAMMAD ZAMAN TALIB-UL-MOLA", image: "/talib.webp" },
-  { name: "MAKHDOOM GHULAM HYDER", image: "/hyder.webp" },
+  { name: "MAKHDOOM SARKAR ALI", nameSd: "مخدوم سرڪار علي", image: "/sarkar-ali.webp" },
+  { name: "MAKHDOOM MEHBOOB ZAMAN", nameSd: "مخدوم محبوب زمان", image: "/mahboob.webp" },
+  { name: "MAKHDOOM JAMEEL ZAMAN", nameSd: "مخدوم جميل الزمان", image: "/jameel.webp" },
+  { name: "MAKHDOOM AMIN FAHEEM", nameSd: "مخدوم امين فهيم", image: "/amin.webp" },
+  { name: "MAKHDOOM MUHAMMAD ZAMAN TALIB-UL-MOLA", nameSd: "مخدوم محمد زمان طالب المولى", image: "/talib.webp" },
+  { name: "MAKHDOOM GHULAM HYDER", nameSd: "مخدوم غلام حيدر", image: "/hyder.webp" },
 ];
+
+export const elderSectionContent = {
+  button: "شجرو ڏسو",
+  goToSlide: "سلائيڊ ڏانھن وڃو",
+};
+
+export const englishElderSectionContent = {
+  button: "View lineage",
+  goToSlide: "Go to slide",
+};
 
 export const features = [
   { image: "/1.webp", title: "عقيدت جو اظهار", lines: ["روحاني ۽ ديني", "برڪتن جو تسلسل"] },
