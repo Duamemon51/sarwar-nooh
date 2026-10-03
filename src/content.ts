@@ -97,6 +97,7 @@ export const galleryContent = {
 export const navLinks = [
   { href: "/", label: "مک صفحو" },
   { href: "/shajra", label: "شجرو" },
+  { href: "/dastaar", label: "دستار" },
   { href: "/gallery", label: "گيلري" },
   { href: "/library", label: "لائبريري" },
 ];
@@ -178,6 +179,7 @@ export const englishGalleryContent = {
 export const englishNavLinks = [
   { href: "/", label: "Home" },
   { href: "/#family", label: "Lineage" },
+  { href: "/dastaar", label: "Dastaar" },
   { href: "/gallery", label: "Gallery" },
   { href: "/library", label: "Library" },
 ];
