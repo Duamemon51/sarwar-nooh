@@ -607,7 +607,7 @@ export default function DastarTimeline() {
               <div className="text-sm text-white/75 sm:text-base">دستار</div>
             </div>
             <div className="flex-1 px-3">
-              <div className="text-3xl font-bold sm:text-4xl" style={{ color: GOLD_LIGHT }} dir="ltr">
+              <div className="text-3xl font-bold sm:text-4xl" style={{ color: GOLD_LIGHT }}>
                 1505ع
               </div>
               <div className="text-sm text-white/75 sm:text-base">پهرين دستار</div>
