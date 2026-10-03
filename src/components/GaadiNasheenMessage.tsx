@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { englishGaadiMessage, gaadiMessage } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -31,28 +30,6 @@ export default function GaadiNasheenMessage() {
 </p>
             </div>
           </div>
-
-            <Link
-              href="/library"
-              className="col-start-1 row-start-2 mb-4 ml-3 flex w-fit max-w-full items-center gap-1 self-end justify-self-start rounded-full border border-[#FDDF96] px-2.5 py-1 text-[#FDDF96] transition-colors hover:bg-amber-400/10 sm:mb-6 sm:ml-8 sm:gap-2 sm:px-6 sm:py-1.5 md:mb-8 md:ml-12"
-              dir="rtl"
-            >
-              <svg
-                className="h-2.5 w-2.5 sm:h-4 sm:w-4 shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-              <span className="font-medium text-[8.5px] sm:text-base whitespace-nowrap">
-                {content.button}
-              </span>
-          </Link>
 
           {/* Image */}
           <div className="col-start-2 row-start-2 w-full self-end md:row-span-2 md:row-start-1">
