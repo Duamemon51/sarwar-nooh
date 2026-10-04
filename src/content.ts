@@ -43,11 +43,13 @@ export const elders = [
 
 export const elderSectionContent = {
   button: "شجرو ڏسو",
+  dastaarButton: "دستار ڏسو",
   goToSlide: "سلائيڊ ڏانھن وڃو",
 };
 
 export const englishElderSectionContent = {
   button: "View lineage",
+  dastaarButton: "View Dastaar",
   goToSlide: "Go to slide",
 };
 

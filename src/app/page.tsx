@@ -299,12 +299,18 @@ export default function Home() {
       );})}
     </div>
 
-    <div className="mt-8 flex justify-center">
+    <div className="mt-8 flex justify-center gap-3">
       <a
         href="/shajra"
         className="rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold text-[#F3EAD9] transition hover:bg-[#0d2a28]"
       >
         {elderContent.button}
+      </a>
+      <a
+        href="/dastaar"
+        className="rounded-full border border-[#123A3A] bg-white px-6 py-2.5 text-sm font-semibold text-[#123A3A] transition hover:bg-[#f6f1e7]"
+      >
+        {elderContent.dastaarButton}
       </a>
     </div>
   </div>
