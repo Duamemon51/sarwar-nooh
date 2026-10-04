@@ -263,7 +263,7 @@ const DASTARS: Dastar[] = [
   },
   {
     n: 19,
-    name: "حضرت قبل مخدوم جميل الزمان سائين عرف مخدوم ظهيرالدين (بروحام سائين) ثاني (دوئم)",
+    name: "حضرت سيدنا مخدوم ظهير الدين جميل الزمان بن مخدوم امين ”فهيم“ رابع (دامت برڪاتهم العاليه)",
     years: "1961ع کان",
     rows: [[BIRTH, "13 صفر 1381 هه (مطابق 27 جولاء 1961ع)"]],
     current: true,
@@ -375,7 +375,7 @@ function DastarCard({
                 className="mb-1.5 inline-block rounded-full px-3 py-0.5 text-xs font-bold sm:text-sm"
                 style={{ background: DEEP_GREEN, color: GOLD_SOFT }}
               >
-                موجوده سجاده نشين
+                 موجوده سجاده نشين درگاهه شريف هالا
               </span>
             )}
             <h3
