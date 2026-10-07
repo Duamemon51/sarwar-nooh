@@ -97,9 +97,15 @@ export default function Home() {
     className="relative w-full h-auto block hidden md:block"
   />
 
+  {/* Dark layer: poore text block ke peeche (title se button tak) */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute left-[2%] top-[8%] hidden h-[88%] w-[44%] md:block bg-[radial-gradient(ellipse_at_center,rgba(7,27,25,0.65)_0%,rgba(7,27,25,0.5)_45%,rgba(7,27,25,0)_75%)]"
+  />
+
   <div className={`absolute inset-0 hidden md:flex flex-col justify-center px-4 sm:px-8 md:px-12 ${language === "en" ? "items-start" : "items-end"}`}>
-    <div className={`${language === "en" ? "w-[56%] max-w-[680px]" : "w-[42%] max-w-[500px]"} flex flex-col ${language === "en" ? "items-start text-left" : "items-end text-right"}`}>
-          <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[400px] items-end me-[68px]"} flex flex-col gap-0`}>
+    <div className={`relative isolate ${language === "en" ? "w-[56%] max-w-[680px]" : "w-[42%] max-w-[500px]"} flex flex-col ${language === "en" ? "items-start text-left" : "items-end text-right"}`}>
+      <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[400px] items-end me-[68px]"} flex flex-col gap-0`}>
         <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-nowrap`}>
           {heroContent.title}
         </h1>
@@ -160,10 +166,9 @@ export default function Home() {
       alt={heroContent.imageAlt}
       className="absolute inset-0 w-full h-full object-cover"
     />
-    <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,25,0.15)_0%,rgba(7,27,25,0.55)_38%,rgba(7,27,25,0.88)_100%)]" />
 
-    {/* Text column — RIGHT side */}
-    <div className={`relative flex-1 px-4 py-6 flex flex-col justify-center items-start ${language === "en" ? "text-left" : "text-right"}`}>
+    {/* Text column — RIGHT side (gradient gehra kiya gaya) */}
+    <div className={`relative flex-1 px-4 py-6 flex flex-col justify-center items-start ${language === "en" ? "bg-gradient-to-r from-[#071b19]/85 via-[#071b19]/65 to-transparent text-left" : "bg-gradient-to-l from-[#071b19]/85 via-[#071b19]/65 to-transparent text-right"}`}>
       <div className="flex flex-col items-start gap-0">
         <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(1.5rem,6vw,2rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal`}>
           {heroContent.title}

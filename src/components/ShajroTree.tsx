@@ -409,9 +409,9 @@ function NasabList({
 /* ------------------------------------------------------------------ */
 
 export default function ShajroTree() {
-  const RIGHT_COLUMN_COUNT = 26;
-  const rightCol = NASAB.slice(0, RIGHT_COLUMN_COUNT);
-  const leftCol = NASAB.slice(RIGHT_COLUMN_COUNT);
+  const LEFT_COLUMN_COUNT = 24;
+  const leftCol = NASAB.slice(0, LEFT_COLUMN_COUNT);
+  const rightCol = NASAB.slice(LEFT_COLUMN_COUNT);
 
   return (
     <section
@@ -463,8 +463,8 @@ export default function ShajroTree() {
                 "inset 0 0 40px rgba(201,162,39,.1), 0 6px 18px rgba(10,58,43,.08)",
             }}
           >
-            <NasabList items={rightCol} start={1} />
-            <NasabList items={leftCol} start={RIGHT_COLUMN_COUNT + 1} divider />
+            <NasabList items={leftCol} start={1} />
+            <NasabList items={rightCol} start={LEFT_COLUMN_COUNT + 1} divider />
           </div>
 
           <div className="mt-8 flex justify-center">
