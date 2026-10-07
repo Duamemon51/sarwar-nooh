@@ -208,7 +208,7 @@ export default function SawanehMakhdoomNooh() {
       dir="rtl"
       lang="sd"
       aria-labelledby="sawaneh-title"
-      className="font-[family-name:var(--font-sindhi)] w-full overflow-x-hidden bg-white px-4 py-10 sm:px-10 sm:py-16 lg:px-16"
+      className="sindhi-content font-[family-name:var(--font-sindhi)] w-full overflow-x-hidden bg-white px-4 py-10 sm:px-10 sm:py-16 lg:px-16"
       style={{ color: TEAL }}
     >
       <div className="mx-auto max-w-7xl">

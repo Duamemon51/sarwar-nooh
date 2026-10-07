@@ -25,7 +25,7 @@ const heroAlt = isEn
   return (
     <div
       lang={isEn ? "en" : "sd"}
-      className={`min-h-screen bg-[#f7f5ef] text-[#0d2a28] ${isEn ? "lang-en" : ""}`}
+      className={`min-h-screen bg-[#f7f5ef] text-[#0d2a28] ${isEn ? "lang-en" : "sindhi-content"}`}
     >
       <Nav />
 

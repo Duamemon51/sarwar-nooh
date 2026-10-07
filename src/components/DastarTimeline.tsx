@@ -578,7 +578,7 @@ export default function DastarTimeline() {
     <section
       dir="rtl"
       lang="sd"
-      className="font-[family-name:var(--font-sindhi)] relative w-full overflow-hidden px-5 py-16 sm:px-10 sm:py-24"
+      className="sindhi-content font-[family-name:var(--font-sindhi)] relative w-full overflow-hidden px-5 py-16 sm:px-10 sm:py-24"
       style={{
         background: `radial-gradient(ellipse at 50% 0%, ${MID_GREEN} 0%, ${DEEP_GREEN} 60%, #062619 100%)`,
       }}
