@@ -328,7 +328,7 @@ function NasabList({
 }) {
   return (
     <ol
-      className={`space-y-2 ${divider ? "border-r-2 pr-5 sm:pr-6" : "pl-3 sm:pl-6"}`}
+      className={`font-[family-name:var(--font-sindhi)] space-y-2 ${divider ? "border-r-2 pr-5 sm:pr-6" : "pl-3 sm:pl-6"}`}
       style={divider ? { borderColor: GOLD } : undefined}
     >
       {items.map((text, i) => {
@@ -383,11 +383,18 @@ function NasabList({
                 border: `1.5px solid ${featured ? "#fff" : GOLD_LIGHT}`,
                 boxShadow: "0 2px 5px rgba(10,58,43,.35)",
                 color: featured ? DEEP_GREEN : "#fff",
+                fontFamily: "var(--font-sindhi)",
               }}
             >
               {n}
             </span>
-            <span className={unknown ? "text-[#8a6d10]/70" : "font-bold"} style={featured ? { textShadow: "0 1px 3px rgba(0,0,0,.4)" } : undefined}>
+            <span
+              className={unknown ? "text-[#8a6d10]/70" : "font-bold"}
+              style={{
+                fontFamily: "var(--font-sindhi)",
+                ...(featured ? { textShadow: "0 1px 3px rgba(0,0,0,.4)" } : {}),
+              }}
+            >
               {text}
             </span>
           </li>
