@@ -93,6 +93,10 @@ body {
   font-family: var(--font-sindhi);
 }
 
+[lang="sd"] :is(button, a) {
+  line-height: 1.7;
+}
+
 [lang="en"] {
   font-family: var(--font-english-body);
 }
