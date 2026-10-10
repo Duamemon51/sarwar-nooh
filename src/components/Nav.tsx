@@ -31,7 +31,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setLanguage(isEn ? "sd" : "en")}
-          className="absolute top-1/2 right-8 z-10 hidden -translate-y-1/2 rounded-full border border-[#E8C98A] px-3 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10 md:block"
+          className="absolute top-1/2 right-8 z-10 hidden -translate-y-1/2 rounded-full border border-[#E8C98A] px-3 py-1 text-xs font-semibold leading-none text-[#E8C98A] transition hover:bg-[#E8C98A]/10 md:block"
           aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
         >
           {isEn ? "سنڌي" : "English"}
@@ -92,7 +92,7 @@ export default function Nav() {
             <button
               type="button"
               onClick={() => setLanguage(isEn ? "sd" : "en")}
-              className="inline-flex h-8 min-w-[72px] items-center justify-center whitespace-nowrap rounded-full border border-[#E8C98A] px-3 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
+              className="inline-flex h-8 min-w-[72px] items-center justify-center whitespace-nowrap rounded-full border border-[#E8C98A] px-3 text-xs font-semibold leading-none text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
               aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
             >
               {isEn ? "سنڌي" : "English"}
