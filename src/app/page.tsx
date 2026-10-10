@@ -21,6 +21,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import DargahHistory from "@/components/DargahHistory";
 import SawanehMakhdoomNooh from "@/components/SawanehMakhdoomNooh";
 import SarwariJamatActivities from "@/components/Sarwarijamatactivities";
+import LocationMap from "@/components/LocationMap";
 
 const carouselElders = [...elders, elders[0]];
 
@@ -331,6 +332,8 @@ export default function Home() {
       {/* <FamilyLegacy /> */}
 
       <Gallery />
+
+      <LocationMap />
 
       <Footer />
     </div>
