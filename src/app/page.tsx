@@ -308,21 +308,21 @@ export default function Home() {
     <div className="mt-8 flex justify-center gap-3">
       <a
         href="/shajra"
-        className={`inline-flex items-center justify-center rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold leading-none text-[#F3EAD9] transition hover:bg-[#0d2a28] ${
-          language === "en"
-            ? "!font-[family-name:var(--font-english-body)]"
-            : "!font-[family-name:var(--font-sindhi)]"
-        }`}
+        className="inline-flex items-center justify-center rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold text-[#F3EAD9] transition hover:bg-[#0d2a28]"
+        style={{
+          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi)",
+          lineHeight: 1.5,
+        }}
       >
         {elderContent.button}
       </a>
       <a
         href="/dastaar"
-        className={`inline-flex items-center justify-center rounded-full border border-[#123A3A] bg-white px-6 py-2.5 text-sm font-semibold leading-none text-[#123A3A] transition hover:bg-[#f6f1e7] ${
-          language === "en"
-            ? "!font-[family-name:var(--font-english-body)]"
-            : "!font-[family-name:var(--font-sindhi)]"
-        }`}
+        className="inline-flex items-center justify-center rounded-full border border-[#123A3A] bg-white px-6 py-2.5 text-sm font-semibold text-[#123A3A] transition hover:bg-[#f6f1e7]"
+        style={{
+          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi)",
+          lineHeight: 1.5,
+        }}
       >
         {elderContent.dastaarButton}
       </a>
