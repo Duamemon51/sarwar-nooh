@@ -310,7 +310,7 @@ export default function Home() {
         href="/shajra"
         className="inline-flex items-center justify-center rounded-full bg-[#123A3A] px-6 py-2.5 text-sm font-semibold text-[#F3EAD9] transition hover:bg-[#0d2a28]"
         style={{
-          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi)",
+          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi-controls)",
         }}
       >
         {elderContent.button}
@@ -319,7 +319,7 @@ export default function Home() {
         href="/dastaar"
         className="inline-flex items-center justify-center rounded-full border border-[#123A3A] bg-white px-6 py-2.5 text-sm font-semibold text-[#123A3A] transition hover:bg-[#f6f1e7]"
         style={{
-          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi)",
+          fontFamily: language === "en" ? "var(--font-english-body)" : "var(--font-sindhi-controls)",
         }}
       >
         {elderContent.dastaarButton}
