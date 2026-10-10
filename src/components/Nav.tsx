@@ -26,24 +26,24 @@ export default function Nav() {
           className="hidden sm:block absolute right-0 top-0 h-full w-auto pointer-events-none select-none"
         />
 
-        {/* Language toggle - fixed spot, top-right corner, independent of links/hamburger */}
+        {/* Desktop language toggle */}
         <button
           type="button"
           onClick={() => setLanguage(language === "en" ? "sd" : "en")}
-          className="absolute top-1/2 -translate-y-1/2 right-12 sm:right-6 md:right-8 rounded-full border border-[#E8C98A] px-3 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10 z-10"
+          className="absolute top-1/2 right-8 z-10 hidden -translate-y-1/2 rounded-full border border-[#E8C98A] px-3 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10 md:block"
           aria-label={language === "en" ? "Switch to Sindhi" : "Switch to English"}
         >
           {language === "en" ? "سنڌي" : "English"}
         </button>
 
         {/* Outer row forced LTR so logo stays left, links stay right, regardless of language */}
-        <div className="relative flex items-center justify-between h-full px-4 sm:px-16 md:px-20" dir="ltr">
+        <div className="relative flex h-full items-center justify-between gap-2 px-3 sm:px-16 md:px-20" dir="ltr">
           {/* Logo + Title - always left */}
-          <div className="flex min-w-0 max-w-[calc(100%-7rem)] items-center gap-1 overflow-hidden sm:max-w-none sm:gap-3">
+          <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden sm:gap-3">
             <img
               src="/logo.webp"
               alt="درگاه جو لوگو"
-              className="w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover"
+              className="h-10 w-10 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
             />
 
             <div className="min-w-0 text-left" dir={language === "en" ? "ltr" : "rtl"}>
@@ -73,36 +73,47 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Mobile hamburger - sits left of the fixed toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 md:hidden text-[#E8C98A] p-1"
-            aria-label={language === "en" ? "Open menu" : "مينيو کوليو"}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="flex shrink-0 items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={() => setLanguage(language === "en" ? "sd" : "en")}
+              className="rounded-full border border-[#E8C98A] px-2.5 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
+              aria-label={language === "en" ? "Switch to Sindhi" : "Switch to English"}
             >
-              {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              {language === "en" ? "سنڌي" : "English"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="shrink-0 p-1 text-[#E8C98A]"
+              aria-label={language === "en" ? "Open menu" : "مينيو کوليو"}
+              aria-expanded={menuOpen}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {menuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
