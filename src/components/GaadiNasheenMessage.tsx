@@ -99,9 +99,9 @@ export default function GaadiNasheenMessage() {
                     fontFamily:
                       language === "en"
                         ? "var(--font-english-body)"
-                        : "var(--font-sindhi)",
+                        : "var(--font-sindhi-controls)",
                   }}
-                  className="mt-4 rounded-full border border-[#e8c98a]/70 px-4 py-2 font-semibold text-[#e8c98a] transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c98a]"
+                  className="mt-4 inline-flex items-center justify-center rounded-full border border-[#e8c98a]/70 px-4 py-2 font-semibold text-[#e8c98a] transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c98a]"
                 >
                   {expanded
                     ? language === "en"
