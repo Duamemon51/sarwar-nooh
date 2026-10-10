@@ -32,7 +32,7 @@ export default function Nav() {
           type="button"
           onClick={() => setLanguage(isEn ? "sd" : "en")}
           className={`absolute top-1/2 right-8 z-10 hidden h-8 -translate-y-1/2 items-center justify-center rounded-full border border-[#E8C98A] px-4 text-xs font-semibold leading-none text-[#E8C98A] transition hover:bg-[#E8C98A]/10 md:inline-flex ${
-            isEn ? "" : "font-sans"
+            isEn ? "font-[family-name:var(--font-sindhi)]" : "!font-[family-name:var(--font-english-body)]"
           }`}
           aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
         >
@@ -95,7 +95,7 @@ export default function Nav() {
               type="button"
               onClick={() => setLanguage(isEn ? "sd" : "en")}
               className={`inline-flex h-7 items-center justify-center rounded-full border border-[#E8C98A] px-3 text-[11px] font-semibold leading-none text-[#E8C98A] transition hover:bg-[#E8C98A]/10 ${
-                isEn ? "" : "font-sans"
+                isEn ? "font-[family-name:var(--font-sindhi)]" : "!font-[family-name:var(--font-english-body)]"
               }`}
               aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
             >
