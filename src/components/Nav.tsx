@@ -92,7 +92,7 @@ export default function Nav() {
             <button
               type="button"
               onClick={() => setLanguage(isEn ? "sd" : "en")}
-              className="inline-flex h-10 min-w-[72px] items-center justify-center whitespace-nowrap rounded-full border border-[#E8C98A] px-3 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
+              className="inline-flex h-8 min-w-[72px] items-center justify-center whitespace-nowrap rounded-full border border-[#E8C98A] px-3 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
               aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
             >
               {isEn ? "سنڌي" : "English"}
@@ -100,7 +100,7 @@ export default function Nav() {
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
+              className="inline-flex h-8 w-10 shrink-0 items-center justify-center rounded-full text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
               aria-label={isEn ? "Open menu" : "مينيو کوليو"}
               aria-expanded={menuOpen}
             >
