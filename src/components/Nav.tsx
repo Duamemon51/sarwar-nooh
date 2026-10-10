@@ -7,13 +7,14 @@ import { useLanguage } from "@/components/LanguageProvider";
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
-  const links = language === "en" ? englishNavLinks : navLinks;
+  const isEn = language === "en";
+  const links = isEn ? englishNavLinks : navLinks;
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
       {/* Top bar - corners contained ONLY here */}
       <div className="relative h-[60px] sm:h-[75px] bg-[#002830]/90 backdrop-blur-sm border-t-[3px] border-b-[3px] border-[#ded3b3]">
-        {/* Corner artwork - hidden on mobile so the bar stays clean/plain like the screenshot */}
+        {/* Corner artwork - hidden on mobile so the bar stays clean/plain */}
         <img
           src="/nav-corner-left.webp"
           alt=""
@@ -29,42 +30,55 @@ export default function Nav() {
         {/* Desktop language toggle */}
         <button
           type="button"
-          onClick={() => setLanguage(language === "en" ? "sd" : "en")}
+          onClick={() => setLanguage(isEn ? "sd" : "en")}
           className="absolute top-1/2 right-8 z-10 hidden -translate-y-1/2 rounded-full border border-[#E8C98A] px-3 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10 md:block"
-          aria-label={language === "en" ? "Switch to Sindhi" : "Switch to English"}
+          aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
         >
-          {language === "en" ? "سنڌي" : "English"}
+          {isEn ? "سنڌي" : "English"}
         </button>
 
         {/* Outer row forced LTR so logo stays left, links stay right, regardless of language */}
-        <div className="relative flex h-full items-center justify-between gap-2 px-3 sm:px-16 md:px-20" dir="ltr">
-          {/* Logo + Title - always left */}
-          <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden sm:gap-3">
+        <div
+          className="relative flex h-full items-center justify-between gap-2 px-3 sm:px-16 md:px-20"
+          dir="ltr"
+        >
+          {/* Logo + Title - always left.
+              No overflow-hidden here: it clipped the tops/bottoms of Sindhi letters and dots. */}
+          <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
             <img
               src="/logo.webp"
               alt="درگاه جو لوگو"
-              className="h-10 w-10 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
+              className="h-9 w-9 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
             />
 
-            <div className="min-w-0 text-left" dir={language === "en" ? "ltr" : "rtl"}>
-              <h1 className="truncate text-white font-bold text-sm sm:text-lg leading-tight">
-                {language === "en" ? englishHeroContent.name : heroContent.name}
+            <div className="min-w-0 flex-1 text-left" dir={isEn ? "ltr" : "rtl"}>
+              {/* Sindhi needs a taller line-height (dots/marks sit above and below the line)
+                  and a slightly smaller size on phones so the whole name fits. */}
+              <h1
+                className={`truncate font-bold text-white sm:text-lg ${
+                  isEn
+                    ? "text-sm leading-tight"
+                    : "py-0.5 text-[13px] leading-[1.7]"
+                }`}
+              >
+                {isEn ? englishHeroContent.name : heroContent.name}
               </h1>
 
-              <p className="truncate mt-1 text-white/70 text-[10px] sm:mt-2 sm:text-xs">
-                {language === "en" ? englishHeroContent.location : heroContent.location}
+              <p
+                className={`truncate text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
+                  isEn ? "mt-1 leading-tight" : "mt-0 leading-[1.7]"
+                }`}
+              >
+                {isEn ? englishHeroContent.location : heroContent.location}
               </p>
             </div>
           </div>
 
           {/* Desktop Links - always right, leaves room for toggle via padding */}
-          <div
-            className="hidden md:flex items-center gap-8 pr-24"
-            dir={language === "en" ? "ltr" : "rtl"}
-          >
+          <div className="hidden md:flex items-center gap-8 pr-24" dir={isEn ? "ltr" : "rtl"}>
             {links.map((link) => (
-              
-              <a  key={link.href}
+              <a
+                key={link.href}
                 href={link.href}
                 className="text-white font-semibold hover:text-yellow-300 transition text-sm"
               >
@@ -73,20 +87,21 @@ export default function Nav() {
             ))}
           </div>
 
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
+          {/* Mobile controls */}
+          <div className="flex shrink-0 items-center gap-1.5 md:hidden">
             <button
               type="button"
-              onClick={() => setLanguage(language === "en" ? "sd" : "en")}
-              className="rounded-full border border-[#E8C98A] px-2.5 py-1 text-xs font-semibold text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
-              aria-label={language === "en" ? "Switch to Sindhi" : "Switch to English"}
+              onClick={() => setLanguage(isEn ? "sd" : "en")}
+              className="rounded-full border border-[#E8C98A] px-2 py-0.5 text-[11px] font-semibold leading-relaxed text-[#E8C98A] transition hover:bg-[#E8C98A]/10"
+              aria-label={isEn ? "Switch to Sindhi" : "Switch to English"}
             >
-              {language === "en" ? "سنڌي" : "English"}
+              {isEn ? "سنڌي" : "English"}
             </button>
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="shrink-0 p-1 text-[#E8C98A]"
-              aria-label={language === "en" ? "Open menu" : "مينيو کوليو"}
+              className="shrink-0 p-0.5 text-[#E8C98A]"
+              aria-label={isEn ? "Open menu" : "مينيو کوليو"}
               aria-expanded={menuOpen}
             >
               <svg
@@ -97,19 +112,9 @@ export default function Nav() {
                 stroke="currentColor"
               >
                 {menuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
@@ -121,7 +126,7 @@ export default function Nav() {
       {menuOpen && (
         <div
           className="md:hidden bg-[#002830]/95 backdrop-blur-sm px-4 py-3 flex flex-col gap-3 border-b-[3px] border-[#ded3b3]"
-          dir={language === "en" ? "ltr" : "rtl"}
+          dir={isEn ? "ltr" : "rtl"}
         >
           {links.map((link) => (
             <a
