@@ -28,7 +28,7 @@ export default function LibrarySection() {
             <h2 className={`text-lg font-bold text-[#E8C98A] leading-tight ${language === "en" ? "text-left" : "text-right"}`}>
               {content.title}
             </h2>
-            <h3 className={`text-[11px] font-semibold text-white leading-tight whitespace-nowrap ${language === "en" ? "text-left" : "text-right"}`}>
+            <h3 className={`mt-1 text-[11px] font-semibold text-white leading-tight whitespace-nowrap ${language === "en" ? "text-left" : "text-right"}`}>
               {content.subtitle}
             </h3>
           </div>
