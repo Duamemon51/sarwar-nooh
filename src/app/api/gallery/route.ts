@@ -166,6 +166,26 @@ export async function DELETE(request: Request) {
   }
 
   const body: unknown = await request.json().catch(() => null);
+  if (body && typeof body === "object" && "all" in body && body.all === true) {
+    try {
+      const database = await getMongoDb();
+      if (database) {
+        const result = await database.collection<GalleryImageDocument>("gallery_images").deleteMany({});
+        return Response.json({ deleted: true, deletedCount: result.deletedCount });
+      }
+
+      const galleryDirectory = path.join(process.cwd(), "public", "gallery");
+      const files = await readdir(galleryDirectory, { withFileTypes: true });
+      const imageFiles = files.filter(
+        (file) => file.isFile() && imageExtensions.has(path.extname(file.name).toLowerCase()),
+      );
+      await Promise.all(imageFiles.map((file) => unlink(path.join(galleryDirectory, file.name))));
+      return Response.json({ deleted: true, deletedCount: imageFiles.length });
+    } catch {
+      return Response.json({ error: "Unable to delete all gallery images." }, { status: 500 });
+    }
+  }
+
   if (!body || typeof body !== "object" || !("src" in body) || typeof body.src !== "string") {
     return Response.json({ error: "Choose a valid gallery image." }, { status: 400 });
   }

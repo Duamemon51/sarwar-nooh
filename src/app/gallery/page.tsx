@@ -31,12 +31,8 @@ type GalleryResponse = {
 
 function GalleryLoadingOverlay({
   language,
-  loaded,
-  total,
 }: {
   language: "en" | "sd";
-  loaded: number;
-  total: number;
 }) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-[#f7f5ef]" role="status" aria-live="polite">
@@ -44,7 +40,6 @@ function GalleryLoadingOverlay({
       <p className="text-sm text-[#1c2b28]/70">
         {language === "en" ? "Loading gallery images" : "گيلري جون تصويرون لوڊ ٿي رهيون آهن"}
       </p>
-      {total > 0 && <p className="text-xs text-[#1c2b28]/55">{loaded} / {total}</p>}
     </div>
   );
 }
@@ -52,7 +47,6 @@ function GalleryLoadingOverlay({
 export default function GalleryPage() {
   const { language } = useLanguage();
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
-  const [settledImageSources, setSettledImageSources] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -67,7 +61,6 @@ export default function GalleryPage() {
         if (!response.ok) throw new Error("Gallery request failed");
 
         const data = (await response.json()) as GalleryResponse;
-        setSettledImageSources([]);
         setGalleryImages(data.images);
       } catch {
         if (!controller.signal.aborted) setLoadError(true);
@@ -100,13 +93,6 @@ export default function GalleryPage() {
     activeCategory === "All"
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
-  const areImagesLoading = isLoading || (
-    !loadError && galleryImages.length > 0 && settledImageSources.length < galleryImages.length
-  );
-
-  function markImageSettled(src: string) {
-    setSettledImageSources((current) => current.includes(src) ? current : [...current, src]);
-  }
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -157,7 +143,7 @@ export default function GalleryPage() {
       {/* ---------- Image grid ---------- */}
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-10">
         {isLoading ? (
-          <GalleryLoadingOverlay language={language} loaded={0} total={0} />
+          <GalleryLoadingOverlay language={language} />
         ) : loadError ? (
           <p className="py-14 text-center text-sm text-[#1c2b28]/60" role="alert">
             {language === "en" ? "Gallery could not be loaded. Please try again later." : "گيلري لوڊ نه ٿي سگهي. مهرباني ڪري پوءِ ٻيهر ڪوشش ڪريو."}
@@ -172,15 +158,7 @@ export default function GalleryPage() {
             </p>
           </div>
         ) : (
-          <>
-            {areImagesLoading && (
-              <GalleryLoadingOverlay
-                language={language}
-                loaded={settledImageSources.length}
-                total={galleryImages.length}
-              />
-            )}
-            <div className={`grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 ${areImagesLoading ? "opacity-0" : "opacity-100"}`}>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
               {filteredImages.map((img, i) => (
                 <button
                   key={`${img.src}-${img.alt}-${i}`}
@@ -191,11 +169,8 @@ export default function GalleryPage() {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    unoptimized
                     quality={65}
-                    loading="eager"
-                    onLoad={() => markImageSettled(img.src)}
-                    onError={() => markImageSettled(img.src)}
+                    loading="lazy"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
@@ -206,7 +181,6 @@ export default function GalleryPage() {
                 </button>
               ))}
             </div>
-          </>
         )}
       </section>
 
@@ -243,7 +217,7 @@ export default function GalleryPage() {
               src={filteredImages[lightboxIndex].src}
               alt={filteredImages[lightboxIndex].alt}
               fill
-              unoptimized
+              quality={75}
               className="object-contain"
               sizes="100vw"
             />

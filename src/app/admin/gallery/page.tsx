@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ImagePlus, LogOut, Save, Trash2, Upload } from "lucide-react";
+import { ArrowLeft, Download, ImagePlus, LogOut, Save, Trash2, Upload } from "lucide-react";
 
 type GalleryImage = {
   src: string;
@@ -21,6 +21,7 @@ type ApiResult = {
   error?: string;
   authenticated?: boolean;
   images?: GalleryImage[];
+  deletedCount?: number;
 };
 
 const categories = ["Dargah", "Urs Mubarak", "Architecture"];
@@ -32,7 +33,9 @@ export default function GalleryAdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingSession, setIsCheckingSession] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
+  const [downloadingImageSrc, setDownloadingImageSrc] = useState<string | null>(null);
   const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(null);
+  const [isDeletingAll, setIsDeletingAll] = useState(false);
   const [captionDrafts, setCaptionDrafts] = useState<Record<string, string>>({});
   const [savingCaptionSrc, setSavingCaptionSrc] = useState<string | null>(null);
   const [savingFeaturedSrc, setSavingFeaturedSrc] = useState<string | null>(null);
@@ -145,6 +148,81 @@ export default function GalleryAdminPage() {
       setMessage(error instanceof Error ? error.message : "Could not delete image.");
     } finally {
       setDeletingImageSrc(null);
+    }
+  }
+
+  async function deleteAllImages() {
+    if (
+      images.length === 0 ||
+      isUploading ||
+      deletingImageSrc ||
+      savingCaptionSrc ||
+      savingFeaturedSrc
+    ) return;
+    if (!window.confirm(`Delete all ${images.length} gallery photos? This cannot be undone.`)) return;
+
+    setIsDeletingAll(true);
+    setMessage("");
+    try {
+      const response = await fetch("/api/gallery", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ all: true }),
+      });
+      const result = (await response.json()) as ApiResult;
+      if (response.status === 401) setIsAuthenticated(false);
+      if (!response.ok) throw new Error(result.error ?? "Could not delete gallery photos.");
+
+      setImages([]);
+      setCaptionDrafts({});
+      setIsError(false);
+      const deletedCount = result.deletedCount ?? images.length;
+      setMessage(`${deletedCount} gallery photo${deletedCount === 1 ? "" : "s"} deleted.`);
+    } catch (error) {
+      setIsError(true);
+      setMessage(error instanceof Error ? error.message : "Could not delete gallery photos.");
+    } finally {
+      setIsDeletingAll(false);
+    }
+  }
+
+  async function downloadImage(image: GalleryImage) {
+    setDownloadingImageSrc(image.src);
+    setMessage("");
+    try {
+      const response = await fetch(image.src);
+      if (!response.ok) throw new Error("Could not download image.");
+
+      const blob = await response.blob();
+      const extensionByMimeType: Record<string, string> = {
+        "image/avif": "avif",
+        "image/gif": "gif",
+        "image/jpeg": "jpg",
+        "image/png": "png",
+        "image/webp": "webp",
+      };
+      const extension = extensionByMimeType[blob.type];
+      if (!extension) throw new Error("Unsupported image format.");
+
+      const filename = image.alt
+        .trim()
+        .replace(/[^\p{L}\p{N}._-]+/gu, "-")
+        .replace(/^-+|-+$/g, "") || "gallery-image";
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = `${filename}.${extension}`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(objectUrl);
+      setIsError(false);
+      setMessage(`Downloaded "${image.alt}".`);
+    } catch (error) {
+      setIsError(true);
+      setMessage(error instanceof Error ? error.message : "Could not download image.");
+    } finally {
+      setDownloadingImageSrc(null);
     }
   }
 
@@ -320,9 +398,27 @@ export default function GalleryAdminPage() {
             </section>
 
             <section aria-labelledby="images-heading" className="pt-7">
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="flex flex-wrap items-center justify-between gap-4">
                 <h2 id="images-heading" className="text-lg font-semibold">Gallery photos</h2>
-                <p className="text-sm text-[#1c2b28]/60">{images.length} photos</p>
+                <div className="flex items-center gap-3">
+                  <p className="text-sm text-[#1c2b28]/60">{images.length} photos</p>
+                  <button
+                    type="button"
+                    onClick={() => void deleteAllImages()}
+                    disabled={
+                      images.length === 0 ||
+                      isDeletingAll ||
+                      isUploading ||
+                      deletingImageSrc !== null ||
+                      savingCaptionSrc !== null ||
+                      savingFeaturedSrc !== null
+                    }
+                    className="inline-flex h-9 items-center gap-2 border border-red-700/25 px-3 text-sm text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <Trash2 className="h-4 w-4" aria-hidden="true" />
+                    {isDeletingAll ? "Deleting..." : "Delete all"}
+                  </button>
+                </div>
               </div>
               {images.length === 0 ? (
                 <p className="py-12 text-center text-sm text-[#1c2b28]/60">No gallery photos found.</p>
@@ -376,8 +472,18 @@ export default function GalleryAdminPage() {
                         </label>
                         <button
                           type="button"
+                          onClick={() => void downloadImage(image)}
+                          disabled={downloadingImageSrc !== null}
+                          aria-label={`Download ${image.alt}`}
+                          title="Download image"
+                          className="mt-2 mr-2 inline-flex h-8 w-8 items-center justify-center border border-[#0d2a28]/15 text-[#1c2b28] transition hover:border-[#9b7837] disabled:cursor-wait disabled:opacity-50"
+                        >
+                          <Download className="h-4 w-4" aria-hidden="true" />
+                        </button>
+                        <button
+                          type="button"
                           onClick={() => void deleteImage(image)}
-                          disabled={deletingImageSrc === image.src}
+                          disabled={deletingImageSrc === image.src || isDeletingAll}
                           aria-label={`Delete ${image.alt}`}
                           title="Delete image"
                           className="mt-2 inline-flex h-8 w-8 items-center justify-center border border-red-700/20 text-red-700 transition hover:bg-red-50 disabled:cursor-wait disabled:opacity-50"
