@@ -375,7 +375,7 @@ function NasabList({
               </svg>
             )}
             <span
-              className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white"
+              className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold leading-none text-white"
               style={{
                 background: featured
                   ? `linear-gradient(180deg, ${GOLD_LIGHT}, ${GOLD})`
@@ -383,7 +383,7 @@ function NasabList({
                 border: `1.5px solid ${featured ? "#fff" : GOLD_LIGHT}`,
                 boxShadow: "0 2px 5px rgba(10,58,43,.35)",
                 color: featured ? DEEP_GREEN : "#fff",
-                fontFamily: "var(--font-sindhi)",
+                fontFamily: "var(--font-english-body)",
               }}
             >
               {n}
