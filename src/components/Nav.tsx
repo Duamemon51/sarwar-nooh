@@ -46,14 +46,17 @@ export default function Nav({ home = false }: { home?: boolean }) {
         >
           {/* Logo + Title - always left.
               No overflow-hidden here: it clipped the tops/bottoms of Sindhi letters and dots. */}
-          <div className={`flex min-w-0 flex-1 items-center gap-2 sm:gap-3 ${home ? "max-sm:-translate-y-1" : ""}`}>
+          <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
             <img
               src="/logo.webp"
               alt="درگاه جو لوگو"
               className="h-9 w-9 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
             />
 
-            <div className="min-w-0 flex-1 text-left" dir={isEn ? "ltr" : "rtl"}>
+            <div
+              className={`min-w-0 flex-1 text-left ${home ? "max-sm:-translate-y-1" : ""}`}
+              dir={isEn ? "ltr" : "rtl"}
+            >
               {/* Sindhi needs a taller line-height (dots/marks sit above and below the line)
                   so let it wrap instead of clipping the glyphs with text overflow. */}
               <h1
