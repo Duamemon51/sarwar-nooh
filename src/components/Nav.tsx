@@ -55,20 +55,22 @@ export default function Nav() {
 
             <div className="min-w-0 flex-1 text-left" dir={isEn ? "ltr" : "rtl"}>
               {/* Sindhi needs a taller line-height (dots/marks sit above and below the line)
-                  and a slightly smaller size on phones so the whole name fits. */}
+                  so let it wrap instead of clipping the glyphs with text overflow. */}
               <h1
-                className={`truncate font-bold text-white sm:text-lg ${
+                className={`font-bold text-white sm:text-lg ${
                   isEn
-                    ? "text-sm leading-tight"
-                    : "text-[13px] leading-[1.2]"
+                    ? "truncate text-sm leading-tight"
+                    : "whitespace-normal text-[13px] leading-[1.35]"
                 }`}
               >
                 {isEn ? englishHeroContent.name : heroContent.name}
               </h1>
 
               <p
-                className={`truncate text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
-                  isEn ? "mt-1 leading-tight" : "mt-0 leading-[1.2]"
+                className={`text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
+                  isEn
+                    ? "truncate mt-1 leading-tight"
+                    : "whitespace-normal leading-[1.35]"
                 }`}
               >
                 {isEn ? englishHeroContent.location : heroContent.location}
