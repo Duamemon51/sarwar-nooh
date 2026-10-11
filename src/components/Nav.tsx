@@ -60,7 +60,7 @@ export default function Nav() {
                 className={`truncate font-bold text-white sm:text-lg ${
                   isEn
                     ? "text-sm leading-tight"
-                    : "py-0.5 text-[13px] leading-[1.7]"
+                    : "text-[13px] leading-[1.2]"
                 }`}
               >
                 {isEn ? englishHeroContent.name : heroContent.name}
@@ -68,7 +68,7 @@ export default function Nav() {
 
               <p
                 className={`truncate text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
-                  isEn ? "mt-1 leading-tight" : "mt-0 leading-[1.7]"
+                  isEn ? "mt-1 leading-tight" : "mt-0 leading-[1.2]"
                 }`}
               >
                 {isEn ? englishHeroContent.location : heroContent.location}
