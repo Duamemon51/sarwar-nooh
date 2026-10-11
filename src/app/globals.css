@@ -27,6 +27,17 @@
   line-gap-override: 0%;
 }
 
+@font-face {
+  font-family: "As Lateefi M Adjusted";
+  src: url("/fonts/as-lateefi-m-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  ascent-override: 60%;
+  descent-override: 40%;
+  line-gap-override: 0%;
+}
+
 @theme inline {
   --color-ink: #211a14;
   --color-indigo: #1c2b4a;
@@ -39,6 +50,7 @@
   --color-parchment-warm: #ece0c8;
 
   --font-display: "As Lateefi M", "MB Sindhi Sahat", "Noto Sans Arabic", serif;
+  --font-sindhi-display: "As Lateefi M Adjusted", "MB Sindhi Sahat Controls", "Noto Sans Arabic", serif;
   --font-sindhi: "MB Sindhi Sahat", "Noto Sans Arabic", serif;
   --font-sindhi-controls: "MB Sindhi Sahat Controls", "MB Sindhi Sahat", "Noto Sans Arabic", serif;
   --font-body: "Spectral", "Georgia", serif;
@@ -98,7 +110,7 @@ body {
 }
 
 [lang="sd"] :is(h1, h2, h3, h4) {
-  font-family: var(--font-display);
+  font-family: var(--font-sindhi-display);
 }
 
 [lang="sd"] :is(p, button, a, dt, dd) {
@@ -122,7 +134,7 @@ body {
 }
 
 :lang(sd) :is(h1, h2, h3, h4) {
-  font-family: var(--font-display);
+  font-family: var(--font-sindhi-display);
 }
 
 :lang(sd) :is(p, button, a, dt, dd) {
@@ -134,7 +146,7 @@ body {
 }
 
 [lang="sd"].sindhi-content :is(h1, h2, h3, h4) {
-  font-family: var(--font-sindhi);
+  font-family: var(--font-sindhi-display);
 }
 
 ::selection {
