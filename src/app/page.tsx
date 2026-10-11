@@ -272,7 +272,7 @@ export default function Home() {
       <div className="relative aspect-square w-full max-w-[105px] overflow-hidden rounded-full bg-[#03181a]">
         <Image src={image} alt={displayName} fill sizes="32vw" className="object-cover" />
       </div>
-      <div className={`mt-2 text-center text-[8px] font-semibold leading-snug text-[#0a1a1f] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
+      <div className={`mt-2 text-center text-[14px] font-semibold leading-[1.15] text-[#0a1a1f] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
         {displayName.split(" ").slice(0, 1).join(" ")}
         <br />
         {displayName.split(" ").slice(1).join(" ")}
@@ -312,7 +312,7 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className={`mt-3 text-center text-[10px] font-semibold leading-snug text-[#0a1a1f] sm:mt-4 sm:text-[11px] md:text-[clamp(0.75rem,1vw,0.95rem)] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
+          <div className={`mt-3 text-center text-[16px] font-semibold leading-[1] text-[#0a1a1f] sm:mt-4 sm:text-[17px] md:text-[clamp(1.05rem,1.3vw,1.25rem)] ${language === "en" ? "uppercase tracking-wide" : ""}`}>
             {displayName.split(" ").slice(0, 1).join(" ")}
             <br />
             {displayName.split(" ").slice(1).join(" ")}
