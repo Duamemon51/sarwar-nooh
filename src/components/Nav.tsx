@@ -70,7 +70,7 @@ export default function Nav({ home = false }: { home?: boolean }) {
                 className={`text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
                   isEn
                     ? "truncate mt-1 leading-tight"
-                    : `whitespace-normal leading-[1.35] ${home ? "mt-4" : ""}`
+                    : `whitespace-normal leading-[1.35] ${home ? "mt-[14px]" : ""}`
                 }`}
               >
                 {isEn ? englishHeroContent.location : heroContent.location}
