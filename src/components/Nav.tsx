@@ -13,7 +13,7 @@ export default function Nav({ home = false }: { home?: boolean }) {
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
       {/* Top bar - corners contained ONLY here */}
-      <div className="relative h-[60px] sm:h-[75px] bg-[#002830]/90 backdrop-blur-sm border-t-[3px] border-b-[3px] border-[#ded3b3]">
+      <div className="relative h-[60px] sm:h-[75px] bg-[#0F2E2B] border-t-[3px] border-b-[3px] border-[#ded3b3]">
         {/* Corner artwork - hidden on mobile so the bar stays clean/plain */}
         <img
           src="/nav-corner-left.webp"
@@ -134,7 +134,7 @@ export default function Nav({ home = false }: { home?: boolean }) {
       {/* Mobile dropdown menu - separate, outside the bar wrapper */}
       {menuOpen && (
         <div
-          className="md:hidden bg-[#002830]/95 backdrop-blur-sm px-4 py-3 flex flex-col gap-3 border-b-[3px] border-[#ded3b3]"
+          className="md:hidden bg-[#0F2E2B] px-4 py-3 flex flex-col gap-3 border-b-[3px] border-[#ded3b3]"
           dir={isEn ? "ltr" : "rtl"}
         >
           {links.map((link) => (
