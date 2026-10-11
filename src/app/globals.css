@@ -85,10 +85,6 @@ body {
   font-family: var(--font-sindhi-controls);
 }
 
-#top [dir="ltr"] p {
-  font-family: var(--font-body), serif;
-}
-
 #top.lang-en {
   font-family: var(--font-english-body);
 }
