@@ -4,7 +4,7 @@ import { useState } from "react";
 import { englishHeroContent, englishNavLinks, heroContent, navLinks } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
-export default function Nav() {
+export default function Nav({ home = false }: { home?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
   const isEn = language === "en";
@@ -70,7 +70,7 @@ export default function Nav() {
                 className={`text-white/70 text-[10px] sm:mt-2 sm:text-xs ${
                   isEn
                     ? "truncate mt-1 leading-tight"
-                    : "whitespace-normal leading-[1.35]"
+                    : `whitespace-normal leading-[1.35] ${home ? "mt-2" : ""}`
                 }`}
               >
                 {isEn ? englishHeroContent.location : heroContent.location}

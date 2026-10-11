@@ -87,7 +87,7 @@ export default function Home() {
 
   return (
     <div id="top" lang={language === "en" ? "en" : "sd"} className={`bg-white ${language === "en" ? "lang-en" : ""}`}>
-      <Nav />
+      <Nav home />
 <section
   className="relative overflow-hidden mt-[60px] sm:mt-[75px]"
   dir={language === "en" ? "ltr" : "rtl"}
