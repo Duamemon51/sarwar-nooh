@@ -346,6 +346,8 @@ function DastarCard({
           boxShadow: d.current
             ? `0 0 0 4px rgba(230,197,90,.35)`
             : "0 2px 6px rgba(0,0,0,.35)",
+          fontFamily: "var(--font-english-body)",
+          lineHeight: 1,
         }}
       >
         {d.n}
@@ -390,8 +392,13 @@ function DastarCard({
               </p>
             )}
             <p
-              className="mt-2 inline-block rounded-md px-2.5 py-0.5 text-sm font-semibold sm:text-base"
-              style={{ background: "rgba(201,162,39,.2)", color: "#7a5f0a" }}
+              className="mt-2 inline-block rounded-md px-2.5 py-1 text-sm font-semibold sm:text-base"
+              style={{
+                background: "rgba(201,162,39,.2)",
+                color: "#7a5f0a",
+                fontFamily: "var(--font-sindhi-controls)",
+                lineHeight: 1.5,
+              }}
               dir="rtl"
             >
               {d.years}
@@ -601,13 +608,19 @@ export default function DastarTimeline() {
 
           <div className="mx-auto mt-6 flex max-w-md items-stretch justify-center divide-x divide-x-reverse divide-[#c9a227]/40">
             <div className="flex-1 px-3">
-              <div className="text-3xl font-bold sm:text-4xl" style={{ color: GOLD_LIGHT }}>
+              <div
+                className="text-3xl font-bold leading-none sm:text-4xl"
+                style={{ color: GOLD_LIGHT, fontFamily: "var(--font-english-body)" }}
+              >
                 {DASTARS.length}
               </div>
               <div className="text-sm text-white/75 sm:text-base">دستار</div>
             </div>
             <div className="flex-1 px-3">
-              <div className="text-3xl font-bold sm:text-4xl" style={{ color: GOLD_LIGHT }}>
+              <div
+                className="text-3xl font-bold leading-none sm:text-4xl"
+                style={{ color: GOLD_LIGHT, fontFamily: "var(--font-english-body)" }}
+              >
                 1505ع
               </div>
               <div className="text-sm text-white/75 sm:text-base">پهرين دستار</div>
