@@ -17,7 +17,7 @@ export default function LibrarySection() {
       />
 
       {/* MOBILE: right-aligned layout */}
-      <div className={`relative z-10 flex min-h-[300px] w-full flex-col justify-center px-5 pt-4 pb-8 md:hidden ${language === "en" ? "items-start" : "items-end"}`}>
+      <div className={`relative z-10 flex min-h-[300px] w-full flex-col justify-start px-5 pt-4 pb-8 md:hidden ${language === "en" ? "items-start" : "items-end"}`}>
         <div className={`mb-3 flex -translate-y-6 items-center gap-2 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`} dir="ltr">
           <img
             src="/library-logo.webp"
