@@ -18,11 +18,11 @@ export default function LibrarySection() {
 
       {/* MOBILE: right-aligned layout */}
       <div className={`relative z-10 flex min-h-[300px] w-full flex-col justify-start px-5 pt-4 pb-8 md:hidden ${language === "en" ? "items-start" : "items-end"}`}>
-        <div className={`mb-3 flex -translate-y-6 items-center gap-2 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`} dir="ltr">
+        <div className={`mb-3 flex -translate-y-2 items-center gap-2 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`} dir="ltr">
           <img
             src="/library-logo.webp"
             alt={content.logoAlt}
-            className="h-9 w-9 flex-shrink-0 object-contain"
+            className="h-11 w-11 flex-shrink-0 object-contain"
           />
           <div className={language === "en" ? "text-left" : "text-right"}>
             <h2 className={`text-lg font-bold text-[#E8C98A] leading-tight ${language === "en" ? "text-left" : "text-right"}`}>
@@ -34,13 +34,13 @@ export default function LibrarySection() {
           </div>
         </div>
 
-        <p className={`mb-4 w-[55%] max-w-[340px] text-[15px] leading-[1.3] text-white ${language === "en" ? "ml-auto text-left" : "mr-auto -translate-x-6 -translate-y-6 text-right"}`}>
-          {content.description}
+        <p className={`mb-4 w-[55%] max-w-[340px] text-[15px] leading-[1.3] text-white ${language === "en" ? "ml-auto text-left" : "mr-auto -translate-x-6 translate-y-2 text-right"}`}>
+          {content.mobileDescription}
         </p>
 
-        <Link href="/library" className={`flex w-fit items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`}>
+        <Link href="/library" className={`mt-4 flex w-fit items-center gap-0.5 rounded-full border border-[#FDDF96] px-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end -translate-x-1"}`}>
           <svg
-            className={`h-2.5 w-2.5 ${language === "en" ? "order-3" : ""}`}
+            className={`h-3 w-3 ${language === "en" ? "order-3" : ""}`}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -51,11 +51,11 @@ export default function LibrarySection() {
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
-          <span className={`text-[10px] font-medium text-[#FDDF96] ${language === "en" ? "order-2" : ""}`}>{content.button}</span>
+          <span className={`text-[11px] font-medium text-[#FDDF96] ${language === "en" ? "order-2" : ""}`}>{content.button}</span>
           <img
             src="/library-button.webp"
             alt=""
-            className={`h-[18px] w-[18px] object-contain ${language === "en" ? "order-1" : ""}`}
+            className={`h-5 w-5 object-contain ${language === "en" ? "order-1" : ""}`}
           />
         </Link>
       </div>
