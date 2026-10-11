@@ -46,7 +46,7 @@ export default function Nav({ home = false }: { home?: boolean }) {
         >
           {/* Logo + Title - always left.
               No overflow-hidden here: it clipped the tops/bottoms of Sindhi letters and dots. */}
-          <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <div className={`flex min-w-0 flex-1 items-center gap-2 sm:gap-3 ${home ? "max-sm:-translate-y-1" : ""}`}>
             <img
               src="/logo.webp"
               alt="درگاه جو لوگو"
