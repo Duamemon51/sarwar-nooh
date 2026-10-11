@@ -119,12 +119,15 @@ export default function Home() {
         {heroContent.location}
       </p>
 
-      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white/80 text-[clamp(1rem,1.5vw,1.3rem)] leading-8 mb-6 max-w-[390px] ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
+      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white text-[clamp(1rem,1.5vw,1.3rem)] leading-8 mb-6 max-w-[390px] ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
         {heroContent.description}
       </p>
 
-      <button className={`flex items-center gap-2 w-fit border border-[#e8c98a] rounded-full px-8 py-2.5 text-white text-sm hover:bg-white/10 transition ${language === "en" ? "ms-[24px]" : "me-[68px]"}`}>
-        <span className="flex items-center justify-center text-[#e8c98a]">
+      <button
+        style={{ fontFamily: language === "en" ? "var(--font-english-display)" : "var(--font-sindhi-controls)" }}
+        className={`flex items-center gap-2 w-fit border border-[#e8c98a] rounded-full px-8 py-2.5 text-white text-sm hover:bg-white/10 transition ${language === "en" ? "ms-[24px]" : "me-[68px]"}`}
+      >
+        <span className={`flex items-center justify-center text-[#e8c98a] ${language === "en" ? "order-2" : ""}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -140,7 +143,12 @@ export default function Home() {
             />
           </svg>
         </span>
-        <span className="ms-2">{heroContent.videoLabel}</span>
+        <span
+          style={{ fontFamily: language === "en" ? "var(--font-english-display)" : "var(--font-sindhi-controls)" }}
+          className={`ms-2 ${language === "en" ? "order-1" : ""}`}
+        >
+          {heroContent.videoLabel}
+        </span>
         <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#e8c98a] text-[#002830]">
           ▶
         </span>
@@ -187,8 +195,11 @@ export default function Home() {
         {heroContent.description}
       </p>
 
-      <button className="flex items-center gap-1.5 w-fit border border-[#e8c98a] rounded-full px-4 py-1.5 text-white text-xs hover:bg-white/10 transition">
-        <span className="flex items-center justify-center text-[#e8c98a]">
+      <button
+        style={{ fontFamily: language === "en" ? "var(--font-english-display)" : "var(--font-sindhi-controls)" }}
+        className="flex items-center gap-1.5 w-fit border border-[#e8c98a] rounded-full px-4 py-1.5 text-white text-xs hover:bg-white/10 transition"
+      >
+        <span className={`flex items-center justify-center text-[#e8c98a] ${language === "en" ? "order-2" : ""}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-3.5 w-3.5"
@@ -205,7 +216,12 @@ export default function Home() {
           </svg>
         </span>
 
-        <span className="ms-1">{heroContent.videoLabel}</span>
+        <span
+          style={{ fontFamily: language === "en" ? "var(--font-english-display)" : "var(--font-sindhi-controls)" }}
+          className={`ms-1 ${language === "en" ? "order-1" : ""}`}
+        >
+          {heroContent.videoLabel}
+        </span>
 
         <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#e8c98a] text-[#002830]">
           <svg

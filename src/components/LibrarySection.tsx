@@ -17,8 +17,8 @@ export default function LibrarySection() {
       />
 
       {/* MOBILE: right-aligned layout */}
-      <div className={`relative z-10 flex flex-col px-5 pt-4 pb-8 md:hidden w-full ${language === "en" ? "items-start" : "items-end"}`}>
-        <div className={`mb-3 flex items-center gap-2 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`} dir="ltr">
+      <div className={`relative z-10 flex min-h-[300px] w-full flex-col justify-center px-5 pt-4 pb-8 md:hidden ${language === "en" ? "items-start" : "items-end"}`}>
+        <div className={`mb-3 flex -translate-y-6 items-center gap-2 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`} dir="ltr">
           <img
             src="/library-logo.webp"
             alt={content.logoAlt}
@@ -28,17 +28,17 @@ export default function LibrarySection() {
             <h2 className={`text-lg font-bold text-[#E8C98A] leading-tight ${language === "en" ? "text-left" : "text-right"}`}>
               {content.title}
             </h2>
-            <h3 className={`text-[11px] font-semibold text-white leading-tight whitespace-pre-line ${language === "en" ? "text-left" : "text-right"}`}>
+            <h3 className={`text-[11px] font-semibold text-white leading-tight whitespace-nowrap ${language === "en" ? "text-left" : "text-right"}`}>
               {content.subtitle}
             </h3>
           </div>
         </div>
 
-        <p className={`hidden mb-5 text-[11px] leading-relaxed text-gray-200 max-w-[260px] ${language === "en" ? "text-left self-start" : "text-right self-end"}`}>
+        <p className={`mb-4 w-[55%] max-w-[340px] text-[15px] leading-[1.3] text-white ${language === "en" ? "ml-auto text-left" : "mr-auto -translate-x-6 -translate-y-6 text-right"}`}>
           {content.description}
         </p>
 
-        <Link href="/library" className={`flex w-fit items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end"}`}>
+        <Link href="/library" className={`flex w-fit items-center gap-0.5 rounded-full border border-[#FDDF96] pl-0.5 pr-1.5 py-0.5 text-[#FDDF96] transition-colors hover:bg-amber-400/10 ${language === "en" ? "self-start" : "self-end -translate-x-3"}`}>
           <svg
             className={`h-2.5 w-2.5 ${language === "en" ? "order-3" : ""}`}
             viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ export default function LibrarySection() {
               <h2 className="text-6xl font-bold text-[#E8C98A] whitespace-nowrap">
                 {content.title}
               </h2>
-              <h3 className="text-4xl mt-6 sm:mt-4 font-semibold text-white whitespace-pre-line">
+              <h3 className="text-4xl mt-6 sm:mt-4 font-semibold text-white whitespace-nowrap">
                 {content.subtitle}
               </h3>
             </div>

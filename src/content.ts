@@ -67,7 +67,7 @@ export const libraryContent = {
   subtitle: "علم، روشني ۽ روحاني ورثو",
   description:
     "درگاه حضرت مخدوم نوح جي لائبريري سيڪشن م مذهبي، تاريخي، تصوفي ۽ تعليمي ڪتابن جو خزانو دستياب هتي ڏانرين ۽ محققين لاءِ قيمتي مخطوطه جات، نادر ڪتاب ۽ ڊجيٽل مواد نبسر فراهم ڪئي ٿي",
-  button: "لائبريري ڏانھن وڃو",
+  button: "لائبريري ڏسو",
 };
 
 export const aboutContent = {
@@ -188,7 +188,7 @@ export const englishLibraryContent = {
   title: "Library Section",
   subtitle: "Knowledge, light and\nspiritual heritage",
   description: "The library of Dargah Makhdoom Nooh brings together religious, historical, Sufi and educational books, rare manuscripts and digital material for readers and researchers.",
-  button: "Visit the library",
+  button: "View library",
 };
 
 export const englishAboutContent = {
