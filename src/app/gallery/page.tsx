@@ -47,6 +47,7 @@ function GalleryLoadingOverlay({
 export default function GalleryPage() {
   const { language } = useLanguage();
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [loadedImageSources, setLoadedImageSources] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -93,6 +94,10 @@ export default function GalleryPage() {
     activeCategory === "All"
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
+
+  function markImageLoaded(src: string) {
+    setLoadedImageSources((current) => current.includes(src) ? current : [...current, src]);
+  }
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -165,13 +170,23 @@ export default function GalleryPage() {
                   onClick={() => openLightbox(i)}
                   className="group relative aspect-square overflow-hidden rounded-lg bg-[#0d2a28]/10"
                 >
+                  {!loadedImageSources.includes(img.src) && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 animate-pulse bg-[#0d2a28]/10"
+                    />
+                  )}
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    quality={65}
+                    unoptimized
                     loading="lazy"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    onLoad={() => markImageLoaded(img.src)}
+                    onError={() => markImageLoaded(img.src)}
+                    className={`object-cover transition-[opacity,transform] duration-300 group-hover:scale-105 ${
+                      loadedImageSources.includes(img.src) ? "opacity-100" : "opacity-0"
+                    }`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   <span className="absolute inset-0 bg-[#0d2a28]/0 transition-colors group-hover:bg-[#0d2a28]/20" />
@@ -217,7 +232,7 @@ export default function GalleryPage() {
               src={filteredImages[lightboxIndex].src}
               alt={filteredImages[lightboxIndex].alt}
               fill
-              quality={75}
+              unoptimized
               className="object-contain"
               sizes="100vw"
             />
