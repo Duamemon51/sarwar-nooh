@@ -166,6 +166,12 @@ quote: "درگاهه غوثُ الحق حضرت مخدوم سرور نوحؒ",
   credit: "ڊيزائن ۽ ڊويلپمينٽ:",
   creditName: "اُڏار اڪيڊمي",
 copyright: "درگاهه غوثُ الحق حضرت مخدوم سرور نوحؒ. سڀ حق محفوظ آهن.",
+ contactsTitle: "انتظاميه سان رابطو",
+  contacts: [
+    { name: "سيد نور محمد شاهه لاکياري", role: "چيف خليفه، سروري جماعت", phone: "+92 300 3013321" },
+    { name: "آخوند جاويد علوي", role: "سيڪريٽري جنرل، طالب المولى اڪيڊمي هالا", phone: "+92 300 8376001" },
+    { name: "ڪاشف ڀٽو", role: "سيڪريٽري، سروري جماعت", phone: "+92 302 3037810" },
+  ],
 };
 
 export const englishHeroContent = {
@@ -280,4 +286,10 @@ export const englishFooterContent = {
   credit: "Designed and developed by:",
   creditName: "Udaar Academy",
   copyright: "Dargah Makhdoom Sarwar Nooh. All rights reserved.",
+  contactsTitle: "Contact the Administration",
+  contacts: [
+    { name: "Syed Noor Muhammad Shah Lakiyari", role: "Chief Khalifa, Sarwari Jamaat", phone: "+92 300 3013321" },
+    { name: "Akhund Javed Alvi", role: "Secretary General, Talib-ul-Mola Academy Hala", phone: "+92 300 8376001" },
+    { name: "Kashif Bhutto", role: "Secretary, Sarwari Jamaat", phone: "+92 302 3037810" },
+  ],
 };

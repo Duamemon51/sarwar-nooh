@@ -6,6 +6,7 @@ import {
   Send,
   Calendar,
   ArrowLeft,
+  Phone,
 } from "lucide-react";
 import { englishFooterContent, englishNavLinks, footerContent, navLinks, socialLinks } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -57,6 +58,31 @@ function LanternMark({ className = "" }) {
         <line x1="40" y1="36" x2="40" y2="88" strokeOpacity="0.5" />
         <path d="M22 96 q18 10 36 0 v8 q-18 8 -36 0 z" fill="#c9a961" stroke="none" opacity="0.9" />
         <path d="M32 104 h16 l-8 14 z" fill="#e8c874" stroke="none" />
+      </g>
+    </svg>
+  );
+}
+
+/* Small diamond divider used beside the contact heading */
+function DiamondRule({ flip = false }: { flip?: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`flex items-center gap-1 ${flip ? "flex-row-reverse" : ""}`}
+    >
+      <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#c9a961]/70 sm:w-20" />
+      <span className="h-1.5 w-1.5 rotate-45 bg-[#c9a961]" />
+    </span>
+  );
+}
+
+/* Eight-point star badge behind the phone icon */
+function StarBadge({ className = "" }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      <g fill="none" stroke="#c9a961" strokeWidth="1.2">
+        <rect x="9" y="9" width="30" height="30" />
+        <rect x="9" y="9" width="30" height="30" transform="rotate(45 24 24)" />
       </g>
     </svg>
   );
@@ -157,16 +183,16 @@ export default function Footer() {
               {socialLinks.map(({ icon, href, label }) => {
                 const Icon = socialIcons[{ globe: "Globe", camera: "Camera", play: "Play", send: "Send" }[icon] as keyof typeof socialIcons];
                 return (
-                
-                 <a key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c9a961]/30 text-[#e9e4d8]/80 transition-colors hover:border-[#c9a961] hover:text-[#c9a961]"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c9a961]/30 text-[#e9e4d8]/80 transition-colors hover:border-[#c9a961] hover:text-[#c9a961]"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
                 );
               })}
             </div>
@@ -176,35 +202,97 @@ export default function Footer() {
           <div className={`flex min-w-0 max-w-full flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <MosqueMark className="h-10 w-10 shrink-0 md:h-12 md:w-12" />
             <div className={`min-w-0 text-center ${language === "en" ? "md:text-left" : "md:text-right"}`}>
-             <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-display)]"} text-base leading-tight text-white md:text-lg`}>
-  {content.brand}
-</p>
+              <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-display)]"} text-base leading-tight text-white md:text-lg`}>
+                {content.brand}
+              </p>
 
-<p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} mt-1 whitespace-nowrap text-xs leading-relaxed text-[#e9e4d8]/70`}>
-  {content.address[0]}، {content.address[1]}
-</p>
+              <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} mt-1 whitespace-nowrap text-xs leading-relaxed text-[#e9e4d8]/70`}>
+                {content.address[0]}، {content.address[1]}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
+      {/* ---------- Contacts ---------- */}
+      <section
+        aria-labelledby="footer-contact-heading"
+        className="relative border-b border-[#c9a961]/10 bg-gradient-to-b from-[#0d2a28] via-[#0f2e2b] to-[#0d2a28]"
+      >
+        {/* soft golden glow behind the cards */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a961]/[0.06] blur-3xl"
+        />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-16">
+          <div className="flex items-center justify-center gap-4">
+            <DiamondRule />
+            <h2
+              id="footer-contact-heading"
+              className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-center text-2xl text-white md:text-3xl`}
+            >
+              {content.contactsTitle}
+            </h2>
+            <DiamondRule flip />
+          </div>
+
+          <ul className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {content.contacts.map((contact) => (
+              <li
+                key={contact.name}
+                dir="ltr"
+                className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-[#c9a961]/25 bg-gradient-to-b from-[#123a36] to-[#0d2a28] px-5 pb-6 pt-8 text-center shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition duration-300 hover:-translate-y-1 hover:border-[#c9a961]/70 hover:shadow-[0_18px_40px_-14px_rgba(201,169,97,0.35)]"
+              >
+                {/* gold accent line on top */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#e8c874] to-transparent"
+                />
+
+                {/* icon badge */}
+                <div className="relative flex h-16 w-16 items-center justify-center">
+                  <StarBadge className="absolute inset-0 h-full w-full transition-transform duration-500 group-hover:rotate-45" />
+                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f3d98b] to-[#c9a961] text-[#0d2a28]">
+                    <Phone className="h-4 w-4" />
+                  </span>
+                </div>
+
+                <p dir={language === "en" ? "ltr" : "rtl"} className="mt-4 text-base font-semibold text-white md:text-lg">{contact.name}</p>
+                <p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70 md:text-sm">{contact.role}</p>
+
+                <span aria-hidden="true" className="my-4 h-px w-12 bg-[#c9a961]/40" />
+
+                <a
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 bg-[#c9a961]/10 px-5 py-2 text-sm font-medium tracking-wide text-[#f3d98b] transition-colors hover:bg-[#c9a961] hover:text-[#0d2a28] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c874]"
+                >
+                  <Phone className="h-3.5 w-3.5" />
+                  {contact.phone}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ---------- Bottom bar ---------- */}
       <div className="relative">
-       <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
-  <p>
-    {content.credit}{" "}
-    <a
-      href="https://udaar.pk/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="transition-colors hover:text-[#e9e4d8]"
-    >
-      {content.creditName}
-    </a>
-  </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-4 text-center text-xs text-[#e9e4d8]/50 sm:flex-row sm:items-center sm:justify-between sm:text-right">
+          <p>
+            {content.credit}{" "}
+            <a
+              href="https://udaar.pk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[#e9e4d8]"
+            >
+              {content.creditName}
+            </a>
+          </p>
 
-  <p>© {new Date().getFullYear()} {content.copyright}</p>
-</div>
+          <p>© {new Date().getFullYear()} {content.copyright}</p>
+        </div>
       </div>
     </footer>
   );
