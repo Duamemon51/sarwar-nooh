@@ -80,12 +80,27 @@
 }
 
 @media (max-width: 767px) {
+  .home-feature-strip-mobile .home-subheading-en {
+    font-size: clamp(0.75rem, 3.4vw, 0.9375rem);
+    line-height: 1.3;
+  }
+
+  .home-feature-strip-mobile .home-copy-en {
+    font-size: clamp(0.625rem, 2.8vw, 0.75rem);
+    line-height: 1.5;
+  }
+
   .hero-title-en {
     font-size: clamp(1.5rem, 7vw, 2rem);
   }
 
   .hero-subtitle-en {
     font-size: clamp(1.125rem, 5vw, 1.375rem);
+  }
+
+  .library-mobile-subtitle-en {
+    font-size: 0.75rem;
+    line-height: 1.35;
   }
 }
 

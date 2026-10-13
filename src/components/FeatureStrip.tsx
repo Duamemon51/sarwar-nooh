@@ -14,12 +14,12 @@ export default function FeatureStrip() {
     >
       <div className="mx-auto max-w-[1400px] px-4 py-8 md:py-10">
         {/* Mobile & sm: wrapped flex, 3 per row, centered last row */}
-        <div className="flex flex-wrap justify-center gap-y-6 md:hidden">
+        <div className="home-feature-strip-mobile flex flex-wrap justify-center gap-y-6 md:hidden">
           {content.map((feature, i) => (
             <div
               key={i}
               className="flex flex-col items-center text-center px-2"
-              style={{ flex: "0 0 33.333%" }}
+              style={{ flex: i >= 3 ? "0 0 50%" : "0 0 33.333%" }}
             >
               <div className="relative flex items-center justify-center w-[60px] h-[70px] sm:w-[70px] sm:h-[80px]">
                 <img
