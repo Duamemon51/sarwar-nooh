@@ -120,12 +120,12 @@ function CornerTile({ className }: { className: string }) {
 
 /* ---------- Info card (used on the map and below it) ---------- */
 
-function InfoCard({ isEn, serif }: { isEn: boolean; serif: string }) {
+function InfoCard({ isEn }: { isEn: boolean }) {
   return (
     <div className="flex items-center gap-3 border-[3px] border-double border-[#c9a961] bg-[#123A3A] px-3 py-2.5 shadow-[0_14px_28px_-12px_rgba(0,0,0,0.55)] md:block md:border-[6px] md:px-6 md:py-7 md:text-center">
       <div className="min-w-0 flex-1">
         <h3
-          className={`text-sm font-semibold leading-snug text-[#e8c98a] md:text-xl ${serif}`}
+          className={`${isEn ? "home-subheading-en" : "text-sm font-semibold leading-snug md:text-xl"} text-[#e8c98a]`}
         >
           {isEn ? "Shrine of Hazrat Makhdoom Sarwar Nooh" : "درگاه حضرت مخدوم سرور نوحؒ"}
         </h3>
@@ -139,7 +139,7 @@ function InfoCard({ isEn, serif }: { isEn: boolean; serif: string }) {
           <span className="h-px w-10 bg-[#c9a961]/60" />
         </div>
 
-        <p className="mt-0.5 text-[11px] leading-snug text-[#F3EAD9]/75 md:mt-0 md:text-sm md:text-[#F3EAD9]/80">
+        <p className={`${isEn ? "home-copy-en" : "mt-0.5 text-[11px] leading-snug md:mt-0 md:text-sm"} text-[#F3EAD9]/75 md:text-[#F3EAD9]/80`}>
           {isEn ? "Hala New, Matiari District, Sindh" : "هالا نوان، ضلعو مٽياري، سنڌ"}
         </p>
       </div>
@@ -165,7 +165,6 @@ export default function LocationMap() {
   const { language } = useLanguage();
   const isEn = language === "en";
 
-  const serif = isEn ? "font-serif" : "";
   const sindhiFont = isEn
     ? undefined
     : { fontFamily: "'Amiri', 'Noto Naskh Arabic', 'Scheherazade New', serif" };
@@ -194,7 +193,7 @@ export default function LocationMap() {
 
           <h2
             id="location-map-title"
-            className={`mt-6 text-3xl font-bold leading-tight sm:text-5xl ${serif} ${
+            className={`${isEn ? "home-section-heading-en" : "mt-6 text-3xl font-bold leading-tight sm:text-5xl"} mt-6 ${
               isEn ? "tracking-wide" : ""
             }`}
           >
@@ -205,7 +204,7 @@ export default function LocationMap() {
             <Ornament />
           </div>
 
-          <p className={`mt-5 text-base leading-loose text-[#123A3A]/80 sm:text-lg ${serif}`}>
+          <p className={`${isEn ? "home-copy-en" : "text-base leading-loose sm:text-lg"} mt-5 text-[#123A3A]/80`}>
             {isEn
               ? "Visit the Shrine of Hazrat Makhdoom Sarwar Nooh in Hala, Sindh."
               : "هالا، سنڌ ۾ درگاه حضرت مخدوم سرور نوحؒ جي زيارت لاءِ اچو."}
@@ -239,7 +238,7 @@ export default function LocationMap() {
                 Controls (bottom-right) and attribution (bottom) are never covered. */}
             <div className="pointer-events-none absolute inset-x-1.5 top-1.5 z-10 md:inset-x-auto md:right-5 md:top-5 md:w-80">
               <div className="pointer-events-auto">
-                <InfoCard isEn={isEn} serif={serif} />
+                <InfoCard isEn={isEn} />
               </div>
             </div>
             </div>

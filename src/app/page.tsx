@@ -107,19 +107,19 @@ export default function Home() {
   <div className={`absolute inset-0 hidden md:flex flex-col justify-center px-4 sm:px-8 md:px-12 ${language === "en" ? "items-start" : "items-end"}`}>
     <div className={`relative isolate ${language === "en" ? "w-[56%] max-w-[680px]" : "w-[42%] max-w-[500px]"} flex flex-col ${language === "en" ? "items-start text-left" : "items-end text-right"}`}>
       <div className={`${language === "en" ? "max-w-[520px] items-start ms-[24px]" : "max-w-[400px] items-end me-[68px]"} flex flex-col gap-0`}>
-        <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(2.8rem,4vw,3.8rem)] font-bold text-[#e8c98a] leading-[1.0] mb-0 whitespace-nowrap`}>
+        <h1 className={`${language === "en" ? "hero-title-en" : "font-[family-name:var(--font-display)] text-[clamp(2.8rem,4vw,3.8rem)] font-bold leading-[1.0]"} mb-0 whitespace-nowrap text-[#e8c98a]`}>
           {heroContent.title}
         </h1>
-        <h2 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold text-[#e8c98a] leading-[1.0] whitespace-normal`}>
+        <h2 className={`${language === "en" ? "hero-subtitle-en" : "font-[family-name:var(--font-display)] text-[clamp(2.5rem,3.7vw,3.3rem)] font-bold leading-[1.0]"} whitespace-normal text-[#e8c98a]`}>
           {heroContent.name}
         </h2>
       </div>
 
-      <p className={`text-white text-[clamp(1.35rem,2vw,1.75rem)] mt-4 mb-3 ${language === "en" ? "ms-[24px]" : "me-[68px]"}`}>
+      <p className={`${language === "en" ? "home-section-subtitle-en" : "text-[clamp(1.35rem,2vw,1.75rem)]"} mt-4 mb-3 text-white ${language === "en" ? "ms-[24px]" : "me-[68px]"}`}>
         {heroContent.location}
       </p>
 
-      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white text-[clamp(1rem,1.5vw,1.3rem)] leading-8 mb-6 max-w-[390px] ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
+      <p className={`${language === "en" ? "home-copy-en" : "font-[family-name:var(--font-sindhi)] text-[clamp(1rem,1.5vw,1.3rem)] leading-8"} mb-6 max-w-[390px] text-white ${language === "en" ? "ms-[24px]" : "me-[65px]"}`}>
         {heroContent.description}
       </p>
 
@@ -179,19 +179,19 @@ export default function Home() {
     {/* Text column — RIGHT side (gradient gehra kiya gaya) */}
     <div className={`relative flex-1 px-4 py-6 flex flex-col justify-center items-start ${language === "en" ? "bg-gradient-to-r from-[#071b19]/85 via-[#071b19]/65 to-transparent text-left" : "bg-gradient-to-l from-[#071b19]/85 via-[#071b19]/65 to-transparent text-right"}`}>
       <div className="flex flex-col items-start gap-0">
-        <h1 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(1.5rem,6vw,2rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal`}>
+        <h1 className={`${language === "en" ? "hero-title-en" : "font-[family-name:var(--font-display)] text-[clamp(1.5rem,6vw,2rem)] font-bold leading-[1.05]"} whitespace-normal text-[#e8c98a]`}>
           {heroContent.title}
         </h1>
-        <h2 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold text-[#e8c98a] leading-[1.05] whitespace-normal`}>
+        <h2 className={`${language === "en" ? "hero-subtitle-en" : "font-[family-name:var(--font-display)] text-[clamp(1.4rem,5.5vw,1.8rem)] font-bold leading-[1.05]"} whitespace-normal text-[#e8c98a]`}>
           {heroContent.name}
         </h2>
       </div>
 
-      <p className="text-white text-[clamp(0.85rem,3.2vw,1rem)] mt-2 mb-2">
+      <p className={`${language === "en" ? "home-section-subtitle-en" : "text-[clamp(0.85rem,3.2vw,1rem)]"} mt-2 mb-2 text-white`}>
         {heroContent.location}
       </p>
 
-      <p className={`${language === "en" ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} text-white/80 text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6 mb-4`}>
+      <p className={`${language === "en" ? "home-copy-en" : "font-[family-name:var(--font-sindhi)] text-[clamp(0.75rem,2.6vw,0.85rem)] leading-6"} mb-4 text-white/80`}>
         {heroContent.description}
       </p>
 

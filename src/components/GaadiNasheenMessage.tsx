@@ -31,8 +31,13 @@ export default function GaadiNasheenMessage() {
           {/* Text content */}
           <div className="w-full px-4 pt-4 sm:px-8 sm:pt-6 md:px-12 md:pt-8">
             <h2
-              style={{ fontFamily: "var(--font-display)" }}
-              className={`mb-3 text-lg font-bold leading-tight text-white sm:mb-4 sm:text-2xl md:text-4xl ${
+              style={{
+                fontFamily:
+                  language === "en"
+                    ? "var(--font-english-body)"
+                    : "var(--font-sindhi-display)",
+              }}
+              className={`${language === "en" ? "home-section-heading-en" : "text-lg font-bold leading-tight sm:text-2xl md:text-4xl"} mb-3 text-white sm:mb-4 ${
                 language === "en" ? "text-left" : "text-right"
               }`}
             >
@@ -47,7 +52,7 @@ export default function GaadiNasheenMessage() {
                     ? "var(--font-english-body)"
                     : "var(--font-sindhi)",
               }}
-              className={`pb-5 text-base leading-7 text-gray-200 md:pb-8 ${
+              className={`${language === "en" ? "home-copy-en" : "text-base leading-7"} pb-5 text-gray-200 md:pb-8 ${
                 language === "en" ? "text-left" : "text-right"
               }`}
             >
@@ -58,12 +63,12 @@ export default function GaadiNasheenMessage() {
                       ? "var(--font-english-body)"
                       : '"MB Sindhi Sahat", "Noto Sans Arabic", serif',
                 }}
-                className="mb-4 text-base md:text-2xl"
+                className={`mb-4 ${language === "en" ? "home-copy-en" : "text-base md:text-2xl"}`}
               >
                 {content.intro}
               </p>
 
-              <ol className="list-decimal space-y-3 ps-5 text-base marker:font-bold marker:text-[#e8c98a] sm:space-y-4 md:text-lg">
+              <ol className={`list-decimal space-y-3 ps-5 marker:font-bold marker:text-[#e8c98a] sm:space-y-4 ${language === "en" ? "home-copy-en" : "text-base md:text-lg"}`}>
                 {visibleGuidelines.map((guideline) => (
                   <li key={guideline.title} className="ps-1">
                     <strong className="font-bold text-[#e8c98a]">
@@ -82,7 +87,7 @@ export default function GaadiNasheenMessage() {
                         ? "var(--font-english-body)"
                         : '"MB Sindhi Sahat", "Noto Sans Arabic", serif',
                   }}
-                  className="mt-4 text-base md:text-lg"
+                  className={`mt-4 ${language === "en" ? "home-copy-en" : "text-base md:text-lg"}`}
                 >
                   {content.closing}
                 </p>

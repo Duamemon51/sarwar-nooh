@@ -19,10 +19,10 @@ export default function VisitInfo() {
       <div className="mx-auto max-w-[1400px] px-4 sm:px-8">
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#123A3A]">
+          <h2 className={`${isEn ? "home-section-heading-en" : "text-2xl sm:text-4xl md:text-5xl font-bold"} text-[#123A3A]`}>
             {content.title}
           </h2>
-          <p className="mt-3 text-sm sm:text-lg text-[#123A3A]/70">{content.subtitle}</p>
+          <p className={`${isEn ? "home-section-subtitle-en" : "text-sm sm:text-lg"} mt-3 text-[#123A3A]/70`}>{content.subtitle}</p>
           <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-[var(--color-gold)]" />
         </div>
 
@@ -46,8 +46,8 @@ export default function VisitInfo() {
                   {icons[card.icon]}
                 </svg>
               </div>
-              <h3 className="mb-2 text-lg sm:text-xl font-bold text-[#123A3A]">{card.title}</h3>
-              <p className="whitespace-pre-line text-sm sm:text-base leading-[1.9] text-[#123A3A]/80">
+              <h3 className={`${isEn ? "home-subheading-en" : "text-lg font-bold sm:text-xl"} mb-2 text-[#123A3A]`}>{card.title}</h3>
+              <p className={`${isEn ? "home-copy-en" : "text-sm leading-[1.9] sm:text-base"} whitespace-pre-line text-[#123A3A]/80`}>
                 {card.text}
               </p>
             </div>

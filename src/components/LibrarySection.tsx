@@ -25,16 +25,16 @@ export default function LibrarySection() {
             className="h-11 w-11 flex-shrink-0 object-contain"
           />
           <div className={language === "en" ? "text-left" : "text-right"}>
-            <h2 className={`text-lg font-bold text-[#E8C98A] leading-tight ${language === "en" ? "text-left" : "text-right"}`}>
+            <h2 className={`${language === "en" ? "home-section-heading-en" : "text-lg font-bold leading-tight"} text-[#E8C98A] ${language === "en" ? "text-left" : "text-right"}`}>
               {content.title}
             </h2>
-            <h3 className={`mt-1 text-[11px] font-semibold text-white leading-tight whitespace-nowrap ${language === "en" ? "text-left" : "text-right"}`}>
+            <h3 className={`${language === "en" ? "home-section-subtitle-en" : "mt-1 text-[11px] font-semibold leading-tight"} mt-1 whitespace-nowrap text-white ${language === "en" ? "text-left" : "text-right"}`}>
               {content.subtitle}
             </h3>
           </div>
         </div>
 
-        <p className={`mb-4 w-[55%] max-w-[340px] text-[15px] leading-[1.3] text-white ${language === "en" ? "ml-auto text-left" : "mr-auto -translate-x-6 translate-y-2 text-right"}`}>
+        <p className={`${language === "en" ? "home-copy-en" : "text-[15px] leading-[1.3]"} mb-4 w-[55%] max-w-[340px] text-white ${language === "en" ? "mr-auto text-left" : "ml-auto -translate-x-6 translate-y-2 text-right"}`}>
           {content.mobileDescription}
         </p>
 
@@ -71,16 +71,16 @@ export default function LibrarySection() {
             />
 
             <div className={`${language === "en" ? "text-left" : "text-right"} min-w-0`}>
-              <h2 className="text-6xl font-bold text-[#E8C98A] whitespace-nowrap">
+              <h2 className={`${language === "en" ? "home-section-heading-en" : "text-6xl font-bold"} whitespace-nowrap text-[#E8C98A]`}>
                 {content.title}
               </h2>
-              <h3 className="text-4xl mt-6 sm:mt-4 font-semibold text-white whitespace-nowrap">
+              <h3 className={`${language === "en" ? "home-section-subtitle-en" : "mt-6 text-4xl font-semibold sm:mt-4"} whitespace-nowrap text-white`}>
                 {content.subtitle}
               </h3>
             </div>
           </div>
 
-          <p className={`mb-8 text-2xl leading-relaxed text-gray-200 ${language === "en" ? "text-left ml-[20px]" : "text-right ml-[20] mr-[-50px]"}`}>
+          <p className={`${language === "en" ? "home-copy-en" : "mb-8 text-2xl leading-relaxed"} mb-8 text-gray-200 ${language === "en" ? "text-left ml-[20px]" : "text-right ml-[20] mr-[-50px]"}`}>
             {content.description}
           </p>
 

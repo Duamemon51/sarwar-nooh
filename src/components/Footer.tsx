@@ -1,17 +1,11 @@
 import Link from "next/link";
 import {
-  Globe,
-  Camera,
-  Play,
-  Send,
   Calendar,
   ArrowLeft,
   Phone,
 } from "lucide-react";
-import { englishFooterContent, englishNavLinks, footerContent, navLinks, socialLinks } from "@/content";
+import { englishFooterContent, englishNavLinks, footerContent, navLinks } from "@/content";
 import { useLanguage } from "@/components/LanguageProvider";
-
-const socialIcons = { Globe, Camera, Play, Send };
 
 function CornerOrnament({ className = "" }) {
   return (
@@ -103,6 +97,65 @@ export default function Footer() {
           : "font-[family-name:var(--font-sindhi)]"
       }`}
     >
+      {/* ---------- Contacts ---------- */}
+      <section
+        aria-labelledby="footer-contact-heading"
+        className="relative border-b border-[#c9a961]/10 bg-gradient-to-b from-[#0d2a28] via-[#0f2e2b] to-[#0d2a28]"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a961]/[0.06] blur-3xl"
+        />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-16">
+          <div className="flex items-center justify-center gap-4">
+            <DiamondRule />
+            <h2
+              id="footer-contact-heading"
+              className={`${language === "en" ? "home-section-heading-en" : "font-[family-name:var(--font-display)] text-2xl md:text-3xl"} text-center text-white`}
+            >
+              {content.contactsTitle}
+            </h2>
+            <DiamondRule flip />
+          </div>
+
+          <ul className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {content.contacts.map((contact) => (
+              <li
+                key={contact.name}
+                dir="ltr"
+                className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-[#c9a961]/25 bg-gradient-to-b from-[#123a36] to-[#0d2a28] px-5 pb-6 pt-8 text-center shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition duration-300 hover:-translate-y-1 hover:border-[#c9a961]/70 hover:shadow-[0_18px_40px_-14px_rgba(201,169,97,0.35)]"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#e8c874] to-transparent"
+                />
+
+                <div className="relative flex h-16 w-16 items-center justify-center">
+                  <StarBadge className="absolute inset-0 h-full w-full transition-transform duration-500 group-hover:rotate-45" />
+                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f3d98b] to-[#c9a961] text-[#0d2a28]">
+                    <Phone className="h-4 w-4" />
+                  </span>
+                </div>
+
+                <p dir={language === "en" ? "ltr" : "rtl"} className={`${language === "en" ? "home-subheading-en" : "text-base font-semibold md:text-lg"} mt-4 flex min-h-14 items-center justify-center text-white`}>{contact.name}</p>
+                <p className={`${language === "en" ? "home-copy-en" : "text-xs leading-relaxed md:text-sm"} mt-1 min-h-10 text-[#e9e4d8]/70`}>{contact.role}</p>
+
+                <span aria-hidden="true" className="mt-auto mb-4 h-px w-12 bg-[#c9a961]/40" />
+
+                <a
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 bg-[#c9a961]/10 px-5 py-2 text-sm font-medium tracking-wide text-[#f3d98b] transition-colors hover:bg-[#c9a961] hover:text-[#0d2a28] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c874]"
+                >
+                  <Phone className="h-3.5 w-3.5" />
+                  {contact.phone}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ---------- Upcoming Events Banner ---------- */}
       <div className="relative border-b border-[#c9a961]/20 bg-[#0f2e2b]">
         <CornerOrnament className="pointer-events-none absolute right-0 top-0 h-16 w-16 -scale-x-100 md:h-24 md:w-24" />
@@ -112,7 +165,7 @@ export default function Footer() {
           {/* Rightmost: event card */}
           <div className={`flex items-center gap-5 justify-self-center text-center md:justify-self-end ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <div>
-              <p className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-lg leading-relaxed text-white md:text-xl`}>
+              <p className={`${language === "en" ? "home-section-subtitle-en" : "font-[family-name:var(--font-display)] text-lg leading-relaxed md:text-xl"} text-white`}>
                 {content.ursTitle}
               </p>
               <div className="mt-3 flex items-center gap-4 rounded-xl border border-[#c9a961]/40 bg-[#0d2a28]/70 px-4 py-3 backdrop-blur-sm md:px-5 md:py-4">
@@ -121,7 +174,7 @@ export default function Footer() {
                   <span className="text-xl font-semibold leading-none text-white md:text-2xl">{content.ursDate}</span>
                   <span className="mt-1 text-[10px] text-[#e9e4d8]/70 md:text-xs">{content.ursMonth}</span>
                 </div>
-                <p className="max-w-[160px] text-xs leading-relaxed text-[#e9e4d8]/75 md:max-w-[180px] md:text-sm">
+                <p className={`${language === "en" ? "home-copy-en max-w-[220px]" : "max-w-[160px] text-xs leading-relaxed md:max-w-[180px] md:text-sm"} text-[#e9e4d8]/75`}>
                   {content.ursDescription}
                 </p>
               </div>
@@ -130,10 +183,10 @@ export default function Footer() {
 
           {/* Center: quote */}
           <div className="flex flex-col items-center text-center">
-            <p className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-xl leading-loose text-white sm:text-2xl md:text-3xl`}>
+            <p className={`${language === "en" ? "home-section-subtitle-en" : "font-[family-name:var(--font-display)] text-xl leading-loose sm:text-2xl md:text-3xl"} text-white`}>
               &rdquo;{content.quote}&ldquo;
             </p>
-            <p className="mt-3 max-w-xs text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
+            <p className={`${language === "en" ? "home-copy-en max-w-sm" : "max-w-xs text-xs leading-relaxed sm:text-sm"} mt-3 text-[#e9e4d8]/75`}>
               {content.quoteDescription}
             </p>
           </div>
@@ -142,10 +195,10 @@ export default function Footer() {
           <div className={`flex min-w-0 max-w-full flex-col items-center gap-3 text-center justify-self-center md:flex-row md:items-center md:gap-4 md:justify-self-start ${language === "en" ? "md:text-left" : "md:text-right"}`}>
             <LanternMark className="h-20 w-12 shrink-0 md:h-28 md:w-16" />
             <div className="min-w-0 max-w-xs">
-              <h2 className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-xl leading-snug text-white sm:text-2xl md:text-3xl`}>
+              <h2 className={`${language === "en" ? "home-subheading-en" : "font-[family-name:var(--font-display)] text-xl leading-snug sm:text-2xl md:text-3xl"} text-white`}>
                 {content.gatheringsTitle}
               </h2>
-              <p className="mt-2 text-xs leading-relaxed text-[#e9e4d8]/75 sm:text-sm">
+              <p className={`${language === "en" ? "home-copy-en" : "text-xs leading-relaxed sm:text-sm"} mt-2 text-[#e9e4d8]/75`}>
                 {content.gatheringsDescription}
               </p>
               <Link
@@ -166,8 +219,8 @@ export default function Footer() {
         <CornerOrnament className="pointer-events-none absolute left-0 bottom-0 h-16 w-16 -rotate-90 -scale-x-100 md:h-20 md:w-20" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between">
-          {/* Rightmost: nav + social */}
-          <div className="flex flex-col items-center gap-4 md:items-start">
+          {/* Rightmost: navigation */}
+          <div className="flex flex-col items-center md:items-start">
             <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#e9e4d8]/80 md:justify-start md:gap-5">
               {links.map((link) => (
                 <Link
@@ -179,23 +232,6 @@ export default function Footer() {
                 </Link>
               ))}
             </nav>
-            <div className="flex items-center gap-3">
-              {socialLinks.map(({ icon, href, label }) => {
-                const Icon = socialIcons[{ globe: "Globe", camera: "Camera", play: "Play", send: "Send" }[icon] as keyof typeof socialIcons];
-                return (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c9a961]/30 text-[#e9e4d8]/80 transition-colors hover:border-[#c9a961] hover:text-[#c9a961]"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
-            </div>
           </div>
 
           {/* Leftmost: brand */}
@@ -213,68 +249,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* ---------- Contacts ---------- */}
-      <section
-        aria-labelledby="footer-contact-heading"
-        className="relative border-b border-[#c9a961]/10 bg-gradient-to-b from-[#0d2a28] via-[#0f2e2b] to-[#0d2a28]"
-      >
-        {/* soft golden glow behind the cards */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a961]/[0.06] blur-3xl"
-        />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-16">
-          <div className="flex items-center justify-center gap-4">
-            <DiamondRule />
-            <h2
-              id="footer-contact-heading"
-              className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} text-center text-2xl text-white md:text-3xl`}
-            >
-              {content.contactsTitle}
-            </h2>
-            <DiamondRule flip />
-          </div>
-
-          <ul className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {content.contacts.map((contact) => (
-              <li
-                key={contact.name}
-                dir="ltr"
-                className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-[#c9a961]/25 bg-gradient-to-b from-[#123a36] to-[#0d2a28] px-5 pb-6 pt-8 text-center shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition duration-300 hover:-translate-y-1 hover:border-[#c9a961]/70 hover:shadow-[0_18px_40px_-14px_rgba(201,169,97,0.35)]"
-              >
-                {/* gold accent line on top */}
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#e8c874] to-transparent"
-                />
-
-                {/* icon badge */}
-                <div className="relative flex h-16 w-16 items-center justify-center">
-                  <StarBadge className="absolute inset-0 h-full w-full transition-transform duration-500 group-hover:rotate-45" />
-                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f3d98b] to-[#c9a961] text-[#0d2a28]">
-                    <Phone className="h-4 w-4" />
-                  </span>
-                </div>
-
-                <p dir={language === "en" ? "ltr" : "rtl"} className="mt-4 text-base font-semibold text-white md:text-lg">{contact.name}</p>
-                <p className="mt-1 text-xs leading-relaxed text-[#e9e4d8]/70 md:text-sm">{contact.role}</p>
-
-                <span aria-hidden="true" className="my-4 h-px w-12 bg-[#c9a961]/40" />
-
-                <a
-                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#c9a961]/50 bg-[#c9a961]/10 px-5 py-2 text-sm font-medium tracking-wide text-[#f3d98b] transition-colors hover:bg-[#c9a961] hover:text-[#0d2a28] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c874]"
-                >
-                  <Phone className="h-3.5 w-3.5" />
-                  {contact.phone}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       {/* ---------- Bottom bar ---------- */}
       <div className="relative">

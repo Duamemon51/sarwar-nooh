@@ -29,10 +29,10 @@ export default function FeatureStrip() {
                 />
               </div>
 
-              <div className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} mt-1 text-[12px] sm:text-[15px] font-bold text-[#0d3d3a] leading-normal`}>
+              <div className={`${language === "en" ? "home-subheading-en" : "font-[family-name:var(--font-display)] mt-1 text-[12px] font-bold sm:text-[15px]"} text-[#0d3d3a] leading-normal sm:mt-1`}>
                 {feature.title}
               </div>
-              <div className="mt-1 leading-[1.5] text-[10px] sm:text-[12.5px] font-medium text-[#5f4026]">
+              <div className={`${language === "en" ? "home-copy-en" : "mt-1 text-[10px] leading-[1.5] sm:text-[12.5px]"} mt-1 font-medium text-[#5f4026]`}>
                 {feature.lines.map((line, idx) => (
                   <div key={idx}>{line}</div>
                 ))}
@@ -61,10 +61,10 @@ export default function FeatureStrip() {
                   />
                 </div>
 
-                <div className={`${language === "en" ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} mt-0 text-[16px] font-bold text-[#0d3d3a] leading-normal`}>
+                <div className={`${language === "en" ? "home-subheading-en" : "font-[family-name:var(--font-display)] text-[16px] font-bold"} text-[#0d3d3a] leading-normal`}>
                   {feature.title}
                 </div>
-                <div className="mt-1 leading-[1.8] text-[13px] font-medium text-[#5f4026]">
+                <div className={`${language === "en" ? "home-copy-en" : "mt-1 text-[13px] leading-[1.8]"} mt-1 font-medium text-[#5f4026]`}>
                   {feature.lines.map((line, idx) => (
                     <div key={idx}>{line}</div>
                   ))}

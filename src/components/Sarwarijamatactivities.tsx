@@ -181,15 +181,15 @@ export default function SarwariJamatActivities() {
 
           <h2
             id="sarwari-title"
-            className="mt-3 text-2xl font-bold leading-snug text-white sm:mt-4 sm:text-4xl lg:text-5xl"
+            className={`${isEnglish ? "home-section-heading-en" : "text-2xl font-bold leading-snug sm:text-4xl lg:text-5xl"} mt-3 text-white sm:mt-4`}
           >
             {title}
           </h2>
-          <p className="mt-2 text-base sm:text-2xl" style={{ color: GOLD_LIGHT }}>
+          <p className={`${isEnglish ? "home-section-subtitle-en" : "text-base sm:text-2xl"} mt-2`} style={{ color: GOLD_LIGHT }}>
             {subtitle}
           </p>
           <p
-            className="mx-auto mt-4 max-w-2xl text-[14.5px] leading-relaxed sm:mt-5 sm:text-[18px]"
+            className={`${isEnglish ? "home-copy-en" : "text-[14.5px] leading-relaxed sm:text-[18px]"} mx-auto mt-4 max-w-2xl sm:mt-5`}
             style={{ color: "#dbe4e2" }}
           >
             {intro}
@@ -226,12 +226,12 @@ export default function SarwariJamatActivities() {
                 style={{ background: CARD, border: `1px solid ${GOLD}33` }}
               >
                 <div className={`${reversed ? "md:[direction:rtl]" : ""} md:col-span-2`}>
-                  <h3 className="text-lg font-bold sm:text-2xl">{c.heading}</h3>
+                  <h3 className={`${isEnglish ? "home-subheading-en" : "text-lg font-bold sm:text-2xl"}`}>{c.heading}</h3>
                   <div className="mt-2.5 space-y-2.5 sm:mt-4 sm:space-y-4">
                     {c.paragraphs.map((p, j) => (
                       <p
                         key={j}
-                        className="text-[14.5px] leading-[1.85] sm:text-[18px] sm:leading-[2.05]"
+                        className={`${isEnglish ? "home-copy-en" : "text-[14.5px] leading-[1.85] sm:text-[18px] sm:leading-[2.05]"}`}
                       >
                         {p}
                       </p>

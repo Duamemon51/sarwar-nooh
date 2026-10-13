@@ -348,7 +348,7 @@ export default function LibraryPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/20 sm:hidden" />
           <div dir="ltr" className="relative mx-0 grid min-h-[430px] max-w-none items-center gap-10 px-2 py-20 sm:min-h-[520px] sm:px-4 sm:py-28 lg:px-6">
             <div className={isEnglish ? "text-left" : "text-right"}>
-              <h1 dir={isEnglish ? "ltr" : "rtl"} className={`${isEnglish ? "font-[family-name:var(--font-english-display)]" : "font-[family-name:var(--font-display)]"} max-w-3xl md:-translate-x-24 text-5xl leading-[0.95] text-[#f0d48b] sm:text-7xl`}>
+              <h1 dir={isEnglish ? "ltr" : "rtl"} className={`${isEnglish ? "hero-title-en" : "font-[family-name:var(--font-display)] text-5xl leading-[0.95] sm:text-7xl"} max-w-3xl text-[#f0d48b]`}>
                 {isEnglish ? "The Library" : "لائبريري"}
               </h1>
               <p dir={isEnglish ? "ltr" : "rtl"} className="mt-6 max-w-2xl text-base leading-8 text-[#f1eadb]/80 sm:text-lg">
@@ -370,10 +370,10 @@ export default function LibraryPage() {
             {/* Heading */}
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-xl">
-                <h2 className={`${displayFont} mt-0 text-4xl leading-tight text-[#0d2a28] sm:text-5xl`}>
+                <h2 className={`${isEnglish ? "home-section-heading-en" : `${displayFont} mt-0 text-4xl leading-tight sm:text-5xl`} text-[#0d2a28]`}>
                   {isEnglish ? "Knowledge preserved" : "محفوظ علم"}
                 </h2>
-                <p className="mt-3 text-sm leading-7 text-[#1c2b28]/65 sm:text-base">
+                <p className={`${isEnglish ? "home-copy-en" : "mt-3 text-sm leading-7 sm:text-base"} mt-3 text-[#1c2b28]/65`}>
                   {isEnglish
                     ? "Read and download books from the Dargah archive, free of charge."
                     : "درگاهه جي آرڪائيو مان ڪتاب مفت پڙهو ۽ ڊائون لوڊ ڪريو."}
@@ -450,12 +450,12 @@ export default function LibraryPage() {
 
                         {/* title + ornament divider + description */}
                         <div>
-                          <h3 className={`${displayFont} leading-tight text-[#0d2a28] ${single ? "text-[1.75rem] sm:text-4xl lg:text-5xl" : "text-2xl sm:text-3xl"}`}>{title}</h3>
+                          <h3 className={`${isEnglish ? "home-subheading-en" : `${displayFont} leading-tight ${single ? "text-[1.75rem] sm:text-4xl lg:text-5xl" : "text-2xl sm:text-3xl"}`} text-[#0d2a28]`}>{title}</h3>
                           <div className="mt-5 flex items-center gap-2" aria-hidden>
                             <span className="h-px w-16 bg-[#c9a961]" />
                             <span className="h-2 w-2 rotate-45 bg-[#c9a961]" />
                           </div>
-                          <p className={`mt-5 max-w-2xl leading-8 text-[#1c2b28]/70 ${single ? "text-base" : "text-sm"}`}>
+                          <p className={`${isEnglish ? "home-copy-en" : `mt-5 max-w-2xl leading-8 ${single ? "text-base" : "text-sm"}`} mt-5 max-w-2xl text-[#1c2b28]/70`}>
                             {isEnglish ? resource.description.en : resource.description.sd}
                           </p>
                         </div>
@@ -521,8 +521,8 @@ export default function LibraryPage() {
                   <BookOpen className="h-6 w-6" />
                 </span>
                 <div>
-                  <h2 className={`${displayFont} text-2xl text-[#f0d48b] sm:text-3xl`}>{isEnglish ? "A growing archive" : "وڌندڙ علمي ذخيرو"}</h2>
-                  <p className="mt-2 max-w-3xl text-sm leading-7 text-white/75">
+                  <h2 className={`${isEnglish ? "home-section-heading-en" : `${displayFont} text-2xl sm:text-3xl`} text-[#f0d48b]`}>{isEnglish ? "A growing archive" : "وڌندڙ علمي ذخيرو"}</h2>
+                  <p className={`${isEnglish ? "home-copy-en" : "mt-2 text-sm leading-7"} mt-2 max-w-3xl text-white/75`}>
                     {isEnglish
                       ? "This collection is being prepared for readers and researchers. Digitised books and manuscripts will be added here as they are catalogued and cleared for public access."
                       : "هي ذخيرو پڙهندڙن ۽ محققن لاءِ تيار ڪيو پيو وڃي. ڊجيٽل ڪتاب ۽ مخطوطا ترتيب ڏيڻ ۽ عوامي رسائي لاءِ تيار ٿيڻ کان پوءِ هتي شامل ڪيا ويندا."}

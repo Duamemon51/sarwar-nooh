@@ -265,17 +265,17 @@ const ENGLISH_CHAPTERS: Chapter[] = [
 /*  Compact section heading                                            */
 /* ------------------------------------------------------------------ */
 
-function ArchHeading({ title, caption }: { title: string; caption: string }) {
+function ArchHeading({ title, caption, isEnglish }: { title: string; caption: string; isEnglish: boolean }) {
   return (
     <div
       className="mx-auto flex max-w-5xl flex-col items-center rounded-xl px-5 py-7 text-center sm:rounded-2xl sm:px-10 sm:py-9"
       style={{ background: TEAL, border: `1px solid ${GOLD}66` }}
     >
-      <h2 id="dargah-title" className="text-2xl font-bold leading-snug text-white sm:text-4xl">
+      <h2 id="dargah-title" className={`${isEnglish ? "home-section-heading-en" : "text-2xl font-bold leading-snug sm:text-4xl"} text-white`}>
         {title}
       </h2>
       <span className="mt-3 h-px w-24" style={{ background: GOLD }} aria-hidden="true" />
-      <p className="mt-3 text-base sm:text-xl" style={{ color: GOLD_LIGHT }}>
+      <p className={`${isEnglish ? "home-section-subtitle-en" : "text-base sm:text-xl"} mt-3`} style={{ color: GOLD_LIGHT }}>
         {caption}
       </p>
     </div>
@@ -309,7 +309,7 @@ export default function DargahHistory({
       className={`${isEnglish ? "font-[family-name:var(--font-english-body)]" : "font-[family-name:var(--font-sindhi)]"} w-full overflow-x-hidden bg-white px-4 pb-16 pt-10 sm:px-10 sm:pb-24 sm:pt-14 lg:px-16`}
       style={{ color: TEAL }}
     >
-      <ArchHeading title={title} caption={caption} />
+      <ArchHeading title={title} caption={caption} isEnglish={isEnglish} />
 
       <div className="mx-auto mt-8 max-w-7xl sm:mt-16">
         {chapters.map((c, i) => (
@@ -321,7 +321,7 @@ export default function DargahHistory({
             }}
           >
             <div>
-              <h3 className="flex items-center gap-3 text-xl font-bold sm:text-2xl lg:text-3xl">
+              <h3 className={`flex items-center gap-3 ${isEnglish ? "home-subheading-en" : "text-xl font-bold sm:text-2xl lg:text-3xl"}`}>
                 <span
                   className="h-2.5 w-2.5 shrink-0 rotate-45"
                   style={{ background: GOLD }}
@@ -329,15 +329,15 @@ export default function DargahHistory({
                 />
                 {c.heading}
               </h3>
-              <p className="mt-3 text-[17px] leading-[2.05] sm:mt-4 sm:text-[19px] sm:leading-[2.15] lg:text-[20px]">
+              <p className={`${isEnglish ? "home-copy-en" : "text-[17px] leading-[2.05] sm:text-[19px] sm:leading-[2.15] lg:text-[20px]"} mt-3 sm:mt-4`}>
                 {c.text}
               </p>
               {c.details && (
                 <>
                   {c.details.slice(0, 1).map((detail) => (
                     <section key={detail.heading} className="mt-5">
-                      <h4 className="text-lg font-bold sm:text-xl">{detail.heading}</h4>
-                      <p className="mt-2 whitespace-pre-line text-[16px] leading-[1.95] sm:text-[18px] sm:leading-[2.05]">
+                      <h4 className={`${isEnglish ? "home-subheading-en" : "text-lg font-bold sm:text-xl"}`}>{detail.heading}</h4>
+                      <p className={`${isEnglish ? "home-copy-en" : "text-[16px] leading-[1.95] sm:text-[18px] sm:leading-[2.05]"} mt-2 whitespace-pre-line`}>
                         {detail.text}
                       </p>
                     </section>
@@ -365,8 +365,8 @@ export default function DargahHistory({
                       </button>
                       {expandedChapter === c.heading && c.details.slice(1).map((detail) => (
                         <section key={detail.heading} className="mt-5">
-                          <h4 className="text-lg font-bold sm:text-xl">{detail.heading}</h4>
-                          <p className="mt-2 whitespace-pre-line text-[16px] leading-[1.95] sm:text-[18px] sm:leading-[2.05]">
+                          <h4 className={`${isEnglish ? "home-subheading-en" : "text-lg font-bold sm:text-xl"}`}>{detail.heading}</h4>
+                          <p className={`${isEnglish ? "home-copy-en" : "text-[16px] leading-[1.95] sm:text-[18px] sm:leading-[2.05]"} mt-2 whitespace-pre-line`}>
                             {detail.text}
                           </p>
                         </section>
