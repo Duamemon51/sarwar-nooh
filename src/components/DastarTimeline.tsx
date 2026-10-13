@@ -36,7 +36,7 @@ const DASTARS: Dastar[] = [
       [DEATH, "998 هه (مطابق 1590ع)"],
       [AGE, "87 سال"],
     ],
-    note: "سندن والد صاحب کين ”نعمت الله“ نالو ڏنو.",
+ 
   },
   {
     n: 2,
@@ -621,7 +621,7 @@ export default function DastarTimeline() {
                 className="text-3xl font-bold leading-none sm:text-4xl"
                 style={{ color: GOLD_LIGHT, fontFamily: "var(--font-english-body)" }}
               >
-                1505ع
+                1506ع
               </div>
               <div className="text-sm text-white/75 sm:text-base">پهرين دستار</div>
             </div>

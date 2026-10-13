@@ -88,6 +88,38 @@ const CHAPTERS: Chapter[] = [
         text: "وقت سان گڏ زائرين جي آمد وڌڻ سبب وڌيڪ وسيع جاءِ جي ضرورت محسوس ٿي. ان ضرورت کي نظر ۾ رکندي درگاهه شريف ۽ مسجد شريف جي سامهون هڪ وڏو ورانڊو تعمير ڪرايو ويو. هن ورانڊي جي تعمير جو تعلق مخدوم ظھيرالدين عرف پرو ڄام سائين سان بيان ٿيل آهي، جڏهن ته ان جي تڪميل سندن فرزند مخدوم مولوي غلام حيدر جي ڪوشش سان ٿي. ورانڊي جي تعمير 1351 هجري ۾ مڪمل ٿي. هي ورانڊو تقريباً 120 فوٽ ڊگهو، 30 فوٽ ويڪرو ۽ لڳ ڀڳ 30 فوٽ اوچو آهي. اهو زائرين ۽ جمعي جي نماز لاءِ وڏي سهولت بڻيو.",
       },
       {
+        heading: "چوديواري",
+        text: "قبلہ مخدوم محمد زمان سائين دستار جي دور ۾ ناري وارن مريدن جي مالي مدد سان درگاه شريف جي چوڌاري پڪين ڀتين جي تعمير ڪئي وئي. انھيءَ تعمير سان درگاه شريف جو اندروني احاطو باقي قبرستانن ۽ ٻاهرين حصن کان هڪ واضح حد اندر محفوظ ٿيو.",
+      },
+      {
+        heading: "اڱڻ ۽ صحن",
+        text: "درگاه شريف جي اڱڻ جي ڊيگھ 114 فوٽ ۽ ويڪر 72 فوٽ آهي. ان ۾ نسراني فرش لڳل آهي. اڳيان ڪاٺ ۽ لوھ جي سيخن سان ڪٽهڙو ڏنل آهي. وچ ۾ دروازو ۽ ٻه ننڍيون مناريون آهن ۽ هيٺ پٿر جون عاليشان چاڙهيون آهن.\nاتر طرف نئين تجر، پراڻي تجر جو ڪجھ حصو ۽ وچ ۾ اها گهٽي آهي جيڪا وضو خاني ڏي وڃي ٿي. ڏکڻ طرف چوڪنڊيءَ جي ديوار آهي، جنهن تي ننڍا منارا به آويزان آهن.\nاڳ ۾ هن اڱڻ ۾ ڪانھن جا پن ڀريل هوندا هئا، جيڪي هر سال بدلبا هئا. بعد ۾ مخدوم غلام حيدر سائين رضہ اتي سرن جو فرش لڳرايو ۽ پوءِ ذوالفقار علي ڀٽي اتي ٽائلن جو فرش لڳرايو.",
+      },
+      {
+        heading: "وضوخانو ۽ کوھ",
+        text: "مسجد شريف جي اوڀر ۽ ورانڊي جي اتر ۾ ٻه تجرون مريدن ۽ معتقدن جي آسائش خاطر آهن. انهن تجرن جي اتر ۾ وضوءَ جي جاءِ ۽ کوه آهي. کوه جو پاڻي وضوءَ، استنجاءَ ۽ پيئڻ لاءِ استعمال ٿيندو هو.\nتازو اوقاف کاتي واري طرفان وضوخانا ٺهرايا ويا آهن، جن ۾ هڪ وقت ۾ تقريباً پنجاه ماڻهو وضو ڪري سگهن ٿا. کوه سميت پوري عمارت اڏيل آهي.",
+      },
+      {
+        heading: "سوماري صفحو",
+        text: "وضوءَ جي جاءِ جي اوڀر ۾ ڪجھ فاصلي تي ”سوماري صفحو“ آهي، جتي ذڪر ۽ فکر وارا ماڻهو رات جو رهندا آهن. ميلي جي جماعت به اتي رهندي آهي، خاص ڪري لاڙائي فقير، جيڪي هر سال پيرين پنڌ لاڙ کان سوين ميلن جي مفاصلي تان وڏي ميلي تي اچن ٿا.\nهڪ مخصوص بنگلو سجاده نشين جي رهڻ لاءِ پڻ موجود آهي، جنهن ۾ هر سومار ۽ ميلي تي ذڪر ۽ زيارت لاءِ رات جو رهڻو هوندو آهي.",
+      },
+      {
+        heading: "نمن وارو ميدان",
+        text: "لکي دروازي مان داخل ٿي نمن واري ميدان ۾ اچبو آهي، جيڪو 114 فوٽ ڊگهو ۽ 137 فوٽ ويڪرو آهي. وچ ۾ سنگِ مرمر جو 137 فوٽ ڊگهو رستو آهي، جيڪو وڏي قبي جي سڌائيءَ ۾ ورانڊي تائين وڃي ٿو.\nهن ميدان ۾ ڪيئي نمن جا وڻ زائرين ۽ جنازي جي نماز پڙهڻ لاءِ نمازيءَ جي ڇانوَ خاطر لڳل آهن.\nنمن واري ميدان جي اڱڻ ۾ شروع ۾ تقريباً ساڍا پنج فوٽ فرق هو، پر پوءِ مٽيءَ جو پور وجهائڻ ڪري هاڻ تقريباً ساڍا ٽي فوٽ ميدان کان مٿي آهي. اڱڻ ۽ ميدان کي پٿر جي ڏاڪڻ سان ملايو ويو آهي.",
+      },
+      {
+        heading: "مسافرخانو، بورچي خانو ۽ ٻيا اضافا",
+        text: "قبلہ سائين مخدوم سعيد الزمان ولد قبلہ مخدوم محمد زمان دستار جي دور ۾ نمن واري ميدان ۾ مٽيءَ جو پور وجهرايو ويو، ڇاڪاڻ ته برسات جي ڪري ميدان ۾ پاڻي جمع ٿي ويندو هو ۽ صحن جي پٿر واري چاڙهيءَ جا ڪجھه ڏاڪا ڍڪجي ويندا هئا.\nان ميدان جي اتر طرف هڪ وڏو مسافرخانو ٺهرايو ويو ۽ ان جي اوڀر طرف بورچي خانو اڏايو ويو. کوه جي پاسي نئون وضوخانو ۽ پاڻيءَ جي ٽانڪي ٺهرايا ويا. عورتن ۽ مردن لاءِ الڳ استنجاخانا ٺهرايا ويا. کوه کي ڊاٺو نه ويو، پر ان کي نشاني طور رکيو ويو.\nحويليءَ جي وضو خاني تائين توسيع ڪئي وئي. چوڪنڊيءَ کي اولهه ۽ ڏکڻ طرف وڌايو ويو. ٻاهرئين ڪوٽ ۾ جتي ڪچي ڀت هئي، ان کي ڊهرائي پڪو ڪرايو ويو ۽ ٻاهرئين قبي کان ورانڊي تائين سنگِ مرمر جو ڪشادي فرش لڳرايو ويو. وضو خاني جي سامهون ملازمن جي رهائش لاءِ ڪوٺي پڻ ٺهرائي وئي.",
+      },
+      {
+        heading: "مخدوم محمد امين فهيم رضه ۽ مخدوم جميل الزمان جن جا تعميراتي ڪم",
+        text: "اعليٰ حضرت قبلہ مخدوم محمد امين فهيم رضه ۽ حضرت قبلہ مخدوم جميل الزمان سائين جن وڏي قبي، ننڍي قبي، مسجد شريف ۽ تجرن جي ديوارن تي تمام سهڻو ڪاشيءَ جو ڪم ڪرايو. سوماري صفحي ۽ هيٺ اڱڻ ۾ ماربل جو فرش ۽ وضوخانا وغيره نئين سر تعمير ڪيا ويا.",
+      },
+      {
+        heading: "قبلہ مخدوم جميل الزمان دستار جن جا تاريخي اضافا",
+        text: "عاليجناب قبلہ حضرت مخدوم ظهير الدين الثاني المعروف ”جميل الزمان“ دستار جن جي دور ۾ درگاه شريف ۾ ڪيئي اهم تاريخي ۽ تعميراتي ڪم ڪيا ويا.\nننڍي قبي ۾ ٿلهي تي موجود سجاده صاحبان جي مقبرن جي چوڌاري وڏي قبي جي طرز تي هڪ خوبصورت ڪاٺ جو پڃرو لڳايو ويو، جنهن ۾ محراب، ڄاري ۽ اعلى قسم جا ٿنڀا بهترين مهارت سان آويزان ڪيا ويا.\nمٿين چوڪنڊيءَ کي مکمل طرح گارڊرن، ٽيئرن ۽ ڪاشيءَ جي سرن جي ڇت سان ڍڪيو ويو. اها اڏاوت سنڌ جي روايتي فنِ تعمير جي عڪاسي ڪري ٿي.\nدرگاهه شريف جي وڏي قبي، ننڍي قبي، مٿئين چوڪنڊي ۽ چوڪنڊي زيرين ۾ مقامِ مدفن حضرات جي تربتن تي ڪتابا لڳايا ويا، جن سان هر اهلِ مدفن جي نشاندھي ممڪن ٿي سگهي آهي. ڪتاب مطابق اهڙو تاريخي ڪارنامو 200 سالن جي عرصي ۾ پهريون دفعو سرانجام ڏنو ويو.\nنمن واري ميدان، سوماري صفحي، تجرن جي پٺ ۽ قبن جي پويان ماربل جا فرش لڳايا ويا ته جيئن زائرين لاءِ آساني ٿئي. وضوخانا ۽ باٿ روم نئين سر تعمير ڪيا ويا.\nحويلي مبارڪ جي قبرستان ۽ مٿين چوڪنڊيءَ کي وڌايو ويو. درگاهه شريف ۾ موجود چوڪنڊين ۽ حويلي مبارڪ جي دروازن کي نئين ڊزائن جي دروازن سان بدلائيو ويو ۽ انهن سان متصل محرابن ۽ ديوارن کي ڪاشيءَ جي سرن سان مزين ڪيو ويو.\nدرگاهه شريف جي ورانڊي جي ڇت کي پڻ مضبوط ڪيو ويو، جيڪا قديم تعمير هئڻ ڪري برساتن ۾ ٽپڻ شروع ٿي وئي هئي.\nپراڻي تجر کي لائبريريءَ ۾ تبديل ڪيو ويو ۽ ان ۾ ڪاشيءَ جو ڪم مهارت سان سرانجام ڏنو ويو. اهڙيءَ طرح سوماري صفحي سان متصل موجود پاڳاري جي بنگلي کي به بحال (Renovate) ڪيو ويو.\nتجرن جي پٺ، مسجد شريف ۽ وڏي ۽ ننڍي قبي جي پٺين ديوارن تي ڪاشي لڳائي انهن جي خوبصورتيءَ ۾ وڌيڪ اضافو ڪيو ويو.",
+      },
+      {
         heading: "تعميراتي ۽ روحاني اهميت",
         text: "درگاهه شريف هالا جي عمارت پنهنجي تاريخي تسلسل ۾ ڪيترن ئي نسلن ۽ دورن جون يادگيريون محفوظ رکي ٿي. ان جي تعميرات ۾ پٿر، چونو، ڪاشي، نقاشي ۽ روايتي سنڌي فنِ تعمير جا مختلف نمونا نظر اچن ٿا. ان ڪري درگاهه شريف هالا روحاني عقيدت جو مرڪز هجڻ سان گڏ سنڌ جي تعميراتي، فني ۽ ثقافتي ورثي جي اهم علامت پڻ آهي.",
       },
@@ -172,6 +204,38 @@ const ENGLISH_CHAPTERS: Chapter[] = [
       {
         heading: "Grand veranda (1351 AH)",
         text: "As visitor numbers increased, a larger gathering space became necessary. A grand veranda was built in front of the dargah and mosque. Its construction is associated with Makhdoom Zahiruddin, known as Pro Jam Saeen, and it was completed through the efforts of his son, Makhdoom Molvi Ghulam Haider, in 1351 AH. It is approximately 120 feet long, 30 feet wide and 30 feet high, and provides space for visitors and Friday prayers.",
+      },
+      {
+        heading: "Boundary walls",
+        text: "During the dastar period of Qibla Makhdoom Muhammad Zaman Saeen, strong masonry walls were built around Dargah Sharif with financial support from his disciples from Nara. This construction enclosed and protected the shrine's inner compound within a clear boundary, separate from the remaining graveyards and outer areas.",
+      },
+      {
+        heading: "Courtyard",
+        text: "The courtyard of Dargah Sharif is 114 feet long and 72 feet wide, with a Nus(r)ani floor. A railing made of wooden and iron bars stands at the front. In the middle are a gate and two small minarets, with a fine stone staircase below.\nTo the north are the new chambers, part of the old chambers, and the passage leading to the ablution area. To the south is the wall of the chowkandi, topped with small minarets.\nThe courtyard was once covered with reeds, which were replaced each year. Later, Makhdoom Ghulam Haider Saeen had a brick floor laid, and Zulfiqar Ali Bhutto later had it tiled.",
+      },
+      {
+        heading: "Ablution area and well",
+        text: "Two chambers to the east of the mosque and north of the veranda provide comfort for disciples and devotees. North of these rooms are the ablution area and a well. The well water was used for ablution, personal washing and drinking.\nMore recently, the Auqaf Department built ablution facilities where around fifty people can perform ablution at a time. The building, including the well, has been constructed as a complete structure.",
+      },
+      {
+        heading: "Somari Safho",
+        text: "A short distance east of the ablution area is the “Somari Safho,” where people devoted to remembrance and reflection stay overnight. The mela group also stays there, especially the Larai faqirs, who walk hundreds of miles from Lower Sindh each year to attend the great mela.\nA dedicated bungalow is also available for the sajjada nashin, who stays there for remembrance and visitation on every Somar and during the mela.",
+      },
+      {
+        heading: "Neem-tree ground",
+        text: "After entering through Lakhi Gate, visitors reach the neem-tree ground, which is 114 feet long and 137 feet wide. A 137-foot marble path runs through its centre in line with the large dome and continues to the veranda.\nMany neem trees provide shade for visitors and for people attending funeral prayers.\nOriginally, the courtyard stood about five and a half feet above the ground. After soil was added, it is now about three and a half feet higher. A stone staircase connects the courtyard and the ground.",
+      },
+      {
+        heading: "Guesthouse, kitchen and other additions",
+        text: "During the dastar period of Qibla Makhdoom Saeed-uz-Zaman, son of Qibla Makhdoom Muhammad Zaman, soil was added to the neem-tree ground because rainwater used to collect there and cover some steps of the stone staircase leading to the courtyard.\nA large guesthouse was built on the north side of the ground, with a kitchen to its east. A new ablution facility and water tank were built beside the well, and separate washing facilities were made for women and men. The well was preserved as a landmark.\nThe facilities were expanded to the haveli's ablution area, and the chowkandi was extended to the west and south. An unbaked outer wall was replaced with a permanent wall, and a broad marble floor was laid from the outer dome to the veranda. A room for staff accommodation was also built opposite the ablution area.",
+      },
+      {
+        heading: "Construction work by Makhdoom Muhammad Amin Faheem and Makhdoom Jamil-uz-Zaman",
+        text: "His Eminence Qibla Makhdoom Muhammad Amin Faheem and Qibla Makhdoom Jamil-uz-Zaman Saeen commissioned beautiful tilework on the walls of the large and small domes, the mosque and the chambers. The Somari Safho and lower courtyard were refloored with marble, and the ablution facilities and related structures were rebuilt.",
+      },
+      {
+        heading: "Historic additions during Makhdoom Jamil-uz-Zaman's dastar",
+        text: "During the dastar period of His Excellency Hazrat Makhdoom Zahiruddin II, known as “Jamil-uz-Zaman,” many important historical and construction works were carried out at Dargah Sharif.\nA beautiful wooden enclosure, in the style of the large dome, was installed around the tombs of the sajjada nashins on the platform inside the small dome. It features arches, latticework and finely crafted pillars.\nThe upper chowkandi was fully covered with girders, tiers and a roof of glazed tiles, reflecting traditional Sindhi architecture.\nInscriptions identifying the people buried there were placed on the tombs in the large and small domes, upper chowkandi and lower chowkandi. According to the account, this historic work was carried out for the first time in 200 years.\nMarble floors were laid at the neem-tree ground, Somari Safho, behind the chambers and behind the domes to make access easier for visitors. Ablution facilities and bathrooms were rebuilt.\nThe cemetery of Haveli Mubarak and the upper chowkandi were expanded. The doors of the chowkandis and Haveli Mubarak were replaced with newly designed doors, and the adjoining arches and walls were decorated with glazed tiles.\nThe roof of the veranda was reinforced after its old structure began leaking during the rains.\nThe old chambers were converted into a library and decorated with skilled tilework. The bungalow beside Somari Safho was also renovated.\nThe rear walls of the chambers, mosque, and large and small domes were finished with tilework, further enhancing their appearance.",
       },
       {
         heading: "Architectural and spiritual significance",
