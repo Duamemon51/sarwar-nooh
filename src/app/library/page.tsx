@@ -347,11 +347,11 @@ export default function LibraryPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/20 sm:hidden" />
           <div dir="ltr" className="relative mx-0 grid min-h-[430px] max-w-none items-center gap-10 px-2 py-20 sm:min-h-[520px] sm:px-4 sm:py-28 lg:px-6">
-            <div className={isEnglish ? "text-left" : "text-right"}>
+            <div className={isEnglish ? "text-left" : "w-full text-right md:w-[52%] md:-translate-x-24 lg:-translate-x-32"}>
               <h1 dir={isEnglish ? "ltr" : "rtl"} className={`${isEnglish ? "hero-title-en" : "font-[family-name:var(--font-display)] text-5xl leading-[0.95] sm:text-7xl"} max-w-3xl text-[#f0d48b]`}>
                 {isEnglish ? "The Library" : "لائبريري"}
               </h1>
-              <p dir={isEnglish ? "ltr" : "rtl"} className="mt-6 max-w-2xl text-base leading-8 text-[#f1eadb]/80 sm:text-lg">
+              <p dir={isEnglish ? "ltr" : "rtl"} className={`${isEnglish ? "" : "md:ml-auto md:w-fit"} mt-6 max-w-2xl text-base leading-8 text-[#f1eadb]/80 sm:text-lg`}>
                 {isEnglish
                   ? "A quiet place for books, manuscripts and the living memory of Dargah Makhdoom Sarwar Nooh."
                   : "درگاهه مخدوم سرور نوحؒ جي ڪتابن، قلمي نسخن ۽ جيئري روحاني ياد لاءِ هڪ پُرسڪون علمي جاءِ."}
